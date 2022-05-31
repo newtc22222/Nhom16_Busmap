@@ -8,6 +8,7 @@
     <string name="notification_text">Thông báo</string>
     <string name="function_group_text">Chức năng</string>
     <string name="find_bus_text">Tìm chuyến</string>
+    <string name="find_address_text">Tìm địa điểm</string>
     <string name="search_text">Tra cứu</string>
     <string name="update_text">Cập nhật</string>
     <string name="feedback_group_text">Phản hồi</string>
@@ -22,6 +23,8 @@
     <string name="close_nav">Đóng Navigation</string>
     <!--    -->
     <string name="phone_text">Số điện thoại</string>
+    <string name="pass_label">Mật khẩu</string>
+    <string name="pass_hint">VD: 123456789</string>
     <string name="hint_phone">VD: 0868754872</string>
     <string name="email_text">Email</string>
     <string name="hint_email">VD: phantrungtin01@gmail.com</string>
@@ -31,6 +34,8 @@
     <string name="dob_text">Ngày sinh</string>
     <string name="hint_dob">11/05/2001</string>
     <string name="update_info_text">Cập nhật thông tin</string>
+    <string name="register">Đăng ký</string>
+    <string name="register_label">Thông tin đăng ký</string>
     <!--    -->
     <string name="feedback_content_1">Mọi thông tin góp ý xin gửi về địa chỉ</string>
     <string name="feedback_content_2">E- mail: phantrungtin@gmail.com</string>
@@ -52,10 +57,66 @@
         <item>Xuất sắc!</item>
     </string-array>
     <string name="toast_send_rate">Đánh giá đã được ghi nhận!</string>
-<!--    -->
+    <!--    -->
     <string name="code_not_found">Error 404</string>
     <string name="not_found">Không tìm thấy trang!</string>
     <string name="notification_detail_text">Chi tiết thông báo</string>
-<!--    -->
+    <!--    -->
     <string name="find_location">Tìm kiếm địa điểm...</string>
+    <string name="pick_route">Chọn tuyến xe buýt</string>
+    <!--    -->
+    <string name="route_id_label">Tuyến xe</string>
+    <string name="route_id_info">Tuyến số:</string>
+    <string name="route_number">Tuyến số</string>
+    <string name="route_name">Tên tuyến:</string>
+    <string name="route_operating_time">Thời gian hoạt động:</string>
+    <string name="route_price">Giá vé:</string>
+    <string name="route_type">Loại tuyến:</string>
+    <string name="route_time_run">Thời gian chạy:</string>
+    <string name="route_repeat">Có chuyến sau khoảng:</string>
+    <string name="route_amount">Số chuyến:</string>
+    <string name="route_unit">Đơn vị:</string>
+    <string name="route_tab_info">Thông tin</string>
+    <string name="route_tab_bus_stop">Trạm dừng</string>
+    <string name="route_tab">Tuyến xe</string>
+    <!--    -->
+    <string name="route_pass">Danh sách các tuyến xe đi qua</string>
+    <string name="saved_toast">Đã lưu vào mục yêu thích</string>
+    <!--    -->
+    <string name="download">TẢI</string>
+    <string name="close">ĐÓNG</string>
+    <string name="update_data">Cập nhật dữ liệu</string>
+    <string name="update_success">Cập nhật thành công</string>
+    <string name="update_date">Ngày cập nhật dữ liệu gần nhất</string>
+    <string name="update_content">BusMap sẽ tải và cập nhật dữ liệu mới nhất. Quá trình có thể mất vài giây thậm chí là vài phút.</string>
+    <!--    -->
+    <string name="from">Đi từ</string>
+    <string name="to">Đến</string>
+    <string name="from_hint">Nhập địa điểm xuất phát</string>
+    <string name="to_hint">Nhập địa điểm đến</string>
+    <string name="find_road">Tìm đường</string>
+    <!--    -->
+    <string-array name="amount_route">
+        <item>Đi tối đa 1 chuyến</item>
+        <item>Đi tối đa 2 chuyến</item>
+        <item>Đi tối đa 3 chuyến</item>
+    </string-array>
+    <string name="saved">Danh sách yêu thích</string>
+    <string name="detail">Chi tiết</string>
+    <!--    -->
+    <string name="find_road_result">Kết quả tìm đường</string>
+    <string name="list_route_result">Danh sách các tuyến xe phù hợp</string>
+    <string name="moving_guide">Hướng dẫn di chuyển</string>
+    <string name="guide_detail">Chi tiết cách đi</string>
+    <string name="pass_bus_stop">Các trạm đi qua</string>
+    <!--    -->
+    <string name="complete">Hoàn thành</string>
+    <!--    -->
+    <string name="need_logged">Bạn cần phải đăng nhập!</string>
+    <string name="code_need_logged">401 Error</string>
+    <string name="account_exists">Tài khoản này đã tồn tại!</string>
+    <string name="register_success">Bạn đã đăng ký thành công!</string>
+    <string name="fill">Cần điền đầy đủ thông tin!</string>
+    <string name="login_success">Đăng nhập thành công!</string>
+    <string name="login_fail">Đăng nhập thất bại!</string>
 </resources>

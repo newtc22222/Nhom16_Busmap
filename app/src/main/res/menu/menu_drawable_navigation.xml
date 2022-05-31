@@ -8,10 +8,14 @@
         <item android:id="@+id/nv_function_group"
             android:title="@string/function_group_text">
             <menu>
+                <item android:id="@+id/nv_find_address"
+                    android:iconTint="@color/secondary_100"
+                    android:title="@string/find_address_text"
+                    android:icon="@drawable/ic_location"/>
                 <item android:id="@+id/nv_find_bus"
                     android:iconTint="@color/secondary_100"
                     android:title="@string/find_bus_text"
-                    android:icon="@drawable/ic_find_bus"/>
+                    android:icon="@drawable/ic_route"/>
                 <item android:id="@+id/nv_search"
                     android:iconTint="@color/secondary_100"
                     android:title="@string/search_text"

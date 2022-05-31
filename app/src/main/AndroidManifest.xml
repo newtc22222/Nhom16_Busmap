@@ -14,19 +14,52 @@
         android:theme="@style/Theme.Nhom16_Busmap"
         tools:targetApi="31">
         <activity
-            android:name=".NotificationDetailActivity"
+            android:name=".RegisterActivity"
             android:exported="false" />
         <activity
-            android:name=".NotificationActivity"
+            android:name=".LoginActivity"
             android:exported="false" />
         <activity
-            android:name=".RateActivity"
+            android:name=".result.ResultRouteDetailActivity"
             android:exported="false" />
         <activity
-            android:name=".InformationGroupActivity"
+            android:name=".result.ResultFindRoadActivity"
             android:exported="false" />
         <activity
-            android:name=".FeedbackActivity"
+            android:name=".UpdateActivity"
+            android:exported="false" />
+        <activity
+            android:name=".saved.SavedActivity"
+            android:exported="false" />
+        <activity
+            android:name=".bus_stop.BusStopActivity"
+            android:exported="false" />
+        <activity
+            android:name=".route.RouteDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".route.RouteListActivity"
+            android:exported="false" />
+        <activity
+            android:name=".FindRoadActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AddressSearchActivity"
+            android:exported="false" />
+        <activity
+            android:name=".notification.NotificationDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".notification.NotificationActivity"
+            android:exported="false" />
+        <activity
+            android:name=".feedback.RateActivity"
+            android:exported="false" />
+        <activity
+            android:name=".feedback.InformationGroupActivity"
+            android:exported="false" />
+        <activity
+            android:name=".feedback.FeedbackActivity"
             android:exported="false" />
         <activity
             android:name=".InformationActivity"

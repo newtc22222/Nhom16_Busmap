@@ -3,6 +3,8 @@ package hcmute.nhom16.busmap;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -10,6 +12,7 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -17,6 +20,8 @@ import java.util.Date;
 import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
+import hcmute.nhom16.busmap.model.User;
+import hcmute.nhom16.busmap.model.UserAccount;
 
 public class InformationActivity extends AppCompatActivity {
 
@@ -26,11 +31,15 @@ public class InformationActivity extends AppCompatActivity {
     TextView tv_dob, tv_name;
     CircleImageView civ_avatar;
 
+    User user;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_infomation);
+        getUserInformation();
         initUI();
+        setInformationToForm();
         initListener();
     }
 
@@ -79,7 +88,41 @@ public class InformationActivity extends AppCompatActivity {
     }
 
     public void updateInformation() {
+        String name = edt_name.getText().toString();
+        String phone = edt_phone.getText().toString();
+        Date dob = Support.stringToDate(tv_dob.getText().toString(), "dd/MM/yyyy");
+        boolean gender = spinner_gender.getSelectedItemPosition() == 0;
 
+        if (name.equals("") || phone.equals("")) {
+            Toast.makeText(this, R.string.fill, Toast.LENGTH_SHORT);
+        } else {
+            user.setDob(dob);
+            user.setGender(gender);
+            user.setPhone(phone);
+            user.setName(name);
+
+            UserAccount.update();
+
+        }
+    }
+
+    public void setInformationToForm() {
+        byte[] bytes = user.getImage();
+        if (bytes == null) {
+            civ_avatar.setImageResource(R.drawable.avatar_default);
+        } else {
+            civ_avatar.setImageBitmap(BitmapFactory.decodeByteArray(bytes, 0, user.getImage().length));
+        }
+        tv_name.setText(user.getName());
+        edt_name.setText(user.getName());
+        edt_email.setText(user.getEmail());
+        edt_phone.setText(user.getPhone());
+        tv_dob.setText(Support.dateToString(user.getDob(), "dd/MM/yyyy"));
+        spinner_gender.setSelection(user.isGender() ? 0 : 1);
+    }
+
+    public void getUserInformation() {
+        user = UserAccount.getUser();
     }
 
     private List<String> getGenders() {

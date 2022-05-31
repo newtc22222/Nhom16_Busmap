@@ -5,38 +5,86 @@
       <map>
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Nhom16_Busmap/app/src/main/res/drawable/button_stroke.xml" value="0.175" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Nhom16_Busmap/app/src/main/res/drawable/button_stroke_dark.xml" value="0.175" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Nhom16_Busmap/app/src/main/res/drawable/circle.xml" value="0.175" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Nhom16_Busmap/app/src/main/res/drawable/corner_10.xml" value="0.175" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Nhom16_Busmap/app/src/main/res/drawable/corner_20.xml" value="0.175" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Nhom16_Busmap/app/src/main/res/drawable/corner_30.xml" value="0.175" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Nhom16_Busmap/app/src/main/res/drawable/corner_5.xml" value="0.175" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Nhom16_Busmap/app/src/main/res/drawable/corner_left.xml" value="0.175" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Nhom16_Busmap/app/src/main/res/drawable/corner_left_10.xml" value="0.175" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Nhom16_Busmap/app/src/main/res/drawable/corner_right.xml" value="0.175" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Nhom16_Busmap/app/src/main/res/drawable/cyrcle.xml" value="0.175" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Nhom16_Busmap/app/src/main/res/drawable/default_spinner_address.xml" value="0.175" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Nhom16_Busmap/app/src/main/res/drawable/editext_border.xml" value="0.175" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Nhom16_Busmap/app/src/main/res/drawable/edittext_border.xml" value="0.175" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Nhom16_Busmap/app/src/main/res/drawable/heart_click.xml" value="0.175" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Nhom16_Busmap/app/src/main/res/drawable/ic_feedback.xml" value="0.175" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Nhom16_Busmap/app/src/main/res/drawable/ic_find_bus.xml" value="0.175" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Nhom16_Busmap/app/src/main/res/drawable/ic_load.xml" value="0.175" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Nhom16_Busmap/app/src/main/res/drawable/line_bottom.xml" value="0.175" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Nhom16_Busmap/app/src/main/res/drawable/order_line.xml" value="0.175" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Nhom16_Busmap/app/src/main/res/drawable/order_round.xml" value="0.175" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Nhom16_Busmap/app/src/main/res/drawable/progress_bar.xml" value="0.175" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Nhom16_Busmap/app/src/main/res/drawable/ripple.xml" value="0.1" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Nhom16_Busmap/app/src/main/res/drawable/ripple_corner.xml" value="0.175" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Nhom16_Busmap/app/src/main/res/drawable/ripple_corner_20.xml" value="0.175" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Nhom16_Busmap/app/src/main/res/drawable/ripple_left.xml" value="0.1" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Nhom16_Busmap/app/src/main/res/drawable/spinner_background.xml" value="0.175" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Nhom16_Busmap/app/src/main/res/drawable/spinner_border.xml" value="0.175" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Nhom16_Busmap/app/src/main/res/drawable/spinner_layout.xml" value="0.175" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Nhom16_Busmap/app/src/main/res/drawable/splash.xml" value="0.1" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Nhom16_Busmap/app/src/main/res/drawable/tablayout.xml" value="0.175" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Nhom16_Busmap/app/src/main/res/drawable/tablayout_background.xml" value="0.175" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Nhom16_Busmap/app/src/main/res/drawable/up_down.xml" value="0.175" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Nhom16_Busmap/app/src/main/res/layout/activity_bus_stop.xml" value="0.27447916666666666" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Nhom16_Busmap/app/src/main/res/layout/activity_feedback.xml" value="0.264" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Nhom16_Busmap/app/src/main/res/layout/activity_find_road.xml" value="0.264" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Nhom16_Busmap/app/src/main/res/layout/activity_find_road_result.xml" value="0.27447916666666666" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Nhom16_Busmap/app/src/main/res/layout/activity_infomation.xml" value="0.264" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Nhom16_Busmap/app/src/main/res/layout/activity_information_group.xml" value="0.22826086956521738" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Nhom16_Busmap/app/src/main/res/layout/activity_list_route.xml" value="0.22826086956521738" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Nhom16_Busmap/app/src/main/res/layout/activity_login.xml" value="0.27447916666666666" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Nhom16_Busmap/app/src/main/res/layout/activity_main.xml" value="0.264" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Nhom16_Busmap/app/src/main/res/layout/activity_notification.xml" value="0.264" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Nhom16_Busmap/app/src/main/res/layout/activity_notification_detail.xml" value="0.10185185185185185" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Nhom16_Busmap/app/src/main/res/layout/activity_rate.xml" value="0.2" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Nhom16_Busmap/app/src/main/res/layout/activity_register.xml" value="0.27447916666666666" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Nhom16_Busmap/app/src/main/res/layout/activity_result_detail.xml" value="0.27447916666666666" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Nhom16_Busmap/app/src/main/res/layout/activity_result_route_detail.xml" value="0.27447916666666666" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Nhom16_Busmap/app/src/main/res/layout/activity_route_detail.xml" value="0.2" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Nhom16_Busmap/app/src/main/res/layout/activity_route_result_detail.xml" value="0.2" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Nhom16_Busmap/app/src/main/res/layout/activity_saved.xml" value="0.22826086956521738" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Nhom16_Busmap/app/src/main/res/layout/activity_search_address.xml" value="0.22826086956521738" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Nhom16_Busmap/app/src/main/res/layout/activity_update.xml" value="0.22826086956521738" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Nhom16_Busmap/app/src/main/res/layout/address_spinner.xml" value="0.4" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Nhom16_Busmap/app/src/main/res/layout/bus_stop_item.xml" value="0.2734375" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Nhom16_Busmap/app/src/main/res/layout/bus_stop_item_order.xml" value="0.5121477162293488" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Nhom16_Busmap/app/src/main/res/layout/bus_stop_result.xml" value="0.2734375" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Nhom16_Busmap/app/src/main/res/layout/default_spinner_address.xml" value="0.72" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Nhom16_Busmap/app/src/main/res/layout/error_layout.xml" value="0.22826086956521738" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Nhom16_Busmap/app/src/main/res/layout/fragment_2_linear.xml" value="0.2734375" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Nhom16_Busmap/app/src/main/res/layout/fragment_bus_stop_order.xml" value="0.1" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Nhom16_Busmap/app/src/main/res/layout/fragment_linear.xml" value="0.2734375" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Nhom16_Busmap/app/src/main/res/layout/fragment_list_bus_stop.xml" value="0.1" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Nhom16_Busmap/app/src/main/res/layout/gender_spinner.xml" value="0.22826086956521738" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Nhom16_Busmap/app/src/main/res/layout/header_drawable_navigation.xml" value="0.264" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Nhom16_Busmap/app/src/main/res/layout/info_route.xml" value="0.4" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Nhom16_Busmap/app/src/main/res/layout/need_logged.xml" value="0.2734375" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Nhom16_Busmap/app/src/main/res/layout/not_found_layout.xml" value="0.176" />
-        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Nhom16_Busmap/app/src/main/res/layout/notification.xml" value="0.264" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Nhom16_Busmap/app/src/main/res/layout/notification.xml" value="0.5457809694793537" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Nhom16_Busmap/app/src/main/res/layout/notification_detail_1.xml" value="0.264" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Nhom16_Busmap/app/src/main/res/layout/notification_detail_2.xml" value="0.22826086956521738" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Nhom16_Busmap/app/src/main/res/layout/notification_detail_3.xml" value="0.264" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Nhom16_Busmap/app/src/main/res/layout/result_route.xml" value="0.27447916666666666" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Nhom16_Busmap/app/src/main/res/layout/route.xml" value="0.2535211267605634" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Nhom16_Busmap/app/src/main/res/layout/route_amount_item.xml" value="0.2734375" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Nhom16_Busmap/app/src/main/res/layout/route_info.xml" value="0.27447916666666666" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Nhom16_Busmap/app/src/main/res/layout/route_result_guide.xml" value="0.2734375" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Nhom16_Busmap/app/src/main/res/layout/splash_layout.xml" value="0.264" />
-        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Nhom16_Busmap/app/src/main/res/menu/menu_drawable_navigation.xml" value="0.1" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Nhom16_Busmap/app/src/main/res/layout/time_line.xml" value="0.27447916666666666" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Nhom16_Busmap/app/src/main/res/menu/menu_drawable_navigation.xml" value="0.536" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Nhom16_Busmap/app/src/main/res/menu/menu_toolbar_like.xml" value="0.2734375" />
+        <entry key="..\:/Users/ADMIN/AppData/Local/Android/Sdk/platforms/android-32/data/res/layout/simple_spinner_item.xml" value="0.27447916666666666" />
       </map>
     </option>
   </component>
