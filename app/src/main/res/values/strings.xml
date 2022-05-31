@@ -1,3 +1,61 @@
 <resources>
-    <string name="app_name">Nhom16_Busmap</string>
+    <string name="app_name">Busmap</string>
+    <!--    -->
+    <string name="title_splash">Đồ án cuối kỳ</string>
+    <string name="group_name">Nhóm 16</string>
+    <string name="starting">Đang khởi động...</string>
+    <!--    -->
+    <string name="notification_text">Thông báo</string>
+    <string name="function_group_text">Chức năng</string>
+    <string name="find_bus_text">Tìm chuyến</string>
+    <string name="search_text">Tra cứu</string>
+    <string name="update_text">Cập nhật</string>
+    <string name="feedback_group_text">Phản hồi</string>
+    <string name="feedback_text">Góp ý</string>
+    <string name="rate_text">Đánh giá</string>
+    <string name="information_text">Thông tin</string>
+    <!--    -->
+    <string name="person_info_text">Thông tin</string>
+    <string name="login_text">Đăng nhập</string>
+    <!--    -->
+    <string name="open_nav">Mở Navigation</string>
+    <string name="close_nav">Đóng Navigation</string>
+    <!--    -->
+    <string name="phone_text">Số điện thoại</string>
+    <string name="hint_phone">VD: 0868754872</string>
+    <string name="email_text">Email</string>
+    <string name="hint_email">VD: phantrungtin01@gmail.com</string>
+    <string name="name_text">Họ và tên</string>
+    <string name="hint_name">VD: Phan Trung Tín</string>
+    <string name="gender_text">Giới tính</string>
+    <string name="dob_text">Ngày sinh</string>
+    <string name="hint_dob">11/05/2001</string>
+    <string name="update_info_text">Cập nhật thông tin</string>
+    <!--    -->
+    <string name="feedback_content_1">Mọi thông tin góp ý xin gửi về địa chỉ</string>
+    <string name="feedback_content_2">E- mail: phantrungtin@gmail.com</string>
+    <!--    -->
+    <string name="member_title">Thành viên thực hiện</string>
+    <string name="tin_member">1. Phan Trung Tín - 19110475</string>
+    <string name="hoa_member">2. Phạm Đinh Quốc Hòa - 19110365</string>
+    <string name="phi_member">3. Võ Minh Trí - 19110483</string>
+    <string name="tri_member">4. Võ Nhật Phi - 19110426</string>
+    <string name="rate_hint">Viết bình luận</string>
+    <string name="rate_label">Nội dung</string>
+    <string name="send_rate">Gửi</string>
+    <!--    -->
+    <string-array name="rate_type">
+        <item>Không tốt!</item>
+        <item>Tạm được!</item>
+        <item>Khá tốt!</item>
+        <item>Giỏi lắm!</item>
+        <item>Xuất sắc!</item>
+    </string-array>
+    <string name="toast_send_rate">Đánh giá đã được ghi nhận!</string>
+<!--    -->
+    <string name="code_not_found">Error 404</string>
+    <string name="not_found">Không tìm thấy trang!</string>
+    <string name="notification_detail_text">Chi tiết thông báo</string>
+<!--    -->
+    <string name="find_location">Tìm kiếm địa điểm...</string>
 </resources>

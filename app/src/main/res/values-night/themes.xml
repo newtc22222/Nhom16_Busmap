@@ -2,9 +2,9 @@
     <!-- Base application theme. -->
     <style name="Theme.Nhom16_Busmap" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/purple_200</item>
-        <item name="colorPrimaryVariant">@color/purple_700</item>
-        <item name="colorOnPrimary">@color/black</item>
+        <item name="colorPrimary">@color/primary_600</item>
+        <item name="colorPrimaryVariant">@color/primary_800</item>
+        <item name="colorOnPrimary">@color/primary_300</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/teal_200</item>
         <item name="colorSecondaryVariant">@color/teal_200</item>
@@ -12,5 +12,40 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
+
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
+
+        <item name="textAllCaps">false</item>
+        <item name="android:textAllCaps">false</item>
+
+        <item name="android:windowSplashScreenBackground">@color/primary_600</item>
+        <item name="android:windowSplashScreenAnimatedIcon">@drawable/ic_bus</item>
+        <item name="android:windowSplashScreenAnimationDuration">1000</item>
+
+
+        <item name="android:textViewStyle">@style/QuicksandTextViewStyle</item>
+        <item name="android:buttonStyle">@style/QuicksandButtonStyle</item>
+        <item name="android:editTextStyle">@style/QuicksandEditTextStyle</item>
+    </style>
+    <style name="ToolbarColored" parent="@style/Widget.AppCompat.DrawerArrowToggle">
+        <item name="spinBars">true</item>
+        <item name="color">@color/secondary_900</item>
+    </style>
+
+    <style name="QuicksandTextViewStyle" parent="android:Widget.TextView">
+        <item name="android:textColor">@color/secondary_800</item>
+        <item name="android:fontFamily">@font/quicksand_regular</item>
+    </style>
+
+    <style name="QuicksandEditTextStyle" parent="android:Widget.EditText">
+        <item name="android:textColor">@color/secondary_50</item>
+        <item name="android:fontFamily">@font/quicksand_light</item>
+    </style>
+
+    <style name="QuicksandButtonStyle" parent="android:Widget.Holo.Button">
+        <item name="android:textColor">@color/secondary_900</item>
+        <item name="android:fontFamily">@font/quicksand_semi_bold</item>
     </style>
 </resources>

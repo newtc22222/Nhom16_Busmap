@@ -1,5 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Nhom16_Busmap/app/src/main/res/drawable/button_stroke.xml" value="0.175" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Nhom16_Busmap/app/src/main/res/drawable/button_stroke_dark.xml" value="0.175" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Nhom16_Busmap/app/src/main/res/drawable/corner_10.xml" value="0.175" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Nhom16_Busmap/app/src/main/res/drawable/corner_20.xml" value="0.175" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Nhom16_Busmap/app/src/main/res/drawable/corner_5.xml" value="0.175" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Nhom16_Busmap/app/src/main/res/drawable/cyrcle.xml" value="0.175" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Nhom16_Busmap/app/src/main/res/drawable/default_spinner_address.xml" value="0.175" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Nhom16_Busmap/app/src/main/res/drawable/editext_border.xml" value="0.175" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Nhom16_Busmap/app/src/main/res/drawable/edittext_border.xml" value="0.175" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Nhom16_Busmap/app/src/main/res/drawable/ic_feedback.xml" value="0.175" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Nhom16_Busmap/app/src/main/res/drawable/ic_load.xml" value="0.175" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Nhom16_Busmap/app/src/main/res/drawable/line_bottom.xml" value="0.175" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Nhom16_Busmap/app/src/main/res/drawable/spinner_background.xml" value="0.175" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Nhom16_Busmap/app/src/main/res/drawable/spinner_border.xml" value="0.175" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Nhom16_Busmap/app/src/main/res/drawable/splash.xml" value="0.1" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Nhom16_Busmap/app/src/main/res/layout/activity_feedback.xml" value="0.264" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Nhom16_Busmap/app/src/main/res/layout/activity_infomation.xml" value="0.264" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Nhom16_Busmap/app/src/main/res/layout/activity_information_group.xml" value="0.22826086956521738" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Nhom16_Busmap/app/src/main/res/layout/activity_main.xml" value="0.264" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Nhom16_Busmap/app/src/main/res/layout/activity_notification.xml" value="0.264" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Nhom16_Busmap/app/src/main/res/layout/activity_notification_detail.xml" value="0.10185185185185185" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Nhom16_Busmap/app/src/main/res/layout/activity_rate.xml" value="0.2" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Nhom16_Busmap/app/src/main/res/layout/address_spinner.xml" value="0.4" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Nhom16_Busmap/app/src/main/res/layout/default_spinner_address.xml" value="0.72" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Nhom16_Busmap/app/src/main/res/layout/error_layout.xml" value="0.22826086956521738" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Nhom16_Busmap/app/src/main/res/layout/gender_spinner.xml" value="0.22826086956521738" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Nhom16_Busmap/app/src/main/res/layout/header_drawable_navigation.xml" value="0.264" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Nhom16_Busmap/app/src/main/res/layout/not_found_layout.xml" value="0.176" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Nhom16_Busmap/app/src/main/res/layout/notification.xml" value="0.264" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Nhom16_Busmap/app/src/main/res/layout/notification_detail_1.xml" value="0.264" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Nhom16_Busmap/app/src/main/res/layout/notification_detail_2.xml" value="0.22826086956521738" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Nhom16_Busmap/app/src/main/res/layout/notification_detail_3.xml" value="0.264" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Nhom16_Busmap/app/src/main/res/layout/splash_layout.xml" value="0.264" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Nhom16_Busmap/app/src/main/res/menu/menu_drawable_navigation.xml" value="0.1" />
+      </map>
+    </option>
+  </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>

@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".InformationActivity">
+
+    <RelativeLayout
+        android:id="@+id/rl_header"
+        android:layout_width="match_parent"
+        android:layout_height="250dp">
+
+        <View
+            android:id="@+id/background_title"
+            android:layout_height="130dp"
+            android:background="@color/primary_600"
+            android:layout_width="match_parent"/>
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/civ_avatar"
+            android:layout_width="130dp"
+            android:layout_height="130dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="65dp"
+            android:src="@drawable/avatar_default"
+            app:civ_border_color="@color/secondary_600"
+            app:civ_border_width="4dp" />
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/civ_avatar"
+            android:layout_centerHorizontal="true"
+            android:fontFamily="@font/quicksand_bold"
+            android:text="Phan Trung Tín"
+            android:textSize="34sp" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/rl_header"
+        android:orientation="vertical"
+        android:padding="24dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="4dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/quicksand_semi_bold"
+                android:text="@string/phone_text"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/edt_phone"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:layout_marginTop="2dp"
+                android:background="@drawable/edittext_border"
+                android:drawableTint="@color/primary_600"
+                android:fontFamily="@font/quicksand_semi_bold"
+                android:hint="@string/hint_phone"
+                android:paddingLeft="12dp"
+                android:textSize="18sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="4dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/quicksand_semi_bold"
+                android:text="@string/name_text"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/edt_name"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:layout_marginTop="2dp"
+                android:background="@drawable/edittext_border"
+                android:drawableTint="@color/primary_600"
+                android:fontFamily="@font/quicksand_semi_bold"
+                android:hint="@string/hint_name"
+                android:paddingLeft="12dp"
+                android:textSize="18sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="4dp"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/quicksand_semi_bold"
+                    android:text="@string/gender_text"
+                    android:textSize="18sp" />
+
+                <Spinner
+                    android:id="@+id/spinner_gender"
+                    android:layout_width="100dp"
+                    android:layout_height="35dp"
+                    android:background="@drawable/edittext_border" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/quicksand_semi_bold"
+                    android:text="@string/dob_text"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/tv_dob"
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:layout_marginTop="2dp"
+                    android:background="@drawable/edittext_border"
+                    android:drawableTint="@color/primary_600"
+                    android:fontFamily="@font/quicksand_semi_bold"
+                    android:gravity="center_vertical"
+                    android:hint="@string/hint_dob"
+                    android:paddingLeft="12dp"
+                    android:textSize="18sp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="4dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/quicksand_semi_bold"
+                android:text="@string/email_text"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/edt_email"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:layout_marginTop="2dp"
+                android:background="@drawable/edittext_border"
+                android:drawableTint="@color/primary_600"
+                android:fontFamily="@font/quicksand_semi_bold"
+                android:hint="@string/hint_email"
+                android:paddingLeft="12dp"
+                android:textSize="18sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_update_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ll_info"
+        android:layout_centerHorizontal="true"
+        android:backgroundTint="@color/primary_600"
+        android:fontFamily="@font/quicksand_semi_bold"
+        android:paddingHorizontal="32dp"
+        android:text="@string/update_info_text"
+        android:textSize="16sp"></Button>
+</RelativeLayout>
