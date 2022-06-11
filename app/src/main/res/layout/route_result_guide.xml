@@ -39,26 +39,10 @@
                 android:textSize="14sp"
                 android:text="Bến thành - Bến xe buýt chợ lớn"/>
             <LinearLayout
-                android:id="@+id/ll_price"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
                 <ImageView
-                    android:layout_width="15dp"
-                    android:layout_height="15dp"
-                    android:layout_marginBottom="1dp"
-                    app:tint="@color/secondary_100"
-                    android:layout_gravity="bottom"
-                    android:src="@drawable/ic_money"/>
-                <TextView
-                    android:layout_marginStart="2dp"
-                    android:id="@+id/tv_money"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="12sp"
-                    android:text="7,000 VND"/>
-                <ImageView
-                    android:layout_marginStart="8dp"
                     android:layout_width="15dp"
                     android:layout_height="15dp"
                     android:layout_marginBottom="1dp"
@@ -87,7 +71,27 @@
                     android:layout_height="wrap_content"
                     android:textSize="12sp"
                     android:text="4.7 km"/>
-
+                <LinearLayout
+                    android:layout_marginStart="8dp"
+                    android:id="@+id/ll_price"
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:layout_marginBottom="1dp"
+                        app:tint="@color/secondary_100"
+                        android:layout_gravity="bottom"
+                        android:src="@drawable/ic_money"/>
+                    <TextView
+                        android:layout_marginStart="2dp"
+                        android:id="@+id/tv_money"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="12sp"
+                        android:text="7,000 VND"/>
+                </LinearLayout>
             </LinearLayout>
         </LinearLayout>
 

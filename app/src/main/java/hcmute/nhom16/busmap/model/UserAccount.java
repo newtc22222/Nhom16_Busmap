@@ -1,5 +1,8 @@
 package hcmute.nhom16.busmap.model;
 
+import android.content.Context;
+import android.util.Log;
+
 import hcmute.nhom16.busmap.Support;
 
 public class UserAccount {
@@ -9,19 +12,16 @@ public class UserAccount {
         this.user = user;
     }
 
-    public static synchronized User login(String username, String password) {
+    public static synchronized User login(Context context, String email, String password) {
         if (user == null) {
-            boolean result = Support.checkAccount(username, password);
-            if (result) {
-                user = Support.getUser(username, password);
-            }
+            user = Support.getUser(context, email, password);
         }
         return user;
     }
 
-    public static void register(User _user) {
-        Support.register(_user);
-        user = Support.getUser(_user.getEmail(), _user.getPassword());
+    public static void register(Context context, User _user) {
+        Support.register(context, _user);
+        user = Support.getUser(context, _user.getEmail(), _user.getPassword());
     }
 
     public static void logout() {
@@ -32,7 +32,7 @@ public class UserAccount {
         return user;
     }
 
-    public static void update() {
-        Support.updateUser(user);
+    public static void update(Context context) {
+        Support.updateUser(context, user);
     }
 }

@@ -16,6 +16,7 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
+import hcmute.nhom16.busmap.OnBusStopListener;
 import hcmute.nhom16.busmap.R;
 import hcmute.nhom16.busmap.model.BusStop;
 
@@ -23,6 +24,7 @@ public class BusStopListFragment extends Fragment {
     private boolean order;
     private List<BusStop> bus_stops;
     private List<LocalTime> time_lines;
+    private OnBusStopListener listener;
 
     public BusStopListFragment() {
         order = false;
@@ -33,10 +35,12 @@ public class BusStopListFragment extends Fragment {
         this.order = order;
     }
 
-    public BusStopListFragment(List<BusStop> bus_stops, List<LocalTime> time_lines, boolean order) {
+    public BusStopListFragment(List<BusStop> bus_stops, List<LocalTime> time_lines,
+                               boolean order, OnBusStopListener listener) {
         this.bus_stops = bus_stops;
         this.time_lines = time_lines;
         this.order = order;
+        this.listener = listener;
     }
 
     @Nullable
@@ -44,9 +48,8 @@ public class BusStopListFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_2_linear, container, false);
         if (bus_stops != null && bus_stops.size() > 0) {
-
             RecyclerView rv_linear_2 = view.findViewById(R.id.rv_linear_2);
-            BusStopAdapter adapter_2 = new BusStopAdapter(getContext(), bus_stops, order);
+            BusStopAdapter adapter_2 = new BusStopAdapter(getContext(), bus_stops, order, listener);
             rv_linear_2.setAdapter(adapter_2);
             rv_linear_2.setLayoutManager(new LinearLayoutManager(getContext()));
         }

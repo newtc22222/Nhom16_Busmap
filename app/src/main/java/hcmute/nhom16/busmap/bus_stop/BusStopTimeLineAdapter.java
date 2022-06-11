@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -13,6 +14,7 @@ import java.time.LocalTime;
 import java.util.List;
 
 import hcmute.nhom16.busmap.R;
+import hcmute.nhom16.busmap.Support;
 
 public class BusStopTimeLineAdapter extends RecyclerView.Adapter<BusStopTimeLineAdapter.TimeLineHolder> {
     List<LocalTime> time_lines;
@@ -30,7 +32,10 @@ public class BusStopTimeLineAdapter extends RecyclerView.Adapter<BusStopTimeLine
 
     @Override
     public void onBindViewHolder(@NonNull TimeLineHolder holder, int position) {
-        holder.tv_time.setText(time_lines.get(position).toString());
+        holder.btn_time.setText(Support.timeToString(time_lines.get(position)));
+        holder.btn_time.setOnClickListener(v -> {
+
+        });
     }
 
     @Override
@@ -39,10 +44,11 @@ public class BusStopTimeLineAdapter extends RecyclerView.Adapter<BusStopTimeLine
     }
 
     public class TimeLineHolder extends RecyclerView.ViewHolder {
-        TextView tv_time;
+        Button btn_time;
         public TimeLineHolder(@NonNull View itemView) {
             super(itemView);
-            tv_time = itemView.findViewById(R.id.tv_time);
+            btn_time = itemView.findViewById(R.id.btn_time);
         }
     }
+
 }

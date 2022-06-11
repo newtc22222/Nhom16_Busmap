@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".result.ResultRouteDetailActivity">
+    tools:context=".result.ResultDetailActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:theme="@style/ToolbarLight"
@@ -14,29 +14,25 @@
         android:layout_height="?attr/actionBarSize"
         android:background="@color/primary_600"/>
 
+    <fragment
+        android:id="@+id/fm_map"
+        android:layout_below="@id/toolbar"
+        android:layout_above="@id/ll"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
     <LinearLayout
+        android:id="@+id/ll"
         android:layout_alignParentBottom="true"
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="400dp">
-        <LinearLayout
-            android:padding="8dp"
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
 
-            <TextView
-                android:id="@+id/tv_route_id"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:background="@drawable/corner_10"
-                android:backgroundTint="@color/primary_600"
-                android:fontFamily="@font/quicksand_bold"
-                android:gravity="center"
-                android:text="56"
-                android:textColor="@color/secondary_900"
-                android:textSize="18sp" />
-        </LinearLayout>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_routes_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
 
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tab_layout"

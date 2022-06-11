@@ -1,3 +1,5 @@
+<!-- icon được lấy từ vector sẵn có của android
+ dùng để làm icon biểu thị vị trí điểm đến -->
 <vector android:height="24dp" android:tint="#000000"
     android:viewportHeight="24" android:viewportWidth="24"
     android:width="24dp" xmlns:android="http://schemas.android.com/apk/res/android">

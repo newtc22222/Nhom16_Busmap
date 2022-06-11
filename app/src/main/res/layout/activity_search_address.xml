@@ -6,29 +6,12 @@
     android:layout_height="match_parent"
     tools:context=".AddressSearchActivity"
     android:orientation="vertical"
-    android:gravity="center">
+    android:gravity="center_horizontal">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <fragment android:id="@+id/autocomplete_fragment"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="32sp"
-        android:text="Search Address"/>
-
-    <Button
-        android:id="@+id/btn_complete_1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="16sp"
-        android:text="@string/complete"
-        android:textColor="@color/secondary_900"
+        android:name="com.google.android.libraries.places.widget.AutocompleteSupportFragment"
         />
 
-    <Button
-        android:id="@+id/btn_complete_2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="16sp"
-        android:text="@string/complete"
-        android:textColor="@color/secondary_900"
-        />
 </LinearLayout>

@@ -26,8 +26,8 @@
         android:padding="16dp"
         android:layout_marginTop="92dp"
         android:src="@drawable/ic_bus"
-        android:background="@drawable/corner_20"
         android:backgroundTint="@color/primary_800"
+        android:background="@drawable/corner_20"
         app:tint="@color/secondary_900" />
 
     <TextView

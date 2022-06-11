@@ -15,7 +15,6 @@ import java.util.List;
 
 import hcmute.nhom16.busmap.R;
 import hcmute.nhom16.busmap.model.BusStopGuide;
-import hcmute.nhom16.busmap.model.ResultRoute;
 
 public class ResultBusStopsGuideFragment extends Fragment {
     List<BusStopGuide> bus_stop_guides;

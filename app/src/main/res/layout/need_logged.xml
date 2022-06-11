@@ -19,4 +19,11 @@
         android:textSize="32sp"
         android:textColor="@color/red"
         android:fontFamily="@font/quicksand_semi_bold"/>
+    <Button
+        android:id="@+id/btn_login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:text="@string/login_text"
+        android:textColor="@color/secondary_900"/>
 </LinearLayout>

@@ -5,66 +5,20 @@ import java.io.Serializable;
 import hcmute.nhom16.busmap.Support;
 
 public class ResultRoute implements Serializable {
-    private int order_start, order_end;
-    private Address address_start, address_end;
     private Route route;
+    private BusStop bus_stop_start, bus_stop_end;
+    private final int distance;
 
-    public ResultRoute(Route route, int order_start, int order_end, Address address_start, Address address_end) {
-        this.order_start = order_start;
-        this.order_end = order_end;
-        this.address_start = address_start;
-        this.address_end = address_end;
+    public ResultRoute(Route route, BusStop bus_stop_start, BusStop bus_stop_end) {
         this.route = route;
+        this.bus_stop_start = bus_stop_start;
+        this.bus_stop_end = bus_stop_end;
+        distance = Support.calculateDistance(bus_stop_start.getStation().getAddress(),
+                bus_stop_end.getStation().getAddress());
     }
 
-    public int getTimePass() {
-        return Support.calculateTimePass(
-                Support.calculateDistance(address_start,
-                        route.getStart_bus_stop().getAddress()), 400);
-    }
-
-    public String getWalkDistance() {
-        String m = Support.toMeterString(Support.calculateDistance(address_start, route.getStart_bus_stop().getAddress())
-                + Support.calculateDistance(address_end, route.getEnd_bus_stop().getAddress()));
-        return m;
-    }
-
-    public String getBusDistance() {
-        String m = Support.toKilometerString(
-                Support.calculateDistance(route.getEnd_bus_stop().getAddress(), route.getStart_bus_stop().getAddress()));
-        return m;
-    }
-
-    public int getOrder_start() {
-        return order_start;
-    }
-
-    public void setOrder_start(int order_start) {
-        this.order_start = order_start;
-    }
-
-    public int getOrder_end() {
-        return order_end;
-    }
-
-    public void setOrder_end(int order_end) {
-        this.order_end = order_end;
-    }
-
-    public Address getAddress_start() {
-        return address_start;
-    }
-
-    public void setAddress_start(Address address_start) {
-        this.address_start = address_start;
-    }
-
-    public Address getAddress_end() {
-        return address_end;
-    }
-
-    public void setAddress_end(Address address_end) {
-        this.address_end = address_end;
+    public int getDistance() {
+        return distance;
     }
 
     public Route getRoute() {
@@ -73,5 +27,21 @@ public class ResultRoute implements Serializable {
 
     public void setRoute(Route route) {
         this.route = route;
+    }
+
+    public BusStop getBusStop_start() {
+        return bus_stop_start;
+    }
+
+    public void setBusStop_start(BusStop bus_stop_start) {
+        this.bus_stop_start = bus_stop_start;
+    }
+
+    public BusStop getBusStop_end() {
+        return bus_stop_end;
+    }
+
+    public void setBusStop_end(BusStop bus_stop_end) {
+        this.bus_stop_end = bus_stop_end;
     }
 }

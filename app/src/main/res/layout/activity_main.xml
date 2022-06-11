@@ -5,7 +5,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:openDrawer="start"
     tools:context=".MainActivity">
 
     <LinearLayout
@@ -52,13 +51,13 @@
                 android:drawableLeft="@drawable/ic_search_magnifying"
                 android:textColor="@color/secondary_200"
                 app:backgroundTint="@color/secondary_900"
-                android:background="@drawable/ripple_corner"/>
+                android:background="@drawable/ripple_corner_5"/>
 
-            <FrameLayout
+            <fragment
                 android:id="@+id/fm_map"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@color/orange" />
+                android:name="com.google.android.gms.maps.SupportMapFragment"/>
 
             <LinearLayout
                 android:layout_margin="16dp"
@@ -82,7 +81,7 @@
                         android:scaleType="centerInside"
                         android:layout_width="match_parent"
                         android:layout_height="90dp"
-                        android:background="@drawable/ripple_left"
+                        android:background="@drawable/ripple_left_20"
                         android:src="@drawable/search_bus"/>
 
                     <TextView
@@ -115,7 +114,7 @@
                         android:scaleType="centerInside"
                         android:layout_width="match_parent"
                         android:layout_height="90dp"
-                        android:background="@drawable/ripple_right"
+                        android:background="@drawable/ripple_right_20"
                         android:src="@drawable/find_road"/>
 
                     <TextView

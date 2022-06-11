@@ -1,25 +1,29 @@
 package hcmute.nhom16.busmap.model;
 
+import android.content.ContentValues;
+
+import java.util.Arrays;
 import java.util.Date;
 
+import hcmute.nhom16.busmap.Support;
+
 public class User {
-    private int id;
+    private final String email;
+    private final String password;
     private String name;
     private String phone;
     private boolean gender;
-    private Date dob;
-    private String email;
-    private String password;
+    private Date date_of_birth;
     private byte[] image;
 
-    public User(int id, String name, String phone, boolean gender, Date dob, String email, String password, byte[] image) {
-        this.id = id;
+    public User(String email, String password, String name, String phone,
+                boolean gender, Date date_of_birth, byte[] image) {
+        this.email = email;
+        this.password = password;
         this.name = name;
         this.phone = phone;
         this.gender = gender;
-        this.dob = dob;
-        this.email = email;
-        this.password = password;
+        this.date_of_birth = date_of_birth;
         this.image = image;
     }
 
@@ -32,15 +36,9 @@ public class User {
     }
 
     public void setImage(byte[] image) {
-        this.image = image;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
+        if (image != null) {
+            this.image = image;
+        }
     }
 
     public String getName() {
@@ -67,16 +65,50 @@ public class User {
         this.gender = gender;
     }
 
-    public Date getDob() {
-        return dob;
+    public Date getDate_of_birth() {
+        return date_of_birth;
     }
 
-    public void setDob(Date dob) {
-        this.dob = dob;
+    public void setDate_of_birth(Date date_of_birth) {
+        this.date_of_birth = date_of_birth;
     }
 
     public String getEmail() {
         return email;
     }
 
+    public ContentValues getContentValuesForInsert() {
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("name", name);
+        contentValues.put("phone", phone);
+        contentValues.put("gender", gender ? 0 : 1);
+        contentValues.put("date_of_birth", Support.dateToString(date_of_birth, "dd/MM/yyyy"));
+        contentValues.put("email", email);
+        contentValues.put("password", password);
+        contentValues.put("image", image);
+        return contentValues;
+    }
+
+    public ContentValues getContentValuesForUpdate() {
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("name", name);
+        contentValues.put("phone", phone);
+        contentValues.put("gender", gender ? 0 : 1);
+        contentValues.put("date_of_birth", Support.dateToString(date_of_birth, "dd/MM/yyyy"));
+        contentValues.put("image", image);
+        return contentValues;
+    }
+
+    @Override
+    public String toString() {
+        return this == null ? "null" : "User{" +
+                "email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", name='" + name + '\'' +
+                ", phone='" + phone + '\'' +
+                ", gender=" + gender +
+                ", date_of_birth=" + date_of_birth +
+                ", image=" + Arrays.toString(image) +
+                '}';
+    }
 }

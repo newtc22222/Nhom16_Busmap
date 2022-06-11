@@ -32,14 +32,14 @@ public class RouteInfoFragment extends Fragment {
             view = LayoutInflater.from(getContext()).inflate(R.layout.not_found_layout, container, false);
         } else {
             view = LayoutInflater.from(getContext()).inflate(R.layout.info_route, container, false);
-            ((TextView) view.findViewById(R.id.tv_id)).setText(route.getRouteNumId());
+            ((TextView) view.findViewById(R.id.tv_id)).setText(route.getId());
             ((TextView) view.findViewById(R.id.tv_name)).setText(route.getName());
-            ((TextView) view.findViewById(R.id.tv_operating)).setText(route.getOperatingTime());
+            ((TextView) view.findViewById(R.id.tv_operating)).setText(route.getOperation_time());
             ((TextView) view.findViewById(R.id.tv_price)).setText(route.getMoney());
             ((TextView) view.findViewById(R.id.tv_type)).setText(route.getType());
-            ((TextView) view.findViewById(R.id.tv_time_run)).setText(route.getTime_run());
-            ((TextView) view.findViewById(R.id.tv_repeat)).setText(route.getRepeat());
-            ((TextView) view.findViewById(R.id.tv_amount)).setText(route.getAmountPerDay());
+            ((TextView) view.findViewById(R.id.tv_time_run)).setText(route.getCycle_time());
+            ((TextView) view.findViewById(R.id.tv_repeat)).setText(route.getRepeatTime());
+            ((TextView) view.findViewById(R.id.tv_amount)).setText(route.getPerDay());
             ((TextView) view.findViewById(R.id.tv_unit)).setText(route.getUnit());
         }
         return view;

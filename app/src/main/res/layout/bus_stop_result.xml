@@ -63,8 +63,8 @@
         android:id="@+id/rl_main"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
         android:layout_marginHorizontal="32dp"
-        android:layout_marginTop="4dp"
         android:layout_marginBottom="8dp">
 
         <TextView
@@ -80,11 +80,12 @@
             android:textSize="18sp" />
 
         <TextView
-            android:layout_centerVertical="true"
             android:id="@+id/tv_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
             android:layout_toRightOf="@id/tv_route"
+            android:maxLength="38"
             android:paddingVertical="8dp"
             android:text="Bến xe Chợ Lớn" />
 
@@ -98,11 +99,11 @@
             android:background="@drawable/corner_5"
             android:backgroundTint="@color/primary_600"
             android:gravity="center"
+            android:layout_centerVertical="true"
             android:insetTop="4dp"
             android:orientation="vertical"
             android:padding="4dp"
             android:visibility="invisible">
-
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

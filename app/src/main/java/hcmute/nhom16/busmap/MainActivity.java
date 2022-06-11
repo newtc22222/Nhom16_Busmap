@@ -2,6 +2,8 @@ package hcmute.nhom16.busmap;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.graphics.drawable.Drawable;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -24,34 +26,50 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.os.Bundle;
 
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.material.navigation.NavigationView;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
+import hcmute.nhom16.busmap.data.StationDAO;
 import hcmute.nhom16.busmap.feedback.FeedbackActivity;
 import hcmute.nhom16.busmap.feedback.InformationGroupActivity;
 import hcmute.nhom16.busmap.feedback.RateActivity;
 import hcmute.nhom16.busmap.model.Address;
+import hcmute.nhom16.busmap.model.Station;
 import hcmute.nhom16.busmap.model.User;
 import hcmute.nhom16.busmap.model.UserAccount;
 import hcmute.nhom16.busmap.saved.SavedActivity;
 import hcmute.nhom16.busmap.side.SideAdapter;
 import hcmute.nhom16.busmap.model.Side;
 import hcmute.nhom16.busmap.notification.NotificationActivity;
-import hcmute.nhom16.busmap.route.RouteListActivity;
+import hcmute.nhom16.busmap.route.RouteActivity;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements OnMapReadyCallback {
     DrawerLayout drawable_layout;
     NavigationView nv_group;
     Spinner side_spinner;
-    LinearLayout ll_logged;
+    LinearLayout ll_logged, ll_not_logged;
     CircleImageView civ_avatar;
     TextView tv_name, tv_email;
-    Button btn_info, btn_login, btn_search;
-    ImageButton ib_search, ib_find;
+    Button btn_info, btn_login, btn_search, btn_register;
+    ImageButton ib_search, ib_find, ib_logout;
     Address address;
+    User user;
+    Bitmap icon_big, icon_small;
+    private GoogleMap map;
+    List<Station> stations;
+    List<MarkerOptions> markerOptions;
+    LatLng df = new LatLng(10.85075361772994, 106.77124465290879);
+    float zoom = 15, pre_zoom = 15;
 
     ActivityResultLauncher<Intent> getAddress = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(),
@@ -70,8 +88,43 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        user = UserAccount.getUser();
+
+        initMap();
         initUI();
         initListener();
+    }
+
+    private void initMap() {
+
+        Drawable ic = getDrawable(R.drawable.ic_station_small);
+        int width = ic.getIntrinsicWidth();
+        int height = ic.getIntrinsicHeight();
+        icon_small = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
+        ic.setBounds(0, 0, width, height);
+        ic.draw(new Canvas(icon_small));
+
+        ic = getDrawable(R.drawable.ic_station_big);
+        width = ic.getIntrinsicWidth();
+        height = ic.getIntrinsicHeight();
+        icon_big = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
+        ic.setBounds(0, 0, width, height);
+        ic.draw(new Canvas(icon_big));
+
+        stations = StationDAO.getAllStations(this);
+        markerOptions = new ArrayList<>();
+
+        for (Station station : stations) {
+            markerOptions.add(new MarkerOptions()
+                    .position(new LatLng(station.getAddress().getLat(), station.getAddress().getLng()))
+                    .icon(BitmapDescriptorFactory.fromBitmap(icon_big)));
+        }
+
+        // Obtain the SupportMapFragment and get notified when the map is ready to be used.
+        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
+                .findFragmentById(R.id.fm_map);
+        mapFragment.getMapAsync(this);
     }
 
     private void initUI() {
@@ -102,7 +155,16 @@ public class MainActivity extends AppCompatActivity {
         tv_name = header.findViewById(R.id.tv_name);
         tv_email = header.findViewById(R.id.tv_email);
         btn_info = header.findViewById(R.id.btn_info);
+        ll_not_logged = header.findViewById(R.id.ll_not_logged);
         btn_login = header.findViewById(R.id.btn_login);
+        ib_logout = header.findViewById(R.id.ib_logout);
+        btn_register = header.findViewById(R.id.btn_register);
+
+        if (user == null) {
+            ll_not_logged.setVisibility(View.VISIBLE);
+        } else {
+            ll_logged.setVisibility(View.VISIBLE);
+        }
 
         User user = UserAccount.getUser();
         if (user == null) {
@@ -185,12 +247,24 @@ public class MainActivity extends AppCompatActivity {
         btn_login.setOnClickListener(v -> {
             Intent intent = new Intent(this, LoginActivity.class);
             startActivity(intent);
+        });
+
+        ib_logout.setOnClickListener(v -> {
+            UserAccount.logout();
+            Intent intent = new Intent(this, MainActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(intent);
+            finish();
+        });
+
+        btn_register.setOnClickListener(v -> {
+            Intent intent = new Intent(this, RegisterActivity.class);
             startActivity(intent);
         });
     }
 
     public void onSearchSelected() {
-        Intent intent = new Intent(this, RouteListActivity.class);
+        Intent intent = new Intent(this, RouteActivity.class);
         startActivity(intent);
     }
 
@@ -259,9 +333,10 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
-
     private void showAddress() {
         btn_search.setText(address.getAddress());
+        df = new LatLng(address.getLat(), address.getLng());
+        moveCamera();
     }
 
     public List<Side> getSides() {
@@ -271,5 +346,51 @@ public class MainActivity extends AppCompatActivity {
         sides.add(new Side("Thừa Thiên Huế", R.drawable.vn));
         sides.add(new Side("Hà Nội", R.drawable.vn));
         return sides;
+    }
+
+    public void moveCamera() {
+        pre_zoom = 15;
+        zoom = 15;
+        map.moveCamera(CameraUpdateFactory.newLatLngZoom(df, zoom));
+    }
+
+    public void drawDefault() {
+        for (MarkerOptions markerOptions : markerOptions) {
+            map.addMarker(markerOptions);
+        }
+        map.setOnCameraMoveListener(new GoogleMap.OnCameraMoveListener() {
+            @Override
+            public void onCameraMove() {
+                zoom = map.getCameraPosition().zoom;
+                if (zoom >= 13 && pre_zoom < 13) {
+                    setBigIcon();
+                }
+                if (zoom < 13 && pre_zoom >= 13) {
+                    setSmallIcon();
+                }
+                pre_zoom = zoom;
+            }
+        });
+        map.moveCamera(CameraUpdateFactory.newLatLngZoom(df, zoom));
+    }
+
+    private void setBigIcon() {
+        int len = markerOptions.size();
+        for (int i = 0; i < len; i++) {
+            markerOptions.get(i).icon(BitmapDescriptorFactory.fromBitmap(icon_big));
+        }
+    }
+
+    private void setSmallIcon() {
+        int len = markerOptions.size();
+        for (int i = 0; i < len; i++) {
+            markerOptions.get(i).icon(BitmapDescriptorFactory.fromBitmap(icon_small));
+        }
+    }
+
+    @Override
+    public void onMapReady(@NonNull GoogleMap googleMap) {
+        map = googleMap;
+        drawDefault();
     }
 }

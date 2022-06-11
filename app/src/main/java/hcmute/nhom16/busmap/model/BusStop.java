@@ -1,55 +1,37 @@
 package hcmute.nhom16.busmap.model;
 
+import android.content.ContentValues;
+
 import java.io.Serializable;
 import java.time.LocalTime;
 
 public class BusStop implements Serializable {
-    private int id;
-    private String name;
-    private int route_id;
+    private String route_id;
+    private Station station;
     private int order;
-    private Address address;
-    private int time_pass;
+    private int distance_previous;
 
-    public BusStop(int id, String name, int route_id, int order, Address address, int time_pass) {
-        this.id = id;
-        this.name = name;
+    public BusStop(String route_id, Station station, int order, int distance_previous) {
         this.route_id = route_id;
+        this.station = station;
         this.order = order;
-        this.time_pass = time_pass;
-        this.address = address;
+        this.distance_previous = distance_previous;
     }
 
-    public Address getAddress() {
-        return address;
-    }
-
-    public void setAddress(Address address) {
-        this.address = address;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public int getRoute_id() {
+    public String getRoute_id() {
         return route_id;
     }
 
-    public void setRoute_id(int route_id) {
+    public void setRoute_id(String route_id) {
         this.route_id = route_id;
+    }
+
+    public Station getStation() {
+        return station;
+    }
+
+    public void setStation(Station station) {
+        this.station = station;
     }
 
     public int getOrder() {
@@ -60,15 +42,20 @@ public class BusStop implements Serializable {
         this.order = order;
     }
 
-    public int getTime_pass() {
-        return time_pass;
+    public int getDistance_previous() {
+        return distance_previous;
     }
 
-    public String getTimePassString() {
-        return (time_pass == 0 ? 1 : time_pass) + " phút";
+    public void setDistance_previous(int distance_previous) {
+        this.distance_previous = distance_previous;
     }
 
-    public void setTime_pass(int time_pass) {
-        this.time_pass = time_pass;
+    @Override
+    public String toString() {
+        return "BusStop{" +
+                "route_id='" + route_id + '\'' +
+                ", station=" + station +
+                ", order=" + order +
+                '}';
     }
 }

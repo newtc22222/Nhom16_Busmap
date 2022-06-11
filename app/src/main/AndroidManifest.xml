@@ -3,6 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="hcmute.nhom16.busmap">
 
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -13,6 +19,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Nhom16_Busmap"
         tools:targetApi="31">
+        <meta-data
+        android:name="com.google.android.geo.API_KEY"
+        android:value="AIzaSyD6m1GZS6EmA648qSTJlq3jdU6XVVCbCZo" />
         <activity
             android:name=".RegisterActivity"
             android:exported="false" />
@@ -20,7 +29,7 @@
             android:name=".LoginActivity"
             android:exported="false" />
         <activity
-            android:name=".result.ResultRouteDetailActivity"
+            android:name=".result.ResultDetailActivity"
             android:exported="false" />
         <activity
             android:name=".result.ResultFindRoadActivity"
@@ -32,13 +41,13 @@
             android:name=".saved.SavedActivity"
             android:exported="false" />
         <activity
-            android:name=".bus_stop.BusStopActivity"
+            android:name=".station.StationActivity"
             android:exported="false" />
         <activity
             android:name=".route.RouteDetailActivity"
             android:exported="false" />
         <activity
-            android:name=".route.RouteListActivity"
+            android:name=".route.RouteActivity"
             android:exported="false" />
         <activity
             android:name=".FindRoadActivity"

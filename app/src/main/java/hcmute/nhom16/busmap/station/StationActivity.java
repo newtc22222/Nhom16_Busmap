@@ -1,4 +1,4 @@
-package hcmute.nhom16.busmap.bus_stop;
+package hcmute.nhom16.busmap.station;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -8,31 +8,28 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import hcmute.nhom16.busmap.R;
 import hcmute.nhom16.busmap.Support;
-import hcmute.nhom16.busmap.model.BusStop;
 import hcmute.nhom16.busmap.model.Route;
+import hcmute.nhom16.busmap.model.Station;
 import hcmute.nhom16.busmap.route.RouteAdapter;
 
-public class BusStopActivity extends AppCompatActivity {
+public class StationActivity extends AppCompatActivity {
     RecyclerView rv_routes;
-    BusStop bus_stop;
+    Station station;
     TextView tv_name, tv_address;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_bus_stop);
+        setContentView(R.layout.activity_station);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -46,7 +43,7 @@ public class BusStopActivity extends AppCompatActivity {
 
     public void getData() {
         Intent intent = getIntent();
-        bus_stop = (BusStop) intent.getSerializableExtra("bus_stop");
+        station = (Station) intent.getSerializableExtra("station");
     }
 
     private void initListener() {
@@ -54,9 +51,9 @@ public class BusStopActivity extends AppCompatActivity {
 
     private void initUI() {
         tv_address = findViewById(R.id.tv_address);
-        tv_address.setText(bus_stop.getAddress().getAddress());
+        tv_address.setText(station.getAddress().getAddress());
         tv_name = findViewById(R.id.tv_name);
-        tv_name.setText(bus_stop.getName());
+        tv_name.setText(station.getName());
 
         rv_routes = findViewById(R.id.rv_routes);
         RouteAdapter adapter = new RouteAdapter(this, getRoutesFromBusStop());
@@ -65,7 +62,7 @@ public class BusStopActivity extends AppCompatActivity {
     }
 
     private List<Route> getRoutesFromBusStop() {
-        return Support.getRoutesFromBusStop(bus_stop);
+        return Support.getRoutesFromStation(this, station);
     }
 
     @Override
@@ -78,7 +75,7 @@ public class BusStopActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.item_saved:
-                onSavedSelected();
+                onSavedStation();
                 break;
             case android.R.id.home:
                 onBackPressed();
@@ -87,8 +84,8 @@ public class BusStopActivity extends AppCompatActivity {
         return true;
     }
 
-    private void onSavedSelected() {
-        Support.saveBusStop(bus_stop);
+    private void onSavedStation() {
+        Support.saveStation(this, station.getId());
         Toast.makeText(this, R.string.saved_toast, Toast.LENGTH_SHORT).show();
     }
 }

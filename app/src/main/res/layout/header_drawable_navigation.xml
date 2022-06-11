@@ -7,46 +7,103 @@
     android:gravity="center_vertical"
     android:background="@color/primary_600">
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/civ_avatar"
-        android:layout_marginStart="8dp"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        app:civ_border_width="4dp"
-        app:civ_border_color="@color/secondary_800"
-        android:src="@drawable/avatar_default"/>
-
     <LinearLayout
         android:id="@+id/ll_logged"
-        android:layout_marginStart="12dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
-        <TextView
-            android:id="@+id/tv_name"
-            android:textSize="20sp"
-            android:layout_width="wrap_content"
+        android:orientation="horizontal">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/civ_avatar"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="8dp"
+            android:src="@drawable/avatar_default"
+            app:civ_border_color="@color/secondary_800"
+            app:civ_border_width="4dp" />
+
+        <LinearLayout
+            android:layout_marginStart="12dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/quicksand_medium"
-            android:textColor="@color/secondary_900"
-            android:text="Phan Trung Tín"
-            android:maxLength="28"/>
-        <TextView
-            android:id="@+id/tv_email"
-            android:layout_marginTop="4dp"
-            android:textSize="14sp"
-            android:fontFamily="@font/quicksand_medium"
-            android:textColor="@color/secondary_900"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="phantrungtin01@gmail.com"/>
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/tv_name"
+                android:textSize="20sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/quicksand_medium"
+                android:textColor="@color/secondary_900"
+                android:text="Phan Trung Tín"
+                android:maxLength="28"/>
+            <TextView
+                android:id="@+id/tv_email"
+                android:layout_marginTop="4dp"
+                android:textSize="14sp"
+                android:fontFamily="@font/quicksand_medium"
+                android:textColor="@color/secondary_900"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="phantrungtin01@gmail.com"/>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <Button
+                    android:id="@+id/btn_info"
+                    android:layout_marginTop="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:fontFamily="@font/quicksand_medium"
+                    android:text="@string/person_info_text"
+                    android:textColor="@color/secondary_900"
+                    app:backgroundTint="@null"
+                    android:background="@drawable/button_stroke"/>
+                <ImageButton
+                    android:id="@+id/ib_logout"
+                    android:layout_marginTop="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:src="@drawable/ic_logout"
+                    android:paddingHorizontal="4dp"
+                    app:tint="@color/secondary_900"
+                    android:layout_alignParentRight="true"
+                    app:backgroundTint="@color/primary_600"/>
+            </RelativeLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_not_logged"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
         <Button
-            android:id="@+id/btn_info"
+            android:layout_margin="4dp"
+            android:id="@+id/btn_login"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:fontFamily="@font/quicksand_medium"
+            android:text="@string/login_text"
+            android:textColor="@color/secondary_900"
+            android:insetTop="4dp"
+            android:insetBottom="4dp"
+            android:insetLeft="4dp"
+            android:insetRight="4dp"
+            app:backgroundTint="@null"
+            android:background="@drawable/button_stroke"/>
+
+        <Button
+            android:layout_margin="8dp"
+            android:id="@+id/btn_register"
             android:layout_marginTop="5dp"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:fontFamily="@font/quicksand_medium"
-            android:text="@string/person_info_text"
+            android:text="@string/register"
             android:textColor="@color/secondary_900"
             android:insetTop="4dp"
             android:insetBottom="4dp"
@@ -55,19 +112,4 @@
             app:backgroundTint="@null"
             android:background="@drawable/button_stroke"/>
     </LinearLayout>
-    <Button
-        android:id="@+id/btn_login"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="5dp"
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:fontFamily="@font/quicksand_medium"
-        android:text="@string/login_text"
-        android:textColor="@color/secondary_900"
-        android:insetTop="4dp"
-        android:insetBottom="4dp"
-        android:insetLeft="4dp"
-        android:insetRight="4dp"
-        app:backgroundTint="@null"
-        android:background="@drawable/button_stroke"/>
 </LinearLayout>

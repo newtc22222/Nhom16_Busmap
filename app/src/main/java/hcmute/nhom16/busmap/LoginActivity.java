@@ -29,7 +29,7 @@ public class LoginActivity extends AppCompatActivity {
             if (email.equals("") || pass.equals("")) {
                 Toast.makeText(this, R.string.fill, Toast.LENGTH_SHORT).show();
             } else {
-                if (UserAccount.login(email, pass) != null) {
+                if (UserAccount.login(this, email, pass) != null) {
                     Toast.makeText(this, R.string.login_success, Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(this, MainActivity.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);

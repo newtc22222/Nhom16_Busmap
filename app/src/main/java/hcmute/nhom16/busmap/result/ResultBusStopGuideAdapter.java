@@ -10,12 +10,10 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import hcmute.nhom16.busmap.R;
 import hcmute.nhom16.busmap.model.BusStopGuide;
-import hcmute.nhom16.busmap.model.ResultRoute;
 
 public class ResultBusStopGuideAdapter extends RecyclerView.Adapter<ResultBusStopGuideAdapter.BusStopGuideHolder> {
     Context context;
@@ -40,11 +38,13 @@ public class ResultBusStopGuideAdapter extends RecyclerView.Adapter<ResultBusSto
     @Override
     public void onBindViewHolder(@NonNull BusStopGuideHolder holder, int position) {
         if (bus_stop_guides.get(position).getType() == MoveType.BUS) {
-            if (position > 0 && bus_stop_guides.get(position - 1).getType() == MoveType.WALK) {
+            if (position > 0 && (bus_stop_guides.get(position - 1).getType() == MoveType.WALK
+                    || !bus_stop_guides.get(position - 1).getRoute_id().equals(bus_stop_guides.get(position).getRoute_id()))) {
                 holder.line_vertical_end.setVisibility(View.INVISIBLE);
                 holder.order_first.setVisibility(View.VISIBLE);
             }
-            if (position < bus_stop_guides.size() && bus_stop_guides.get(position + 1).getType() == MoveType.WALK) {
+            if (position < bus_stop_guides.size() && (bus_stop_guides.get(position + 1).getType() == MoveType.WALK
+                    || !bus_stop_guides.get(position + 1).getRoute_id().equals(bus_stop_guides.get(position).getRoute_id()))) {
                 holder.line_vertical_first.setVisibility(View.INVISIBLE);
                 holder.order_first.setVisibility(View.VISIBLE);
             }
@@ -54,7 +54,7 @@ public class ResultBusStopGuideAdapter extends RecyclerView.Adapter<ResultBusSto
             holder.line_vertical_end.setVisibility(View.INVISIBLE);
         }
 
-        holder.tv_route.setText(bus_stop_guides.get(position).getRoute());
+        holder.tv_route.setText(bus_stop_guides.get(position).getRoute_id());
         holder.tv_name.setText(bus_stop_guides.get(position).getName());
 
         holder.itemView.setOnClickListener(v -> {

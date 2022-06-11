@@ -11,13 +11,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import hcmute.nhom16.busmap.R;
-import hcmute.nhom16.busmap.Support;
-import hcmute.nhom16.busmap.model.BusStop;
-import hcmute.nhom16.busmap.model.ResultRoute;
 import hcmute.nhom16.busmap.model.RouteGuide;
 
 public class ResultRouteGuideAdapter extends RecyclerView.Adapter<ResultRouteGuideAdapter.RouteGuideHolder> {
@@ -42,13 +38,13 @@ public class ResultRouteGuideAdapter extends RecyclerView.Adapter<ResultRouteGui
             holder.tv_money.setText(route_guides.get(position).getPrice());
             holder.ll_price.setVisibility(View.VISIBLE);
         } else {
-            holder.ll_price.setVisibility(View.INVISIBLE);
+            holder.ll_price.setVisibility(View.GONE);
             holder.iv_icon.setImageResource(R.drawable.ic_walk);
         }
         holder.tv_title.setText(route_guides.get(position).getTitle());
         holder.tv_description.setText(route_guides.get(position).getDescription());
-        holder.tv_time_pass.setText(route_guides.get(position).getTimePassString());
-        holder.tv_distance.setText(route_guides.get(position).getDistance());
+        holder.tv_time_pass.setText(route_guides.get(position).getTimePass());
+        holder.tv_distance.setText(route_guides.get(position).getDistanceMeter());
     }
 
     @Override

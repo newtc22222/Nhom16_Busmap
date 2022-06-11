@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/orange"
     tools:context=".route.RouteDetailActivity">
 
     <androidx.appcompat.widget.Toolbar
@@ -14,7 +13,17 @@
         android:layout_height="?attr/actionBarSize"
         android:background="@color/primary_600"/>
 
+    <fragment
+        android:layout_above="@id/ll"
+        android:layout_below="@id/toolbar"
+        android:id="@+id/fm_map"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:name="com.google.android.gms.maps.SupportMapFragment"/>
+
+
     <LinearLayout
+        android:id="@+id/ll"
         android:background="@color/secondary_900"
         android:layout_alignParentBottom="true"
         android:orientation="vertical"

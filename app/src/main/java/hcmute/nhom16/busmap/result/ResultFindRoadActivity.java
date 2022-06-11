@@ -7,26 +7,24 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import hcmute.nhom16.busmap.R;
 import hcmute.nhom16.busmap.Support;
 import hcmute.nhom16.busmap.model.Address;
-import hcmute.nhom16.busmap.model.ResultRoute;
+import hcmute.nhom16.busmap.model.Result;
 
 public class ResultFindRoadActivity extends AppCompatActivity {
-    private RecyclerView rv_result_routes;
+    private RecyclerView rv_results;
     private Address from, to;
     private int route_amount;
     private TextView tv_from, tv_to;
     private ImageButton ib_swap;
-    private ResultRouteAdapter adapter;
-    private List<ResultRoute> result_routes;
+    private ResultAdapter adapter;
+    private List<Result> results;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,11 +67,11 @@ public class ResultFindRoadActivity extends AppCompatActivity {
 
         ib_swap = findViewById(R.id.ib_swap);
 
-        rv_result_routes = findViewById(R.id.rv_result_routes);
-        result_routes = getResultRoutes();
-        adapter = new ResultRouteAdapter(this, result_routes, from, to);
-        rv_result_routes.setAdapter(adapter);
-        rv_result_routes.setLayoutManager(new LinearLayoutManager(this));
+        rv_results = findViewById(R.id.rv_results);
+        results = getResultRoutes();
+        adapter = new ResultAdapter(this, results, from, to);
+        rv_results.setAdapter(adapter);
+        rv_results.setLayoutManager(new LinearLayoutManager(this));
 
         loadResult();
     }
@@ -92,11 +90,11 @@ public class ResultFindRoadActivity extends AppCompatActivity {
     }
 
     private void loadResult() {
-        result_routes = getResultRoutes();
-        adapter.setResult_routes(result_routes);
+        results = getResultRoutes();
+        adapter.setResult_routes(results);
     }
 
-    public List<ResultRoute> getResultRoutes() {
-        return Support.getResultRoutes(from, to, route_amount);
+    public List<Result> getResultRoutes() {
+        return Support.calculateResults(this, from, to, route_amount);
     }
 }

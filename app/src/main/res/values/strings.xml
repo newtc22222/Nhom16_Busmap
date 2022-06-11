@@ -1,4 +1,5 @@
 <resources>
+    <string name="apiKey">AIzaSyD6m1GZS6EmA648qSTJlq3jdU6XVVCbCZo</string>
     <string name="app_name">Busmap</string>
     <!--    -->
     <string name="title_splash">Đồ án cuối kỳ</string>
@@ -18,6 +19,7 @@
     <!--    -->
     <string name="person_info_text">Thông tin</string>
     <string name="login_text">Đăng nhập</string>
+    <string name="logout_text">Đăng xuất</string>
     <!--    -->
     <string name="open_nav">Mở Navigation</string>
     <string name="close_nav">Đóng Navigation</string>
@@ -86,7 +88,7 @@
     <string name="download">TẢI</string>
     <string name="close">ĐÓNG</string>
     <string name="update_data">Cập nhật dữ liệu</string>
-    <string name="update_success">Cập nhật thành công</string>
+    <string name="update_success">Cập nhật thành công!</string>
     <string name="update_date">Ngày cập nhật dữ liệu gần nhất</string>
     <string name="update_content">BusMap sẽ tải và cập nhật dữ liệu mới nhất. Quá trình có thể mất vài giây thậm chí là vài phút.</string>
     <!--    -->
@@ -119,4 +121,16 @@
     <string name="fill">Cần điền đầy đủ thông tin!</string>
     <string name="login_success">Đăng nhập thành công!</string>
     <string name="login_fail">Đăng nhập thất bại!</string>
+    <string name="change_password">Đổi mật khẩu</string>
+    <string name="ok">OK</string>
+    <string name="cancel">HỦY</string>
+    <string name="old_password">Mật khẩu hiện tại</string>
+    <string name="new_password">Mật khẩu mới</string>
+    <string name="re_new_password">Nhập lại mật khẩu</string>
+    <string name="change_password_success">Đổi mật khẩu thành công!</string>
+    <string name="change_password_fail">Đổi mật khẩu thất bại!</string>
+    <string name="not_match_password">Mật khẩu không khớp!</string>
+    <string name="uninvalid_email">Email không hợp lệ!</string>
+    <string name="uninvalid_password">Mật khẩu không hợp lệ!</string>
+    <string name="duplicate_password">Mật khẩu mới phải khác mật khẩu cũ!</string>
 </resources>

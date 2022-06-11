@@ -1,107 +1,73 @@
 package hcmute.nhom16.busmap.model;
 
+import android.content.ContentValues;
+
 import java.io.Serializable;
 
 import hcmute.nhom16.busmap.Support;
 
 public class Route implements Serializable {
-    private int id;
-    private BusStop start_bus_stop;
-    private BusStop end_bus_stop;
-    private String type;
-    private String operating_time;
-    private String length;
-    private String time_run;
+    private String id;
+    private Station start_station;
+    private Station end_station;
     private int price;
-    private String repeat;
-    private int per_day;
+    private String type;
+    private String operation_time;
+    private String cycle_time;
     private String unit;
+    private int repeat_time;
+    private int per_day;
+    private int distance;
 
-    public Route(int id, BusStop start_bus_stop, BusStop end_bus_stop, String type,
-                 String time_run, String operating_time, String length, int price, String repeat, int per_day, String unit) {
+    public Route(String id, Station start_station, Station end_station, int price, String type,
+                 String operation_time, String cycle_time, String unit, int repeat_time, int per_day, int distance) {
         this.id = id;
-        this.start_bus_stop = start_bus_stop;
-        this.end_bus_stop = end_bus_stop;
-        this.type = type;
-        this.operating_time = operating_time;
-        this.length = length;
-        this.time_run = time_run;
+        this.start_station = start_station;
+        this.end_station = end_station;
         this.price = price;
-        this.repeat = repeat;
-        this.per_day = per_day;
+        this.type = type;
+        this.operation_time = operation_time;
+        this.cycle_time = cycle_time;
         this.unit = unit;
-    }
-
-    public String getOperating_time() {
-        return operating_time;
-    }
-
-    public void setOperating_time(String operating_time) {
-        this.operating_time = operating_time;
-    }
-
-    public String getLength() {
-        return length;
-    }
-
-    public void setLength(String length) {
-        this.length = length;
-    }
-
-    public int getPer_day() {
-        return per_day;
-    }
-
-    public void setPer_day(int per_day) {
+        this.repeat_time = repeat_time;
         this.per_day = per_day;
-    }
-
-    public String getAmountPerDay() {
-        return per_day + " chuyến/ngày";
-    }
-
-    public String getUnit() {
-        return unit;
-    }
-
-    public void setUnit(String unit) {
-        this.unit = unit;
-    }
-
-    public String getRouteNumId() {
-        return "" + id;
-    }
-
-    public String getRouteName() {
-        return "Tuyến số " + id;
+        this.distance = distance;
     }
 
     public String getName() {
-        return start_bus_stop.getName() + " - " + end_bus_stop.getName();
+        return start_station.getName() + " - " + end_station.getName();
     }
 
-    public String getOperatingTime() {
-        return operating_time;
+    public String getId() {
+        return id;
     }
 
-    public String getMoney() {
-        return  Support.toCurrency(price) + "VND";
+    public void setId(String id) {
+        this.id = id;
     }
 
-    public String getTime_run() {
-        return time_run;
+    public Station getStart_station() {
+        return start_station;
     }
 
-    public void setTime_run(String time_run) {
-        this.time_run = time_run;
+    public void setStart_station(Station start_station) {
+        this.start_station = start_station;
     }
 
-    public String getRepeat() {
-        return repeat;
+    public Station getEnd_station() {
+        return end_station;
     }
 
-    public void setRepeat(String repeat) {
-        this.repeat = repeat;
+    public void setEnd_station(Station end_station) {
+        this.end_station = end_station;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
     }
 
     public String getType() {
@@ -112,35 +78,80 @@ public class Route implements Serializable {
         this.type = type;
     }
 
-    public int getId() {
-        return id;
+    public String getOperation_time() {
+        return operation_time;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setOperation_time(String operation_time) {
+        this.operation_time = operation_time;
     }
 
-    public BusStop getStart_bus_stop() {
-        return start_bus_stop;
+    public String getCycle_time() {
+        return cycle_time + " phút";
     }
 
-    public void setStart_bus_stop(BusStop start_bus_stop) {
-        this.start_bus_stop = start_bus_stop;
+    public void setCycle_time(String cycle_time) {
+        this.cycle_time = cycle_time;
     }
 
-    public BusStop getEnd_bus_stop() {
-        return end_bus_stop;
+    public String getUnit() {
+        return unit;
     }
 
-    public void setEnd_bus_stop(BusStop end_bus_stop) {
-        this.end_bus_stop = end_bus_stop;
+    public void setUnit(String unit) {
+        this.unit = unit;
     }
 
-    public int getPrice() {
-        return price;
+    public int getRepeat_time() {
+        return repeat_time;
     }
 
-    public void setPrice(int price) {
-        this.price = price;
+    public String getRepeatTime() {
+        return repeat_time + " phút";
+    }
+
+    public void setRepeat_time(int repeat_time) {
+        this.repeat_time = repeat_time;
+    }
+
+    public int getPer_day() {
+        return per_day;
+    }
+
+    public String getPerDay() {
+        return per_day + " chuyến/ngày";
+    }
+
+    public void setPer_day(int per_day) {
+        this.per_day = per_day;
+    }
+
+    public int getDistance() {
+        return distance;
+    }
+
+    public void setDistance(int distance) {
+        this.distance = distance;
+    }
+
+    public String getMoney() {
+        return Support.toCurrency(price);
+    }
+
+    @Override
+    public String toString() {
+        return "Route{" +
+                "id='" + id + '\'' +
+                ", start_station=" + start_station +
+                ", end_station=" + end_station +
+                ", price=" + price +
+                ", type='" + type + '\'' +
+                ", operation_time='" + operation_time + '\'' +
+                ", cycle_time='" + cycle_time + '\'' +
+                ", unit='" + unit + '\'' +
+                ", repeat_time=" + repeat_time +
+                ", per_day=" + per_day +
+                ", distance=" + distance +
+                '}';
     }
 }

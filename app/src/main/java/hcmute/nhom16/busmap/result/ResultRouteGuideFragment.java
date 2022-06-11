@@ -14,8 +14,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 import hcmute.nhom16.busmap.R;
-import hcmute.nhom16.busmap.model.Address;
-import hcmute.nhom16.busmap.model.ResultRoute;
 import hcmute.nhom16.busmap.model.RouteGuide;
 
 public class ResultRouteGuideFragment extends Fragment {

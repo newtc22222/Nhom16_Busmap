@@ -2,15 +2,15 @@ package hcmute.nhom16.busmap.model;
 
 import hcmute.nhom16.busmap.result.MoveType;
 
-public abstract class BusStopGuide {
-    private String route = "";
+public class BusStopGuide {
+    private String route_id = "";
 //    Tên của bus_stop với tên của address khác nhau
     private String name = "";
     private MoveType type;
     private Address address;
 
-    public BusStopGuide(String route, String name, MoveType type, Address address) {
-        this.route = route;
+    public BusStopGuide(String route_id, String name, MoveType type, Address address) {
+        this.route_id = route_id;
         this.name = name;
         this.type = type;
         this.address = address;
@@ -24,12 +24,12 @@ public abstract class BusStopGuide {
         this.type = type;
     }
 
-    public String getRoute() {
-        return route;
+    public String getRoute_id() {
+        return route_id;
     }
 
-    public void setRoute(String route) {
-        this.route = route;
+    public void setRoute_id(String route_id) {
+        this.route_id = route_id;
     }
 
     public String getName() {

@@ -35,9 +35,10 @@ public class RouteAdapter extends RecyclerView.Adapter<RouteAdapter.RouteHolder>
 
     @Override
     public void onBindViewHolder(@NonNull RouteHolder holder, int position) {
-        holder.tv_id.setText(routes.get(position).getRouteNumId());
+        holder.tv_id.setText(routes.get(position).getId());
         holder.tv_name.setText(routes.get(position).getName());
-        holder.tv_time.setText(routes.get(position).getOperatingTime());
+        holder.tv_time.setText(routes.get(position).getOperation_time());
+        holder.tv_money.setText(routes.get(position).getMoney());
         holder.ib_saved.setOnClickListener(v -> {
             saveRoute(position);
         });
@@ -53,7 +54,7 @@ public class RouteAdapter extends RecyclerView.Adapter<RouteAdapter.RouteHolder>
     }
 
     private void saveRoute(int position) {
-        Support.saveRoute(routes.get(position));
+        Support.saveRoute(context, routes.get(position).getId());
         Toast.makeText(context, "Đã lưu", Toast.LENGTH_SHORT).show();
     }
 

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".route.RouteListActivity">
+    tools:context=".route.RouteActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:theme="@style/ToolbarLight"
@@ -14,8 +14,8 @@
         android:layout_height="?attr/actionBarSize"
         android:background="@color/primary_600"/>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_routes"
+    <FrameLayout
+        android:id="@+id/fm_routes"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 

@@ -29,6 +29,7 @@ public class FindRoadActivity extends AppCompatActivity {
     Button btn_find_road;
     TextView tv_from, tv_to;
     Address from, to;
+
     ActivityResultLauncher<Intent> launcherFrom = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(),
             new ActivityResultCallback<ActivityResult>() {
@@ -99,7 +100,8 @@ public class FindRoadActivity extends AppCompatActivity {
                 Intent intent = new Intent(this, ResultFindRoadActivity.class);
                 intent.putExtra("from", from);
                 intent.putExtra("to", to);
-                intent.putExtra("route_amount", spinner_route_amount.getSelectedItemPosition());
+//                intent.putExtra("route_amount", spinner_route_amount.getSelectedItemPosition());
+                intent.putExtra("route_amount", 1);
                 startActivity(intent);
             }
         });

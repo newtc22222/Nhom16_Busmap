@@ -2,10 +2,12 @@ package hcmute.nhom16.busmap.route;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.widget.FrameLayout;
 
 import java.util.List;
 
@@ -13,13 +15,12 @@ import hcmute.nhom16.busmap.R;
 import hcmute.nhom16.busmap.Support;
 import hcmute.nhom16.busmap.model.Route;
 
-public class RouteListActivity extends AppCompatActivity {
-    RecyclerView rv_routes;
+public class RouteActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_list_route);
+        setContentView(R.layout.activity_route);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -34,10 +35,9 @@ public class RouteListActivity extends AppCompatActivity {
     }
 
     private void initUI() {
-        rv_routes = findViewById(R.id.rv_routes);
-        RouteAdapter adapter = new RouteAdapter(this, getAllRoutes());
-        rv_routes.setAdapter(adapter);
-        rv_routes.setLayoutManager(new LinearLayoutManager(this));
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.add(R.id.fm_routes, new RouteListFragment(getAllRoutes()));
+        transaction.commit();
     }
 
     @Override
@@ -47,6 +47,6 @@ public class RouteListActivity extends AppCompatActivity {
     }
 
     private List<Route> getAllRoutes() {
-        return Support.getAllRoutes();
+        return Support.getAllRoutes(this);
     }
 }

@@ -2,7 +2,6 @@ package hcmute.nhom16.busmap.bus_stop;
 
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,19 +13,26 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
+import hcmute.nhom16.busmap.OnBusStopListener;
 import hcmute.nhom16.busmap.R;
+import hcmute.nhom16.busmap.Support;
 import hcmute.nhom16.busmap.model.BusStop;
+import hcmute.nhom16.busmap.result.MoveType;
+import hcmute.nhom16.busmap.station.StationActivity;
 
 public class BusStopAdapter extends RecyclerView.Adapter<BusStopAdapter.BusStopHolder> {
     private Context context;
     private List<BusStop> busStops;
     private BusStopHolder preHolder = null;
     private boolean order = false;
+    private OnBusStopListener listener;
 
-    public BusStopAdapter(Context context, List<BusStop> busStops, boolean order) {
+    public BusStopAdapter(Context context, List<BusStop> busStops,
+                          boolean order, OnBusStopListener listener) {
         this.busStops = busStops;
         this.context = context;
         this.order = order;
+        this.listener = listener;
     }
 
     @NonNull
@@ -52,10 +58,11 @@ public class BusStopAdapter extends RecyclerView.Adapter<BusStopAdapter.BusStopH
             }
         }
 
-        holder.tv_name.setText(busStops.get(position).getName());
-        holder.tv_time.setText(busStops.get(position).getTimePassString());
+        holder.tv_name.setText(busStops.get(position).getStation().getName());
+        holder.tv_time.setText(Support.distanceToTime(busStops.get(position).getDistance_previous(), MoveType.BUS));
 
         holder.itemView.setOnClickListener(v -> {
+            listener.setOnBusStopClickListener(position);
             holder.order.setVisibility(View.VISIBLE);
             holder.detail.setVisibility(View.VISIBLE);
             if (preHolder != null && preHolder != holder) {
@@ -76,8 +83,8 @@ public class BusStopAdapter extends RecyclerView.Adapter<BusStopAdapter.BusStopH
     }
 
     private void onDetailClick(int position) {
-        Intent intent = new Intent(context, BusStopActivity.class);
-        intent.putExtra("bus_stop", busStops.get(position));
+        Intent intent = new Intent(context, StationActivity.class);
+        intent.putExtra("station", busStops.get(position).getStation());
         context.startActivity(intent);
     }
 
