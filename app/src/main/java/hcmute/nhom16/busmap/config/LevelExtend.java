@@ -1,5 +1,5 @@
-package hcmute.nhom16.busmap;
-
+package hcmute.nhom16.busmap.config;
+// các mức độ khảng cách
 public class LevelExtend {
     public static int MIN = 100;
     public static int LOW = 200;

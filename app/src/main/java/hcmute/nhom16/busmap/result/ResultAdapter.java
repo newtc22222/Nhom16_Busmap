@@ -2,37 +2,38 @@ package hcmute.nhom16.busmap.result;
 
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import java.util.List;
-
 import hcmute.nhom16.busmap.R;
 import hcmute.nhom16.busmap.model.Address;
 import hcmute.nhom16.busmap.model.Result;
 import hcmute.nhom16.busmap.route.RouteIconAdapter;
-
+// Result Adapter là một list các result tìm được khi tìm đường
 public class ResultAdapter extends RecyclerView.Adapter<ResultAdapter.ResultHolder> {
     Context context;
     List<Result> results;
     Address from, to;
 
-    public ResultAdapter(Context context, List<Result> routes, Address from, Address to) {
+//    Đầu vào là results là kết quả, from là điểm đi, to là điểm đến
+    public ResultAdapter(Context context, List<Result> results, Address from, Address to) {
         this.context = context;
-        this.results = routes;
+        this.results = results;
         this.from = from;
         this.to = to;
     }
 
-    public void setResult_routes(List<Result> results) {
+//    Hàm cập nhật result mới, khi người dùng swap hay cần load lại recyclerview với data mới
+//    thì hàm được gọi
+    public void setResults(List<Result> results, Address from, Address to) {
         this.results = results;
+        this.from = from;
+        this.to = to;
         notifyDataSetChanged();
     }
 

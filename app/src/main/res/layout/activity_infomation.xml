@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".InformationActivity">
+    tools:context=".user.InformationActivity">
 
     <RelativeLayout
         android:id="@+id/rl_header"
@@ -17,18 +17,8 @@
             android:background="@color/primary_600"
             android:layout_width="match_parent"/>
 
-<!--        <de.hdodenhof.circleimageview.CircleImageView-->
-<!--            android:id="@+id/civ_avatar"-->
-<!--            android:layout_width="130dp"-->
-<!--            android:layout_height="130dp"-->
-<!--            android:layout_centerHorizontal="true"-->
-<!--            android:layout_marginTop="65dp"-->
-<!--            android:src="@drawable/avatar_default"-->
-<!--            app:civ_border_color="@color/secondary_600"-->
-<!--            app:civ_border_width="4dp" />-->
-
         <ImageView
-            android:id="@+id/civ_avatar"
+            android:id="@+id/iv_avatar"
             android:layout_width="130dp"
             android:layout_height="130dp"
             android:layout_centerHorizontal="true"
@@ -42,8 +32,8 @@
             android:id="@+id/ib_choose_image"
             android:layout_width="20dp"
             android:layout_height="20dp"
-            android:layout_alignRight="@id/civ_avatar"
-            android:layout_alignBottom="@id/civ_avatar"
+            android:layout_alignRight="@id/iv_avatar"
+            android:layout_alignBottom="@id/iv_avatar"
             android:layout_centerHorizontal="true"
             android:background="@null"
             android:src="@drawable/ic_camera"
@@ -54,10 +44,9 @@
             android:textColor="@color/primary_600"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/civ_avatar"
+            android:layout_below="@id/iv_avatar"
             android:layout_centerHorizontal="true"
             android:fontFamily="@font/quicksand_bold"
-            android:text="Phan Trung Tín"
             android:textSize="34sp" />
 
         <Button

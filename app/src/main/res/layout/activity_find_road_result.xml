@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".FindRoadActivity">
+    tools:context=".result.FindRoadActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:theme="@style/ToolbarLight"
@@ -109,7 +109,7 @@
         <TextView
             android:paddingVertical="8dp"
             android:text="@string/list_route_result"
-            android:textSize="18dp"
+            android:textSize="18sp"
             android:fontFamily="@font/quicksand_semi_bold"
             android:layout_marginStart="4dp"
             android:layout_marginTop="4dp"

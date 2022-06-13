@@ -14,15 +14,20 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 import hcmute.nhom16.busmap.R;
+import hcmute.nhom16.busmap.config.MoveType;
+import hcmute.nhom16.busmap.listener.OnRouteListener;
 import hcmute.nhom16.busmap.model.RouteGuide;
 
+//ResultBusStopGuideAdapter là adapter để hiện thị list các routes guide
 public class ResultRouteGuideAdapter extends RecyclerView.Adapter<ResultRouteGuideAdapter.RouteGuideHolder> {
     Context context;
     List<RouteGuide> route_guides;
+    OnRouteListener listener;
 
-    public ResultRouteGuideAdapter(Context context, List<RouteGuide> route_guides) {
+    public ResultRouteGuideAdapter(Context context, List<RouteGuide> route_guides, OnRouteListener listener) {
         this.context = context;
         this.route_guides = route_guides;
+        this.listener = listener;
     }
 
     @NonNull
@@ -34,10 +39,14 @@ public class ResultRouteGuideAdapter extends RecyclerView.Adapter<ResultRouteGui
     @Override
     public void onBindViewHolder(@NonNull RouteGuideHolder holder, int position) {
         if (route_guides.get(position).getType() == MoveType.BUS) {
+//            Đặt icon bus
+//            Nếu type là BUS thì sẽ hiển thị ll_price lên để hiển thị giá của chuyến
             holder.iv_icon.setImageResource(R.drawable.ic_bus);
             holder.tv_money.setText(route_guides.get(position).getPrice());
             holder.ll_price.setVisibility(View.VISIBLE);
         } else {
+//            Đặt icon walk
+//            ẩn giá tiền đi
             holder.ll_price.setVisibility(View.GONE);
             holder.iv_icon.setImageResource(R.drawable.ic_walk);
         }
@@ -45,6 +54,10 @@ public class ResultRouteGuideAdapter extends RecyclerView.Adapter<ResultRouteGui
         holder.tv_description.setText(route_guides.get(position).getDescription());
         holder.tv_time_pass.setText(route_guides.get(position).getTimePass());
         holder.tv_distance.setText(route_guides.get(position).getDistanceMeter());
+        holder.itemView.setOnClickListener(v -> {
+//            Khi click vào item thì sẽ gọi hàm setOnRouteClickListener để thực hiện focus trên bản đồ
+            listener.setOnRouteClickListener(position);
+        });
     }
 
     @Override

@@ -49,8 +49,7 @@
                     android:id="@+id/tv_money"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="12sp"
-                    android:text="7,000 VND"/>
+                    android:textSize="12sp"/>
 
                 <ImageView
                     android:layout_marginStart="8dp"
@@ -65,8 +64,7 @@
                     android:id="@+id/tv_walk"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="12sp"
-                    android:text="135 mét"/>
+                    android:textSize="12sp"/>
 
                 <ImageView
                     android:layout_marginStart="8dp"
@@ -81,8 +79,7 @@
                     android:id="@+id/tv_bus"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="12sp"
-                    android:text="5.3 km"/>
+                    android:textSize="12sp"/>
 
                 <ImageView
                     android:layout_marginStart="8dp"
@@ -97,8 +94,7 @@
                     android:id="@+id/tv_time"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="12sp"
-                    android:text="13 phút"/>
+                    android:textSize="12sp"/>
             </LinearLayout>
         </LinearLayout>
     </RelativeLayout>

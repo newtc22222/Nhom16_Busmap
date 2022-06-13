@@ -8,23 +8,29 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
 import java.util.List;
-
 import hcmute.nhom16.busmap.R;
-import hcmute.nhom16.busmap.Support;
+import hcmute.nhom16.busmap.data.SavedRouteDAO;
 import hcmute.nhom16.busmap.model.Route;
+import hcmute.nhom16.busmap.model.User;
+import hcmute.nhom16.busmap.model.UserAccount;
 
 public class RouteAdapter extends RecyclerView.Adapter<RouteAdapter.RouteHolder> {
     private Context context;
     private List<Route> routes;
 
+//    Adapter nhận vào một list route sau đó show lên
     public RouteAdapter(Context context, List<Route> routes) {
-        this.routes = routes;
         this.context = context;
+        this.routes = routes;
+    }
+
+//    Cập nhật routes mới và gọi hàm notifyDataSetChanged() để thay đổi adapter
+    public void setRoutes(List<Route> routes) {
+        this.routes = routes;
+        notifyDataSetChanged();
     }
 
     @NonNull
@@ -54,7 +60,11 @@ public class RouteAdapter extends RecyclerView.Adapter<RouteAdapter.RouteHolder>
     }
 
     private void saveRoute(int position) {
-        Support.saveRoute(context, routes.get(position).getId());
+        User user = UserAccount.getUser();
+        if (user != null) {
+            String email = user.getEmail();
+            SavedRouteDAO.insertSavedRoute(context, email, routes.get(position).getId());
+        }
         Toast.makeText(context, "Đã lưu", Toast.LENGTH_SHORT).show();
     }
 

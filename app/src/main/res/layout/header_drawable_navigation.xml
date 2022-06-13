@@ -13,14 +13,15 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/civ_avatar"
+        <ImageView
+            android:id="@+id/iv_avatar"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_marginStart="8dp"
-            android:src="@drawable/avatar_default"
-            app:civ_border_color="@color/secondary_800"
-            app:civ_border_width="4dp" />
+            android:background="@drawable/circle"
+            android:clipToOutline="true"
+            android:padding="4dp"
+            android:src="@drawable/avatar_default" />
 
         <LinearLayout
             android:layout_marginStart="12dp"
@@ -33,9 +34,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/quicksand_medium"
-                android:textColor="@color/secondary_900"
-                android:text="Phan Trung Tín"
-                android:maxLength="28"/>
+                android:textColor="@color/secondary_900"/>
             <TextView
                 android:id="@+id/tv_email"
                 android:layout_marginTop="4dp"
@@ -43,8 +42,7 @@
                 android:fontFamily="@font/quicksand_medium"
                 android:textColor="@color/secondary_900"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="phantrungtin01@gmail.com"/>
+                android:layout_height="wrap_content"/>
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

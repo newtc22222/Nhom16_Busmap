@@ -2,12 +2,10 @@ package hcmute.nhom16.busmap.feedback;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-
 import android.os.Bundle;
-import android.util.Log;
-
 import hcmute.nhom16.busmap.R;
 
+//Activity feedback chỉ là view và show lên email
 public class FeedbackActivity extends AppCompatActivity {
 
     @Override

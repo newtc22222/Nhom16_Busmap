@@ -2,6 +2,9 @@ package hcmute.nhom16.busmap.model;
 
 import java.io.Serializable;
 
+import hcmute.nhom16.busmap.Support;
+
+// station chứa id, tên và địa chỉ của station
 public class Station implements Serializable {
     private int id;
     private String name;
@@ -23,6 +26,10 @@ public class Station implements Serializable {
 
     public String getName() {
         return name;
+    }
+
+    public String getName(int max) {
+        return Support.toStringEllipsis(name, max);
     }
 
     public void setName(String name) {

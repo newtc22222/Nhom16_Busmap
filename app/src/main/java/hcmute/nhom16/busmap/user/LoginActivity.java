@@ -1,4 +1,4 @@
-package hcmute.nhom16.busmap;
+package hcmute.nhom16.busmap.user;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,6 +8,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import hcmute.nhom16.busmap.MainActivity;
+import hcmute.nhom16.busmap.R;
 import hcmute.nhom16.busmap.model.UserAccount;
 
 public class LoginActivity extends AppCompatActivity {
@@ -22,7 +24,20 @@ public class LoginActivity extends AppCompatActivity {
         initListener();
     }
 
+//    hàm ánh xạ các view từ layout
+    private void initUI() {
+        edt_email = findViewById(R.id.edt_email);
+        edt_pass = findViewById(R.id.edt_pass);
+        btn_login = findViewById(R.id.btn_login);
+    }
+
+//    Hàm bắt sự kiện
     private void initListener() {
+//        Khi click vào button login thì sẽ lấy email và password để kiểm tra
+//        Nếu email hoặc password rỗng thì toast lên là người dùng chưa điền đủ thông tín
+//        Nếu đầy đủ rồi thì sẽ check xem tài toàn mật khẩu có đúng hay không
+//        Nếu đúng thì đăng nhập thành công và chuyển về trang chính
+//        Nếu sai thì toast lên và vẫn ở trang login
         btn_login.setOnClickListener(v -> {
             String email = edt_email.getText().toString();
             String pass = edt_pass.getText().toString();
@@ -40,11 +55,5 @@ public class LoginActivity extends AppCompatActivity {
                 }
             }
         });
-    }
-
-    private void initUI() {
-        edt_email = findViewById(R.id.edt_email);
-        edt_pass = findViewById(R.id.edt_pass);
-        btn_login = findViewById(R.id.btn_login);
     }
 }

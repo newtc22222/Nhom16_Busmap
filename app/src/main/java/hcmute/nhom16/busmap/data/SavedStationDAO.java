@@ -14,6 +14,7 @@ public class SavedStationDAO {
     public static final int STATION_ID = 0;
     public static final int USER_EMAIL = 1;
 
+//    Hàm lấy saved sation bằng email
     public static List<Station> getSavedStationsByUserId(Context context , String user_gmail){
 
         ArrayList<Station> list = new ArrayList<>();
@@ -37,6 +38,7 @@ public class SavedStationDAO {
         return list;
     }
 
+//    Hàm chèn saved station bằng email và station id
     public static void insertSavedStation(Context context, String user_gmail, int station_id) {
         DatabaseHelper helper = new DatabaseHelper(context);
         SQLiteDatabase db = helper.getWritableDatabase();
@@ -47,6 +49,7 @@ public class SavedStationDAO {
         db.close();
     }
 
+    //    Hàm xóa saved station bằng email và station id
     public static void deleteSavedStation(Context context, String user_gmail, int station_id) {
         DatabaseHelper helper = new DatabaseHelper(context);
         SQLiteDatabase db = helper.getWritableDatabase();

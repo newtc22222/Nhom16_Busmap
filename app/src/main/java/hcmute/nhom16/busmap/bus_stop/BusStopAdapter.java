@@ -13,13 +13,14 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-import hcmute.nhom16.busmap.OnBusStopListener;
+import hcmute.nhom16.busmap.listener.OnBusStopListener;
 import hcmute.nhom16.busmap.R;
 import hcmute.nhom16.busmap.Support;
 import hcmute.nhom16.busmap.model.BusStop;
-import hcmute.nhom16.busmap.result.MoveType;
+import hcmute.nhom16.busmap.config.MoveType;
 import hcmute.nhom16.busmap.station.StationActivity;
 
+//BusStopAdapter dùng để hiển thị danh sách các bus stop của route
 public class BusStopAdapter extends RecyclerView.Adapter<BusStopAdapter.BusStopHolder> {
     private Context context;
     private List<BusStop> busStops;
@@ -43,11 +44,13 @@ public class BusStopAdapter extends RecyclerView.Adapter<BusStopAdapter.BusStopH
 
     @Override
     public void onBindViewHolder(@NonNull BusStopHolder holder, int position) {
+//         Nếu order là false thì không theo thứ tự nghĩa là sẽ không hiển thị line
         if (!order) {
             holder.line_vertical_end.setVisibility(View.INVISIBLE);
             holder.line_vertical_first.setVisibility(View.INVISIBLE);
             holder.order_first.setVisibility(View.INVISIBLE);
         } else {
+//         Nếu order là true thì 2 đầu điểm đi và điểm đến sẽ hiển thị 2 nốt tròn
             if (position == 0) {
                 holder.line_vertical_end.setVisibility(View.INVISIBLE);
                 holder.order_first.setVisibility(View.VISIBLE);
@@ -58,9 +61,12 @@ public class BusStopAdapter extends RecyclerView.Adapter<BusStopAdapter.BusStopH
             }
         }
 
-        holder.tv_name.setText(busStops.get(position).getStation().getName());
+        holder.tv_name.setText(busStops.get(position).getStation().getName(32));
         holder.tv_time.setText(Support.distanceToTime(busStops.get(position).getDistance_previous(), MoveType.BUS));
 
+//        Bắt sự kiện khi click vào item, khi đó sẽ gọi setOnBusStopClickListener trên listener
+//        Listener là interface để item trong adapter giao tiếp với ngoài activity
+//        Khi click vào thì đồng thời cũng show detail button
         holder.itemView.setOnClickListener(v -> {
             listener.setOnBusStopClickListener(position);
             holder.order.setVisibility(View.VISIBLE);
@@ -72,6 +78,7 @@ public class BusStopAdapter extends RecyclerView.Adapter<BusStopAdapter.BusStopH
             preHolder = holder;
         });
 
+//        Bắt sự kiện khi click vào detail
         holder.detail.setOnClickListener(v -> {
             onDetailClick(position);
         });
@@ -82,6 +89,7 @@ public class BusStopAdapter extends RecyclerView.Adapter<BusStopAdapter.BusStopH
         return position;
     }
 
+//    Khi click vào detail thì sẽ chuyển chúng sang activity station
     private void onDetailClick(int position) {
         Intent intent = new Intent(context, StationActivity.class);
         intent.putExtra("station", busStops.get(position).getStation());
@@ -93,7 +101,9 @@ public class BusStopAdapter extends RecyclerView.Adapter<BusStopAdapter.BusStopH
         return busStops == null ? 0 : busStops.size();
     }
 
+//    holder cho bus stop
     public class BusStopHolder extends RecyclerView.ViewHolder {
+//        Các item của bus stop
         TextView tv_name, tv_time;
         View order, order_first, line_vertical_first, line_vertical_end;
         LinearLayout detail;

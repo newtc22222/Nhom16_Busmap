@@ -1,17 +1,11 @@
 package hcmute.nhom16.busmap.data;
 
-import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.util.Log;
-
 import java.util.ArrayList;
 import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
-import hcmute.nhom16.busmap.Support;
+import hcmute.nhom16.busmap.model.BusStopRaw;
 import hcmute.nhom16.busmap.model.Route;
 
 public class RouteDAO {
@@ -27,6 +21,7 @@ public class RouteDAO {
     public static final int PER_DAY = 9;
     public static final int DISTANCE = 10;
 
+//    Hàm get sẽ là hàm lấy data chung, chỉ cần đặt condition vào và lấy data như mong muốn
     private static List<Route> get(Context context, String condition) {
         ArrayList<Route> list = new ArrayList<>();
 
@@ -64,12 +59,23 @@ public class RouteDAO {
         return list;
     }
 
+//    Lấy toàn bộ tuyến đường của ứng dụng
     public static List<Route> getAllRoutes(Context context) {
         return get(context, null);
     }
 
+//    Lấy route bằng route id
     public static Route getRouteByID(Context context, String id) {
         List<Route> routes = get(context, "id='" + id + "'");
         return routes.size() > 0 ? routes.get(0) : null;
+    }
+//    Lấy các routes đi qua station
+    public static List<Route> getRoutesFromStationId(Context context, int station_id) {
+        List<BusStopRaw> raws = BusStopDAO.getBusStopRawFromStationId(context, station_id);
+        List<Route> routes = new ArrayList<>();
+        for (BusStopRaw raw : raws) {
+            routes.add(RouteDAO.getRouteByID(context, raw.getRoute_id()));
+        }
+        return routes;
     }
 }

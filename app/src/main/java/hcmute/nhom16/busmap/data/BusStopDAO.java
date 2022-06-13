@@ -3,11 +3,8 @@ package hcmute.nhom16.busmap.data;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.util.Log;
-
 import java.util.ArrayList;
 import java.util.List;
-
 import hcmute.nhom16.busmap.Support;
 import hcmute.nhom16.busmap.model.Address;
 import hcmute.nhom16.busmap.model.BusStop;
@@ -19,6 +16,8 @@ public class BusStopDAO {
     public static final int STATION_ID = 1;
     public static final int ORDER = 2;
 
+//    Hàm getRaw sẽ là hàm lấy data chung, chỉ cần đặt condition vào và lấy data như mong muốn
+//    hàm chỉ lấy raw nghĩa là các giá trị như trong cơ sở dữ liệu, không load các kháo ngoại
     private static List<BusStopRaw> getRaw(Context context, String condition) {
         ArrayList<BusStopRaw> list = new ArrayList<>();
 
@@ -44,7 +43,8 @@ public class BusStopDAO {
         db.close();
         return list;
     }
-
+//    Hàm get sẽ là hàm lấy data chung, chỉ cần đặt condition vào và lấy data như mong muốn
+//    Khác với getRaw, get sẽ lòa cả khóa ngoại
     private static List<BusStop> get(Context context, String condition) {
         List<BusStopRaw> bus_stop_raws = getRaw(context, condition);
         List<BusStop> bus_stops = new ArrayList<>();
@@ -61,11 +61,14 @@ public class BusStopDAO {
         return bus_stops;
     }
 
+//    Lấy bus stop từ route id và thứ tự của chúng
     public static BusStop getBusStopFromRouteIdAndOrder(Context context, String route_id, int order) {
         List<BusStop> busStops = get(context, "route_id='" + route_id + "' AND `order`=" + order);
         return busStops.size() > 0 ? busStops.get(0) : null;
     }
 
+//    hàm lấy các bus stops từ routeid và order start và order end
+//    Những bus stops trên tuyến đường từ chặng start đến chặng end sẽ được lấy ra
     public static List<BusStop> getBusStopsFromRouteIdAndOrder(Context context, String route_id, int order_start, int order_end) {
         List<BusStop> busStops = new ArrayList<>();
         for (int i = order_start; i <= order_end; i++) {
@@ -74,20 +77,25 @@ public class BusStopDAO {
         return busStops;
     }
 
+//    Hàm chuyển đổi bus stop raw thành bus stop
+//    Load các khóa ngoại
     public static BusStop convertRawToBusStop(Context context, BusStopRaw busStopRaw) {
         return new BusStop(busStopRaw.getRoute_id(),
                 StationDAO.getStationById(context, busStopRaw.getStation_id()), busStopRaw.getOrder(),
                 -1);
     }
 
+    //    Hàm lấy các bus stops của station id
     public static List<BusStop> getBusStopFromStationId(Context context, int station_id) {
         return get(context, "station_id=" + station_id);
     }
 
+//    Hàm lấy các bus stops raw của station id
     public static List<BusStopRaw> getBusStopRawFromStationId(Context context, int station_id) {
         return getRaw(context, "station_id=" + station_id);
     }
 
+//    Hàm lấy các bus stops của route id
     public static List<BusStop> getBusStopsByRouteId(Context context, String route_id) {
         List<BusStop> busStops = get(context, "route_id='" + route_id + "' ORDER BY `order`");
         return busStops;

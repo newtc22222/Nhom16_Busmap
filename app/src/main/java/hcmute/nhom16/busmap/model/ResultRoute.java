@@ -3,7 +3,9 @@ package hcmute.nhom16.busmap.model;
 import java.io.Serializable;
 
 import hcmute.nhom16.busmap.Support;
-
+// Result route là thành phần của ressult
+// Result route mô tả thông tin cách đi trên route, trạm lên xe, trạm xuống xe
+// và khoảng cách giữa 2 trạm
 public class ResultRoute implements Serializable {
     private Route route;
     private BusStop bus_stop_start, bus_stop_end;

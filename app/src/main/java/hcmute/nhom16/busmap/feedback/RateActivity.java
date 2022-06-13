@@ -4,10 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.os.Bundle;
-import android.util.Log;
-import android.view.DragEvent;
-import android.view.MotionEvent;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RatingBar;
@@ -17,11 +13,12 @@ import android.widget.Toast;
 import hcmute.nhom16.busmap.R;
 
 public class RateActivity extends AppCompatActivity {
-
+//Các biến để ánh xạ view
     RatingBar rb_rate;
     EditText edt_rate;
     TextView tv_rate;
     Button btn_rate;
+
     String[] rate_type;
 
     @Override
@@ -37,23 +34,7 @@ public class RateActivity extends AppCompatActivity {
         initUI();
         initListener();
     }
-
-    private void initListener() {
-        btn_rate.setOnClickListener(v -> {
-            send_rate();
-        });
-        rb_rate.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
-            @Override
-            public void onRatingChanged(RatingBar ratingBar, float v, boolean b) {
-                changeTypeRate((int) v);
-            }
-        });
-    }
-
-    private void send_rate() {
-        Toast.makeText(this, R.string.toast_send_rate, Toast.LENGTH_SHORT).show();
-    }
-
+//  Ánh xạ view
     private void initUI() {
         rb_rate = findViewById(R.id.rb_rate);
         tv_rate = findViewById(R.id.tv_rate);
@@ -64,6 +45,26 @@ public class RateActivity extends AppCompatActivity {
         changeTypeRate((int) rb_rate.getRating());
     }
 
+//    Xử lý sự kiện
+    private void initListener() {
+        btn_rate.setOnClickListener(v -> {
+            send_rate();
+        });
+
+        rb_rate.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
+            @Override
+            public void onRatingChanged(RatingBar ratingBar, float v, boolean b) {
+                changeTypeRate((int) v);
+            }
+        });
+    }
+
+//    hàm sẽ toast lên là đánh giá đã được ghi nhận
+    private void send_rate() {
+        Toast.makeText(this, R.string.toast_send_rate, Toast.LENGTH_SHORT).show();
+    }
+
+//    tùy vào giá trị rate thì sẽ xét tv_rate
     private void changeTypeRate(int r) {
         r = r == 5 ? r - 1 : r;
         tv_rate.setText(rate_type[r]);

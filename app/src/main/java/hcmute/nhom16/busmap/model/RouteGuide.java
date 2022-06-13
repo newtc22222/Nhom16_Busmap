@@ -1,8 +1,9 @@
 package hcmute.nhom16.busmap.model;
 
 import hcmute.nhom16.busmap.Support;
-import hcmute.nhom16.busmap.result.MoveType;
+import hcmute.nhom16.busmap.config.MoveType;
 
+// route guide là hướng dẫn cách di chuyển trên các tuyến xe, tổng quát hơn busstop guide
 public class RouteGuide {
     private String title = "";
     private String description = "";

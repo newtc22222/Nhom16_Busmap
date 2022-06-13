@@ -7,18 +7,26 @@ import androidx.viewpager2.adapter.FragmentStateAdapter;
 
 import java.util.List;
 
+import hcmute.nhom16.busmap.listener.OnBusStopListener;
+import hcmute.nhom16.busmap.listener.OnRouteListener;
 import hcmute.nhom16.busmap.model.BusStopGuide;
 import hcmute.nhom16.busmap.model.RouteGuide;
-
+//ResultStateAdapter là adapter cho viewpager2
+//2 tab là routes guide và bus stops guide
 public class ResultStateAdapter extends FragmentStateAdapter {
     List<RouteGuide> routeGuides;
     List<BusStopGuide> busStopGuides;
+    OnBusStopListener busStopListener;
+    OnRouteListener routeListener;
 
     public ResultStateAdapter(@NonNull FragmentActivity fragmentActivity,
-                              List<RouteGuide> routeGuides, List<BusStopGuide> busStopGuides) {
+                              List<RouteGuide> routeGuides, List<BusStopGuide> busStopGuides,
+                              OnBusStopListener busStopListener, OnRouteListener routeListener) {
         super(fragmentActivity);
         this.routeGuides = routeGuides;
         this.busStopGuides = busStopGuides;
+        this.busStopListener = busStopListener;
+        this.routeListener = routeListener;
     }
 
     @NonNull
@@ -26,9 +34,9 @@ public class ResultStateAdapter extends FragmentStateAdapter {
     public Fragment createFragment(int position) {
         switch (position) {
             case 0:
-                return new ResultRouteGuideFragment(routeGuides);
+                return new ResultRouteGuideFragment(routeGuides, routeListener);
             case 1:
-                return new ResultBusStopsGuideFragment(busStopGuides);
+                return new ResultBusStopsGuideFragment(busStopGuides, busStopListener);
         }
         return null;
     }

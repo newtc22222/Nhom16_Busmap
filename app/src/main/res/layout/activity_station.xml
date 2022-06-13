@@ -21,7 +21,6 @@
                 android:id="@+id/tv_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Bến xe Chọ Lớn"
                 android:textSize="18sp"
                 android:fontFamily="@font/quicksand_semi_bold"
                 android:textColor="@color/secondary_900"/>
@@ -29,7 +28,6 @@
                 android:id="@+id/tv_address"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="21, đường Tôn Đức Thắng, Quận 1"
                 android:textSize="12sp"
                 android:fontFamily="@font/quicksand_semi_bold"
                 android:textColor="@color/secondary_900"/>

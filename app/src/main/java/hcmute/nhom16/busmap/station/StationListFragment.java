@@ -16,6 +16,7 @@ import java.util.List;
 import hcmute.nhom16.busmap.R;
 import hcmute.nhom16.busmap.model.Station;
 
+//fragment là list các stations
 public class StationListFragment extends Fragment {
     private List<Station> stations;
 
@@ -32,6 +33,7 @@ public class StationListFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_2_linear, container, false);
         if (stations != null && stations.size() > 0) {
+//            Data của các station sẽ được đổ vào Recycler view
             RecyclerView rv_linear_2 = view.findViewById(R.id.rv_linear_2);
             StationAdapter adapter_2 = new StationAdapter(getContext(), stations);
             rv_linear_2.setAdapter(adapter_2);

@@ -1,5 +1,7 @@
 package hcmute.nhom16.busmap.model;
 
+//BusDistance gồm busStopraw và khoảng cách
+//lớp này được dùng trong thuật toán để lưu thông tin của busstop và khoảng cách từ một vị trí đến nó
 public class BusDistance {
     private BusStopRaw bus_stop_raw;
     private int distance;

@@ -6,7 +6,7 @@ import androidx.appcompat.widget.Toolbar;
 import android.os.Bundle;
 
 import hcmute.nhom16.busmap.R;
-
+//information group chỉ là giao diện chứa thông tin
 public class InformationGroupActivity extends AppCompatActivity {
 
     @Override

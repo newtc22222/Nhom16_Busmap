@@ -14,7 +14,8 @@ public class SavedRouteDAO {
     public static final int ROUTE_ID = 0;
     public static final int USER_EMAIL = 1;
 
-    public static List<Route> getSavedRoutesByUserID(Context context , String user_gmail){
+//    Hàm lấy một list các saved route bằng email
+    public static List<Route> getSavedRoutesByUserID(Context context, String user_gmail){
 
         ArrayList<Route> list = new ArrayList<>();
 
@@ -37,6 +38,7 @@ public class SavedRouteDAO {
         return list;
     }
 
+//    Hàm chèn saved route bằng email và route id
     public static void insertSavedRoute(Context context, String user_gmail, String route_id) {
         DatabaseHelper helper = new DatabaseHelper(context);
         SQLiteDatabase db = helper.getWritableDatabase();
@@ -47,6 +49,7 @@ public class SavedRouteDAO {
         db.close();
     }
 
+//    Hàm sẽ xóa saved route bằng email và route id
     public static void deleteSavedRoute(Context context, String user_gmail, String route_id) {
         DatabaseHelper helper = new DatabaseHelper(context);
         SQLiteDatabase db = helper.getWritableDatabase();

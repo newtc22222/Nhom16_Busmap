@@ -1,5 +1,6 @@
 package hcmute.nhom16.busmap.model;
 
+//Side thì chỉ gồm tên và image là cờ của quốc gia
 public class Side {
     private String name;
     private int image;

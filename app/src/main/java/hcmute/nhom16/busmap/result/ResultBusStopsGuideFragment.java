@@ -14,17 +14,21 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 import hcmute.nhom16.busmap.R;
+import hcmute.nhom16.busmap.listener.OnBusStopListener;
 import hcmute.nhom16.busmap.model.BusStopGuide;
 
+// Fragment có recyclerview là một list các bus stops guide
 public class ResultBusStopsGuideFragment extends Fragment {
     List<BusStopGuide> bus_stop_guides;
+    OnBusStopListener listener;
 
     public ResultBusStopsGuideFragment() {
 
     }
 
-    public ResultBusStopsGuideFragment(List<BusStopGuide> bus_stop_guides) {
+    public ResultBusStopsGuideFragment(List<BusStopGuide> bus_stop_guides, OnBusStopListener listener) {
         this.bus_stop_guides = bus_stop_guides;
+        this.listener = listener;
     }
 
     @Nullable
@@ -33,7 +37,7 @@ public class ResultBusStopsGuideFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_linear, container, false);
         if (bus_stop_guides != null) {
             RecyclerView rv = view.findViewById(R.id.rv_linear);
-            ResultBusStopGuideAdapter adapter = new ResultBusStopGuideAdapter(getContext(), bus_stop_guides);
+            ResultBusStopGuideAdapter adapter = new ResultBusStopGuideAdapter(getContext(), bus_stop_guides, listener);
             rv.setAdapter(adapter);
             rv.setLayoutManager(new LinearLayoutManager(getContext()));
         }

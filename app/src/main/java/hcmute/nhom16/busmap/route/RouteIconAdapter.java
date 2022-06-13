@@ -13,7 +13,8 @@ import java.util.List;
 
 import hcmute.nhom16.busmap.R;
 import hcmute.nhom16.busmap.model.ResultRoute;
-
+//Route Icon để hiển thị một list các icon ở giữa là tên tuyến
+//Đầu vào là một list các result_route, với mỗi result_route sẽ là một icon
 public class RouteIconAdapter extends RecyclerView.Adapter<RouteIconAdapter.RouteIconHolder> {
     List<ResultRoute> result_routes;
     Context context;
@@ -31,6 +32,7 @@ public class RouteIconAdapter extends RecyclerView.Adapter<RouteIconAdapter.Rout
 
     @Override
     public void onBindViewHolder(@NonNull RouteIconHolder holder, int position) {
+//        Khi mà position = 0 thì sẽ ẩn đi dấu chấm ngăn cách phía trước route icon
         if (position == 0) {
             holder.v_circle.setVisibility(View.GONE);
         }
@@ -46,7 +48,7 @@ public class RouteIconAdapter extends RecyclerView.Adapter<RouteIconAdapter.Rout
     public int getItemCount() {
         return result_routes.size();
     }
-
+//  route icon holder
     public class RouteIconHolder extends RecyclerView.ViewHolder {
         TextView tv_id;
         View v_circle;

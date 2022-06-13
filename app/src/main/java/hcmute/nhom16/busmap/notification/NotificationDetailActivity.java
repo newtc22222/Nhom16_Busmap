@@ -10,6 +10,7 @@ import android.widget.LinearLayout;
 
 import hcmute.nhom16.busmap.R;
 
+//  Activity chi tiết thông báo
 public class NotificationDetailActivity extends AppCompatActivity {
 
     @Override
@@ -23,6 +24,8 @@ public class NotificationDetailActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowCustomEnabled(true);
         getSupportActionBar().setTitle(R.string.notification_detail_text);
 
+//        Lấy biến content trong intent, nếu có thì sẽ inflate giao diện đúng như yêu cầu
+//        Còn nếu không thì sẽ inflate giao diện lỗi
         LinearLayout ll_notification_detail = findViewById(R.id.ll_notification_detail);
         int content = getIntent().getIntExtra("content", -1);
         View view = null;

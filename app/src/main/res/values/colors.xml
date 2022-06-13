@@ -7,7 +7,10 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="orange">#FFA500</color>
+    <color name="red">#FF0000</color>
 
+<!-- Chọn primary color là màu xanh -->
     <color name="primary_900">#1B419D</color>
     <color name="primary_800">#215FBD</color>
     <color name="primary_700">#2470CF</color>
@@ -18,7 +21,7 @@
     <color name="primary_200">#90C7F8</color>
     <color name="primary_100">#BBDCFB</color>
     <color name="primary_50">#E3F1FD</color>
-
+<!-- Chọn secondary color là màu trắng -->
     <color name="secondary_900">#fafafa</color>
     <color name="secondary_800">#f5f5f5</color>
     <color name="secondary_700">#eeeeee</color>
@@ -29,8 +32,5 @@
     <color name="secondary_200">#616161</color>
     <color name="secondary_100">#424242</color>
     <color name="secondary_50">#212121</color>
-
-    <color name="orange">#FFA500</color>
-    <color name="red">#FF0000</color>
 
 </resources>

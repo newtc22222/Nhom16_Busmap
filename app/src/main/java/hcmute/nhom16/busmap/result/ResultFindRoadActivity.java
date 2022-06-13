@@ -17,7 +17,9 @@ import hcmute.nhom16.busmap.Support;
 import hcmute.nhom16.busmap.model.Address;
 import hcmute.nhom16.busmap.model.Result;
 
+//  Activity sẽ show danh sách các kết quả tìm được
 public class ResultFindRoadActivity extends AppCompatActivity {
+//    Các view để ảnh xạ
     private RecyclerView rv_results;
     private Address from, to;
     private int route_amount;
@@ -36,30 +38,12 @@ public class ResultFindRoadActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowCustomEnabled(true);
         getSupportActionBar().setTitle(R.string.find_road_result);
         getData();
-
+//      Ánh xạ view
         initUI();
+//        Bắt các sự kiện
         initListener();
     }
-
-    private void getData() {
-        Intent intent = getIntent();
-        route_amount = intent.getIntExtra("route_amount", -1);
-        from = (Address) intent.getSerializableExtra("from");
-        to = (Address) intent.getSerializableExtra("to");
-    }
-
-    private void swapAddress() {
-        Address adr = to;
-        to = from;
-        from = adr;
-        setAddressText();
-    }
-
-    private void setAddressText() {
-        tv_from.setText(from.getAddress());
-        tv_to.setText(to.getAddress());
-    }
-
+//      Ánh xạ các view đến các view trong layout
     private void initUI() {
         tv_from = findViewById(R.id.tv_from);
         tv_to = findViewById(R.id.tv_to);
@@ -67,34 +51,58 @@ public class ResultFindRoadActivity extends AppCompatActivity {
 
         ib_swap = findViewById(R.id.ib_swap);
 
+//        Khởi tạo rv_results với result được tính từ hàm trong lớp support
         rv_results = findViewById(R.id.rv_results);
-        results = getResultRoutes();
+        results = getResults();
         adapter = new ResultAdapter(this, results, from, to);
         rv_results.setAdapter(adapter);
         rv_results.setLayoutManager(new LinearLayoutManager(this));
-
-        loadResult();
     }
 
     private void initListener() {
+//        Bắt sự kiện bấm vào swap
         ib_swap.setOnClickListener(v -> {
             swapAddress();
-            loadResult();
         });
+    }
+
+//    Lấy dữ liệu từ Activity trước đó truyền cho mà cụ thể là FinRoadActivity
+    private void getData() {
+        Intent intent = getIntent();
+        route_amount = intent.getIntExtra("route_amount", -1);
+        from = (Address) intent.getSerializableExtra("from");
+        to = (Address) intent.getSerializableExtra("to");
+    }
+
+//    Swap 2 địa điểm
+    private void swapAddress() {
+        Address adr = to;
+        to = from;
+        from = adr;
+        setAddressText();
+        loadResult();
+    }
+
+//    Đặt lại 2 giá trị
+    private void setAddressText() {
+        tv_from.setText(from.getAddress());
+        tv_to.setText(to.getAddress());
+    }
+
+//    Load result khi người dùng bấm swap điểm đến và điểm đi
+    private void loadResult() {
+        results = getResults();
+        adapter.setResults(results, from, to);
+    }
+
+//    Gọi thuật toán tính ra Result
+    public List<Result> getResults() {
+        return Support.calculateResults(this, from, to, route_amount);
     }
 
     @Override
     public boolean onSupportNavigateUp() {
         onBackPressed();
         return true;
-    }
-
-    private void loadResult() {
-        results = getResultRoutes();
-        adapter.setResult_routes(results);
-    }
-
-    public List<Result> getResultRoutes() {
-        return Support.calculateResults(this, from, to, route_amount);
     }
 }

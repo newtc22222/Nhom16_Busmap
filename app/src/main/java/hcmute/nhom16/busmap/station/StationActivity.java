@@ -17,8 +17,15 @@ import java.util.List;
 
 import hcmute.nhom16.busmap.R;
 import hcmute.nhom16.busmap.Support;
+import hcmute.nhom16.busmap.data.BusStopDAO;
+import hcmute.nhom16.busmap.data.RouteDAO;
+import hcmute.nhom16.busmap.data.SavedStationDAO;
+import hcmute.nhom16.busmap.data.StationDAO;
+import hcmute.nhom16.busmap.model.BusStop;
 import hcmute.nhom16.busmap.model.Route;
 import hcmute.nhom16.busmap.model.Station;
+import hcmute.nhom16.busmap.model.User;
+import hcmute.nhom16.busmap.model.UserAccount;
 import hcmute.nhom16.busmap.route.RouteAdapter;
 
 public class StationActivity extends AppCompatActivity {
@@ -51,9 +58,9 @@ public class StationActivity extends AppCompatActivity {
 
     private void initUI() {
         tv_address = findViewById(R.id.tv_address);
-        tv_address.setText(station.getAddress().getAddress());
+        tv_address.setText(station.getAddress().getAddress(60));
         tv_name = findViewById(R.id.tv_name);
-        tv_name.setText(station.getName());
+        tv_name.setText(station.getName(38));
 
         rv_routes = findViewById(R.id.rv_routes);
         RouteAdapter adapter = new RouteAdapter(this, getRoutesFromBusStop());
@@ -62,7 +69,7 @@ public class StationActivity extends AppCompatActivity {
     }
 
     private List<Route> getRoutesFromBusStop() {
-        return Support.getRoutesFromStation(this, station);
+        return RouteDAO.getRoutesFromStationId(this, station.getId());
     }
 
     @Override
@@ -85,7 +92,11 @@ public class StationActivity extends AppCompatActivity {
     }
 
     private void onSavedStation() {
-        Support.saveStation(this, station.getId());
+        User user = UserAccount.getUser();
+        if (user != null) {
+            String email = user.getEmail();
+            SavedStationDAO.insertSavedStation(this, email, station.getId());
+        }
         Toast.makeText(this, R.string.saved_toast, Toast.LENGTH_SHORT).show();
     }
 }

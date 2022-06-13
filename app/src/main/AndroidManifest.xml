@@ -10,23 +10,24 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <application
-        android:allowBackup="true"
+        android:requestLegacyExternalStorage="true"
+        android:allowBackup="false"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/icon_app"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/icon_app_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Nhom16_Busmap"
         tools:targetApi="31">
         <meta-data
         android:name="com.google.android.geo.API_KEY"
-        android:value="AIzaSyD6m1GZS6EmA648qSTJlq3jdU6XVVCbCZo" />
+        android:value="AIzaSyCn9klIRSWXT40zSNIF8R_e1D__sLSJNDg" />
         <activity
-            android:name=".RegisterActivity"
+            android:name=".user.RegisterActivity"
             android:exported="false" />
         <activity
-            android:name=".LoginActivity"
+            android:name=".user.LoginActivity"
             android:exported="false" />
         <activity
             android:name=".result.ResultDetailActivity"
@@ -35,7 +36,7 @@
             android:name=".result.ResultFindRoadActivity"
             android:exported="false" />
         <activity
-            android:name=".UpdateActivity"
+            android:name=".feedback.UpdateActivity"
             android:exported="false" />
         <activity
             android:name=".saved.SavedActivity"
@@ -50,10 +51,10 @@
             android:name=".route.RouteActivity"
             android:exported="false" />
         <activity
-            android:name=".FindRoadActivity"
+            android:name=".result.FindRoadActivity"
             android:exported="false" />
         <activity
-            android:name=".AddressSearchActivity"
+            android:name=".address.AddressSearchActivity"
             android:exported="false" />
         <activity
             android:name=".notification.NotificationDetailActivity"
@@ -71,7 +72,7 @@
             android:name=".feedback.FeedbackActivity"
             android:exported="false" />
         <activity
-            android:name=".InformationActivity"
+            android:name=".user.InformationActivity"
             android:exported="false" />
         <activity
             android:name=".SplashScreen"

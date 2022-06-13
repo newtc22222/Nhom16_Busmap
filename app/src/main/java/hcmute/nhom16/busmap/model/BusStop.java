@@ -1,10 +1,9 @@
 package hcmute.nhom16.busmap.model;
 
-import android.content.ContentValues;
-
 import java.io.Serializable;
-import java.time.LocalTime;
 
+// busstop chứa các thông tin về route, station order
+// và đặc biệt là distance_previous cho biết khoảng cách giữa nó và trạm kế nó là bao nhiêu mét
 public class BusStop implements Serializable {
     private String route_id;
     private Station station;

@@ -15,11 +15,12 @@ import java.util.List;
 
 import hcmute.nhom16.busmap.R;
 import hcmute.nhom16.busmap.Support;
-
+//Adapter nhận vào một context và một list các localtime
+//sau đó inflate R.layout.time_line và set text cho time line
 public class BusStopTimeLineAdapter extends RecyclerView.Adapter<BusStopTimeLineAdapter.TimeLineHolder> {
     List<LocalTime> time_lines;
     Context context;
-
+//constructor của adapter
     public BusStopTimeLineAdapter(Context context, List<LocalTime> time_lines) {
         this.time_lines = time_lines;
         this.context = context;
@@ -27,11 +28,13 @@ public class BusStopTimeLineAdapter extends RecyclerView.Adapter<BusStopTimeLine
     @NonNull
     @Override
     public TimeLineHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+//        inflate time_line layout
         return new TimeLineHolder(LayoutInflater.from(context).inflate(R.layout.time_line, parent, false));
     }
 
     @Override
     public void onBindViewHolder(@NonNull TimeLineHolder holder, int position) {
+//        set text cho btn_time
         holder.btn_time.setText(Support.timeToString(time_lines.get(position)));
         holder.btn_time.setOnClickListener(v -> {
 

@@ -7,15 +7,17 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
-import android.widget.FrameLayout;
-
-import java.util.List;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.EditText;
 
 import hcmute.nhom16.busmap.R;
-import hcmute.nhom16.busmap.Support;
-import hcmute.nhom16.busmap.model.Route;
+import hcmute.nhom16.busmap.data.RouteDAO;
 
+//Route activity gồm một list các tuyến xe buýt và có thanh tìm kiếm
 public class RouteActivity extends AppCompatActivity {
+    EditText edt_route;
+    RouteListFragment fragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,11 +34,35 @@ public class RouteActivity extends AppCompatActivity {
     }
 
     private void initListener() {
+//        Bắt sự kiện change text và với mỗi text thay đổi thì sẽ gọi hàm filterRoute
+        edt_route.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                filterRoute(editable.toString());
+            }
+        });
+    }
+
+//    Hàm này lấy key được nhận vào ở thanh tìm kiếm và gọi -> fragment -> adapter để lọc các route phù hợp
+    private void filterRoute(String key) {
+        fragment.filterRoute(key);
     }
 
     private void initUI() {
+        edt_route = findViewById(R.id.edt_route);
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.add(R.id.fm_routes, new RouteListFragment(getAllRoutes()));
+        fragment = new RouteListFragment(RouteDAO.getAllRoutes(this));
+        transaction.add(R.id.fm_routes, fragment);
         transaction.commit();
     }
 
@@ -44,9 +70,5 @@ public class RouteActivity extends AppCompatActivity {
     public boolean onSupportNavigateUp() {
         onBackPressed();
         return true;
-    }
-
-    private List<Route> getAllRoutes() {
-        return Support.getAllRoutes(this);
     }
 }

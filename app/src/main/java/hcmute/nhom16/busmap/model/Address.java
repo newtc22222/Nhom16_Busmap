@@ -1,7 +1,11 @@
 package hcmute.nhom16.busmap.model;
 
 import java.io.Serializable;
+import java.util.Objects;
 
+import hcmute.nhom16.busmap.Support;
+
+//Address chỉ gồm tên địa chỉ, và tọa độ kinh độ vĩ độ của nó
 public class Address implements Serializable {
     private String address;
     private double lat, lng;
@@ -18,6 +22,10 @@ public class Address implements Serializable {
 
     public String getAddress() {
         return address;
+    }
+
+    public String getAddress(int max) {
+        return Support.toStringEllipsis(address, max);
     }
 
     public void setAddress(String address) {
@@ -38,5 +46,27 @@ public class Address implements Serializable {
 
     public void setLng(double lng) {
         this.lng = lng;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Address address1 = (Address) o;
+        return lat == lat && lng == lng && address.equals(address1.address);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(address, lat, lng);
+    }
+
+    @Override
+    public String toString() {
+        return "Address{" +
+                "address='" + address + '\'' +
+                ", lat=" + lat +
+                ", lng=" + lng +
+                '}';
     }
 }

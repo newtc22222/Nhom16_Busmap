@@ -63,8 +63,8 @@
         android:id="@+id/rl_main"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="2dp"
         android:layout_marginHorizontal="32dp"
+        android:layout_marginTop="2dp"
         android:layout_marginBottom="8dp">
 
         <TextView
@@ -75,42 +75,18 @@
             android:layout_marginEnd="8dp"
             android:fontFamily="@font/quicksand_bold"
             android:paddingVertical="8dp"
-            android:text="53"
             android:textColor="@color/primary_600"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            />
 
         <TextView
             android:id="@+id/tv_name"
+            android:textSize="16sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_toRightOf="@id/tv_route"
-            android:maxLength="38"
-            android:paddingVertical="8dp"
-            android:text="Bến xe Chợ Lớn" />
-
-        <LinearLayout
-            android:id="@+id/detail"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:layout_marginTop="4dp"
-            android:layout_toRightOf="@id/tv_name"
-            android:background="@drawable/corner_5"
-            android:backgroundTint="@color/primary_600"
-            android:gravity="center"
-            android:layout_centerVertical="true"
-            android:insetTop="4dp"
-            android:orientation="vertical"
-            android:padding="4dp"
-            android:visibility="invisible">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/detail"
-                android:textColor="@color/secondary_900"
-                android:textSize="12dp" />
-        </LinearLayout>
+            android:layout_toEndOf="@id/tv_route"
+            android:paddingVertical="8dp" />
     </RelativeLayout>
 
     <View

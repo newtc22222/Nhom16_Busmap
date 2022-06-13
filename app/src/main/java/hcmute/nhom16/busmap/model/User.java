@@ -7,6 +7,7 @@ import java.util.Date;
 
 import hcmute.nhom16.busmap.Support;
 
+//Lớp user gồm tất cả các thông tin của người dùng
 public class User {
     private final String email;
     private final String password;
@@ -36,9 +37,7 @@ public class User {
     }
 
     public void setImage(byte[] image) {
-        if (image != null) {
-            this.image = image;
-        }
+        this.image = image;
     }
 
     public String getName() {
@@ -79,12 +78,12 @@ public class User {
 
     public ContentValues getContentValuesForInsert() {
         ContentValues contentValues = new ContentValues();
+        contentValues.put("email", email);
+        contentValues.put("password", password);
         contentValues.put("name", name);
         contentValues.put("phone", phone);
         contentValues.put("gender", gender ? 0 : 1);
         contentValues.put("date_of_birth", Support.dateToString(date_of_birth, "dd/MM/yyyy"));
-        contentValues.put("email", email);
-        contentValues.put("password", password);
         contentValues.put("image", image);
         return contentValues;
     }
@@ -102,7 +101,7 @@ public class User {
     @Override
     public String toString() {
         return this == null ? "null" : "User{" +
-                "email='" + email + '\'' +
+                ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
                 ", name='" + name + '\'' +
                 ", phone='" + phone + '\'' +

@@ -2,6 +2,7 @@ package hcmute.nhom16.busmap.model;
 
 import java.util.Date;
 
+//Notification chứa các trường là title, description, time, image, content
 public class Notification {
     private String title, description;
     private Date time;

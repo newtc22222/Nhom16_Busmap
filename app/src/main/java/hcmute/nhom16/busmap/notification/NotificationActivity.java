@@ -15,12 +15,14 @@ import hcmute.nhom16.busmap.Support;
 import hcmute.nhom16.busmap.model.Notification;
 
 public class NotificationActivity extends AppCompatActivity {
+//    Recycler View hiển thị list các notification
     RecyclerView rv_notifications;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notification);
+//        set toolbar và set title là thông báo
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -28,12 +30,9 @@ public class NotificationActivity extends AppCompatActivity {
         getSupportActionBar().setTitle(R.string.notification_text);
 
         initUI();
-        initListener();
     }
 
-    private void initListener() {
-    }
-
+//    Đổ data vào notification adapter
     private void initUI() {
         rv_notifications = findViewById(R.id.rv_notifications);
         NotificationAdapter adapter = new NotificationAdapter(this, getNotifications());

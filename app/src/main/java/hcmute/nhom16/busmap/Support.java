@@ -2,8 +2,8 @@ package hcmute.nhom16.busmap;
 
 import android.content.Context;
 import android.icu.text.SimpleDateFormat;
-import android.util.Log;
 
+import java.text.Normalizer;
 import java.text.ParseException;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
@@ -17,37 +17,37 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import hcmute.nhom16.busmap.config.LevelExtend;
+import hcmute.nhom16.busmap.config.Speed;
 import hcmute.nhom16.busmap.data.BusStopDAO;
 import hcmute.nhom16.busmap.data.RouteDAO;
-import hcmute.nhom16.busmap.data.SavedRouteDAO;
-import hcmute.nhom16.busmap.data.SavedStationDAO;
 import hcmute.nhom16.busmap.data.StationDAO;
-import hcmute.nhom16.busmap.data.UserDAO;
 import hcmute.nhom16.busmap.model.Address;
 import hcmute.nhom16.busmap.model.BusDistance;
-import hcmute.nhom16.busmap.model.BusStop;
-import hcmute.nhom16.busmap.model.BusStopGuide;
 import hcmute.nhom16.busmap.model.BusStopRaw;
 import hcmute.nhom16.busmap.model.Result;
 import hcmute.nhom16.busmap.model.ResultRoute;
-import hcmute.nhom16.busmap.model.Route;
-import hcmute.nhom16.busmap.model.RouteGuide;
 import hcmute.nhom16.busmap.model.Station;
-import hcmute.nhom16.busmap.model.User;
-import hcmute.nhom16.busmap.model.UserAccount;
-import hcmute.nhom16.busmap.result.MoveType;
+import hcmute.nhom16.busmap.config.MoveType;
 
 public class Support {
-
+//    hàm chuyển chuỗi từ nhiều ký tự sang dạng ...
+//    Ví dụ từ "Đại học Sư phạm Kỹ thuật Thành phố Hồ Chí Minh"
+//    => Đại học Sư phạm Kỹ thuật...
+    public static String toStringEllipsis(String str, int max) {
+        if (str.length() <= max) {
+            return str;
+        } else {
+            return str.substring(0, max - 3) + "...";
+        }
+    }
+//    Hàm chuyển từ kiểu dữ liệu date sang string với format được nhập vào
     public static String dateToString(Date date, String fm) {
         SimpleDateFormat format = new SimpleDateFormat(fm);
         return format.format(date);
     }
 
-    public static LocalTime stringToLocalTime(String time, String fm) {
-        return LocalTime.parse(time, DateTimeFormatter.ofPattern(fm));
-    }
-
+//    Hàm chuyển từ kiểu dữ liệu string sang util.date với format được nhập vào
     public static Date stringToDate(String date, String fm) {
         SimpleDateFormat format = new SimpleDateFormat(fm);
         Date dt = new Date();
@@ -59,11 +59,30 @@ public class Support {
         return dt;
     }
 
+//    Hàm chuyển tiếng việt có dấu sang tiếng việt không dấu
+    public static String covertToString(String value) {
+        try {
+            String temp = Normalizer.normalize(value, Normalizer.Form.NFD);
+            Pattern pattern = Pattern.compile("\\p{InCombiningDiacriticalMarks}+");
+            return pattern.matcher(temp).replaceAll("");
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return null;
+    }
+
+//    Hàm chuyển từ kiểu dữ liệu string sang localtime với format được nhập vào
+    public static LocalTime stringToLocalTime(String time, String fm) {
+        return LocalTime.parse(time, DateTimeFormatter.ofPattern(fm));
+    }
+
+//    Hàm chuyển từ kiểu dữ liệu localtime sang string với format được nhập vào
     public static String timeToString(LocalTime time) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
         return time.format(formatter);
     }
 
+//    Hàm chuyển đổi thành tiền (VND)
     public static String toCurrency(int price) {
         String currency = "";
         int count = 0;
@@ -77,7 +96,9 @@ public class Support {
         }
         return currency + " VND";
     }
-
+//    Hàm lấy một iterator level quét các điểm xung quanh của vị trí đang xét
+//    Được dùng khi cải tiến thuật toán lên
+//    Hiện tại chưa sử dụng
     private static Iterator<Integer> getLevelList() {
         List<Integer> level = new ArrayList<>();
         level.add(LevelExtend.MIN);
@@ -88,76 +109,26 @@ public class Support {
         return level.iterator();
     }
 
+//    Hàm check email có hợp lệ hay không bằng regex
+//    Email hợp lệ là email bắt đầu bằng chữ cái,
+//    tiếp theo có thể là số hoặc chữ và cuối cùng là @gmail.com
+//    Có thể nâng cấp regex
     public static boolean checkInvalidEmail(String email) {
-        Pattern pattern = Pattern.compile("^[a-zA-Z]+\\w*@gmail.com$");
+        Pattern pattern = Pattern.compile("^[a-zA-Z]+(\\w*[a-zA-Z]*)*@gmail.com$");
         Matcher matcher = pattern.matcher(email);
         return matcher.find();
     }
 
+//    Hàm check password hợp lệ
+//    Regex ở dưới sẽ match với chuỗi có độ dài từ 8 đến 20
+//    Và phải chứa các số, chữ thường, chữ hoa
     public static boolean checkInvalidPassword(String password) {
-        return password.length() > 8;
+        Pattern pattern = Pattern.compile("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{8,20}$");
+        Matcher matcher = pattern.matcher(password);
+        return matcher.find();
     }
 
-    public static List<Route> getAllRoutes(Context context) {
-        return RouteDAO.getAllRoutes(context);
-    }
-
-    public static List<BusStop> getAllBusStopFromRouteId(Context context, String route_id) {
-        return BusStopDAO.getBusStopsByRouteId(context, route_id);
-    }
-
-    public static List<Route> getRoutesFromStation(Context context, Station station) {
-        return getAllRoutes(context);
-    }
-
-    public static List<Station> getSavedStations(Context context) {
-        User user = UserAccount.getUser();
-        if (user != null) {
-            return SavedStationDAO.getSavedStationsByUserId(context, user.getEmail());
-        }
-        return new ArrayList<>();
-    }
-
-    public static List<Route> getSavedRoutes(Context context) {
-        User user = UserAccount.getUser();
-        if (user != null) {
-            return SavedRouteDAO.getSavedRoutesByUserID(context, user.getEmail());
-        }
-        return new ArrayList<>();
-    }
-
-    public static void unSaveStation(Context context, int station_id) {
-        User user = UserAccount.getUser();
-        if (user != null) {
-            String email = user.getEmail();
-            SavedStationDAO.deleteSavedStation(context, email, station_id);
-        }
-    }
-
-    public static void saveStation(Context context, int station_id) {
-        User user = UserAccount.getUser();
-        if (user != null) {
-            String email = user.getEmail();
-            SavedStationDAO.insertSavedStation(context, email, station_id);
-        }
-    }
-
-    public static void saveRoute(Context context, String route_id) {
-        User user = UserAccount.getUser();
-        if (user != null) {
-            String email = user.getEmail();
-            SavedRouteDAO.insertSavedRoute(context, email, route_id);
-        }
-    }
-
-    public static void unSaveRoute(Context context, String route_id) {
-        User user = UserAccount.getUser();
-        if (user != null) {
-            String email = user.getEmail();
-            SavedRouteDAO.insertSavedRoute(context, email, route_id);
-        }
-    }
-
+//    Hàm tính khoảng cách giữa 2 điểm bất kỳ
     public static int calculateDistance(Address a, Address b) {
         if (a == null || b == null) {
             return -1;
@@ -167,6 +138,10 @@ public class Support {
         return (int) Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2));
     }
 
+//    Hàm chuyển đổi khoảng cách thành thời gian
+//    Với đầu vào là khoảng cách và cách di chuyển
+//    Cách di chuyển bằng bus, hay walk được định nghĩa trong package config trong lớp Speed
+//    Thời gian bằng quãng đường chia vận tốc
     public static String distanceToTime(int meter, MoveType type) {
         if (meter == -1) {
             return "";
@@ -184,124 +159,52 @@ public class Support {
         return result + " phút";
     }
 
-    public static boolean checkAccountExists(Context context, String email) {
-        return UserDAO.checkExist(context, email);
-    }
-
-    public static User getUser(Context context, String email, String password) {
-        if (checkAccountExists(context, email)) {
-            return UserDAO.getUser(context, email, password);
-        }
-        return null;
-    }
-
-    public static void register(Context context, User user) {
-        UserDAO.createUser(context, user);
-    }
-
-    public static void updateUser(Context context, User user) {
-        UserDAO.updateUser(context, user);
-    }
-
+//    Hàm chuyển từ mét là integer sang km là string
     public static String toKilometerString(int meter) {
         double k = meter / 1000.0;
         return k + "km";
     }
 
+//    Hàm chuyển từ mét là integer sang mét là string
     public static String toMeterString(int meter) {
         return meter + " mét";
     }
 
+//    Hàm tính giời gian di chuyển trong một khoảng meter với vận tốc là speed đầu vào
     public static int calculateTimePass(int meter, int speed) {
         return meter / speed;
     }
 
+//    Chuyển đổi thì mét sang độ
     public static double convertMeterToDegree(int meter) {
         return meter / 111000.0;
     }
 
+//    Chuyển đổi từ độ sang mét
     public static int convertDegreeToMeter(double degree) {
         return (int) degree * 111000;
     }
 
-    public static List<LocalTime> getAllBusStopTimeLinesFromRoute(Context context, Route route) {
-        List<LocalTime> time_lines = new ArrayList<>();
-        String s = route.getOperation_time().split(" -")[0];
-        time_lines.add(stringToLocalTime(s, "HH:mm"));
-        for (int i = 1; i < route.getPer_day(); i++) {
-            time_lines.add(time_lines.get(i - 1).plusMinutes(route.getRepeat_time()));
-        }
-        return time_lines;
-    }
+//    Lý do của việc đem thuật toán ra đây là để khi nào cập nhật thuật toán thì chỉ cần mở file này lên edit
 
-    public static List<RouteGuide> getRouteGuides(Context context, Result result, Address from, Address to) {
-        List<RouteGuide> routeGuides = new ArrayList<>();
-
-        routeGuides.add(new RouteGuide("Đi đến " + result.getResult_routes().get(0).getBusStop_start().getStation().getName(),
-                "Xuất phát từ " + from.getAddress(),
-                MoveType.WALK, result.getWalk_distance_start(), ""));
-
-        String preAddress = null;
-
-        for (ResultRoute resultRoute : result.getResult_routes()) {
-            if (preAddress != null) {
-                routeGuides.add(new RouteGuide( preAddress + " - " + resultRoute.getBusStop_start().getStation().getName(),
-                        "Đi xuống " + preAddress + " - " + " Đi lên " + resultRoute.getBusStop_start().getStation().getName(),
-                        MoveType.WALK,0, ""));
-            }
-
-            preAddress = resultRoute.getBusStop_end().getStation().getName();
-
-            routeGuides.add(new RouteGuide("Đi tuyến " + resultRoute.getRoute().getId() + ": " +
-                resultRoute.getRoute().getName(), resultRoute.getBusStop_start().getStation().getName() + " - " +
-                resultRoute.getBusStop_end().getStation().getName(), MoveType.BUS, result.getBus_distance(),
-                resultRoute.getRoute().getMoney()));
-        }
-
-        routeGuides.add(new RouteGuide("Đi xuống " + result.getResult_routes().get(result.getResult_routes().size() - 1).getBusStop_end().getStation().getName(),
-                "Đi đến " + to.getAddress(), MoveType.WALK,
-                result.getWalk_distance_end(), ""));
-
-        return routeGuides;
-    }
-
-    public static List<BusStopGuide> getBusStopGuides(Context context, Result result, Address from, Address to) {
-        List<BusStopGuide> busStopGuides = new ArrayList<>();
-
-        busStopGuides.add(new BusStopGuide("", from.getAddress(), MoveType.WALK, from));
-
-        for (ResultRoute resultRoute : result.getResult_routes()) {
-            int s = resultRoute.getBusStop_start().getOrder(), e = resultRoute.getBusStop_end().getOrder();
-            for (BusStop busStop : BusStopDAO.getBusStopsFromRouteIdAndOrder(context, resultRoute.getRoute().getId(), s, e)) {
-
-                busStopGuides.add(new BusStopGuide(busStop.getRoute_id(), busStop.getStation().getName(),
-                        MoveType.BUS, busStop.getStation().getAddress()));
-
-            }
-        }
-
-        busStopGuides.add(new BusStopGuide("", to.getAddress(), MoveType.WALK, to));
-
-        return busStopGuides;
-    }
-
-    public static int compare(Result x, Result y) {
-        return 0;
-    }
-
-
+//  Hàm này tính kết quả từ điểm đến, điểm đi và số lượng tuyến đi qua
+//  Đầu tiên lấy các station xung quanh của cả 2 điểm, sau đó tính ra các tuyến đi qua gần 2 điểm đó
+//  Cuối cùng thì chr cần tìm tuyến nàm trong 2 list
     public static List<Result> calculateResults(Context context, Address from, Address to, int route_amount) {
         List<Result> results = new ArrayList<>();
 
+//        Lấy một list các stations xung quanh điểm bắt đầu
         List<Station> starts = StationDAO.getStationsAround(context,
                 from.getLat(), from.getLng(), convertMeterToDegree(2000));
-
+//        Tương tự, lấy một list các stations xung quanh điểm đến
         List<Station> ends = StationDAO.getStationsAround(context,
                 to.getLat(), to.getLng(), convertMeterToDegree(2000));
 
+//        Gọi hàm calculate phía dưới để tính ra 2 dictionary chứa các route đi qua gần 2 điểm này
         Dictionary<String, BusDistance> dictionary_starts = calculate(context, starts, from);
         Dictionary<String, BusDistance> dictionary_ends = calculate(context, ends, to);
 
+//        Cuối cùng tìm điểm
         Enumeration<String> enumeration = dictionary_starts.keys();
 
         while (enumeration.hasMoreElements()) {
@@ -321,20 +224,36 @@ public class Support {
         return results;
     }
 
+//    Hàm nhận đầu vào là một list các stations và một địa điểm
+   /* Hàm duyệt qua tất cả các stations và lần lượt lấy được tất cá các bus_stop_raw
+     Sau đó ta kiểm tra trong dictionary kết quả xem có đã có chứa route mà bus_stop_raw đang chứa hay không
+     Nếu chưa thì add một item của dictionary
+     Nếu rồi thì ta sẽ kiểm tra xem khoảng cách của station đó có bé hơn khoảng cách của station cũ hay không để cập nhật */
+   /* bus_stop_raw cũng giống như là bus_stop nhưng bus_stop_raw
+    chỉ chứa các giá trị như trong database chứ không load thêm data.
+    Chẳng hạn BusStop sẽ chứa các Station nhưng BusStopRaw chỉ chứa station_id...
+    */
     public static Dictionary<String, BusDistance> calculate(Context context, List<Station> stations, Address address) {
-
+//        dictionary có key là route_id và values là BusDistance
+//        BusDistance chứa bus_stop_raw và khoảng cách từ điểm xét đến station
         Dictionary<String, BusDistance> dictionary = new Hashtable<>();
 
         BusDistance busDistance;
-
+//        Duyệt toàn bộ stations
         for (Station station : stations) {
+//            Tính ra distance và lấy được một list các bus_stop_raw
             int distance = calculateDistance(address, station.getAddress());
             List<BusStopRaw> raws = BusStopDAO.getBusStopRawFromStationId(context, station.getId());
+//            Duyệt qua hết bus stop raw
             for (BusStopRaw raw : raws) {
+//                Check xem route_id của bus stop raw đã tồn tại trong dictionary chưa
                 busDistance = dictionary.get(raw.getRoute_id());
                 if (busDistance == null) {
+//                Nếu chưa thì thêm vào dictionary
                     dictionary.put(raw.getRoute_id(), new BusDistance(raw, distance));
                 } else {
+//                    Nếu đã có rồi thì so sánh khoảng cách của bustop mới có gần hơn không
+//                    Nếu gần hơn thì cập nhật value
                     if (busDistance.getDistance() > distance) {
                         dictionary.put(raw.getRoute_id(), new BusDistance(raw, distance));
                     }

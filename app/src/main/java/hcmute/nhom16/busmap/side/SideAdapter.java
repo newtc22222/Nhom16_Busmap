@@ -17,6 +17,8 @@ import java.util.List;
 import hcmute.nhom16.busmap.R;
 import hcmute.nhom16.busmap.model.Side;
 
+// side adapter kế thừ recyclerview và vừa implement spinner adapter
+// vì spinner không cho phép set adapter là recyclerview nên phải implement và override các method
 public class SideAdapter extends RecyclerView.Adapter<SideAdapter.SideHolder> implements SpinnerAdapter {
     private List<Side> sides;
     private Context context;

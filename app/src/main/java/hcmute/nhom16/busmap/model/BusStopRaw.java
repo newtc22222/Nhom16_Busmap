@@ -1,5 +1,7 @@
 package hcmute.nhom16.busmap.model;
 
+//Busstop raw chỉ load data từ sqlite lên, không thực hiện chuyển đổi
+// station_id hay route_id thành object
 public class BusStopRaw {
     private String route_id;
     private int station_id;

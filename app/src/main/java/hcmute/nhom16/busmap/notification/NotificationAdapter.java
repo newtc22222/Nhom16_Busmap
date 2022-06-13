@@ -21,6 +21,7 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
     List<Notification> notifications;
     Context context;
 
+//    adapter nhận đầu vào là context và list notification
     public NotificationAdapter(Context context, List<Notification> notifications) {
         this.context = context;
         this.notifications = notifications;
@@ -31,7 +32,7 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
     public NotificationHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         return new NotificationHolder(LayoutInflater.from(context).inflate(R.layout.notification, parent, false));
     }
-
+//  Nhét dữ liệu vào cho các item
     @Override
     public void onBindViewHolder(@NonNull NotificationHolder holder, int position) {
         holder.tv_title.setText(notifications.get(position).getTitle());
@@ -50,6 +51,7 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
         return notifications.size();
     }
 
+//    holder cho notification
     public class NotificationHolder extends RecyclerView.ViewHolder {
         public ImageView iv_icon;
         public TextView tv_title, tv_description, tv_time;

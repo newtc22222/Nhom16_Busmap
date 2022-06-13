@@ -12,6 +12,7 @@ import hcmute.nhom16.busmap.model.Station;
 import hcmute.nhom16.busmap.route.RouteListFragment;
 import hcmute.nhom16.busmap.station.StationListFragment;
 
+//SaveStateAdapter là adapter cho viewpager2
 public class SavedStateAdapter extends FragmentStateAdapter {
     List<Route> routes;
     List<Station> stations;
@@ -25,6 +26,7 @@ public class SavedStateAdapter extends FragmentStateAdapter {
     @Override
     public Fragment createFragment(int position) {
         switch (position) {
+//                2 fragment là route list và station list
             case 0:
                 return new RouteListFragment(routes);
             case 1:

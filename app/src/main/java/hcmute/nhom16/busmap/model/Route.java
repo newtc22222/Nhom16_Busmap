@@ -6,6 +6,7 @@ import java.io.Serializable;
 
 import hcmute.nhom16.busmap.Support;
 
+//Route được load từ sqlite lên, với những id station thì sẽ được chuyển đổi thành object
 public class Route implements Serializable {
     private String id;
     private Station start_station;
@@ -32,6 +33,17 @@ public class Route implements Serializable {
         this.repeat_time = repeat_time;
         this.per_day = per_day;
         this.distance = distance;
+    }
+
+    public String getName(int max) {
+        String name_1 = start_station.getName();
+        String name_2 = end_station.getName();
+        String name = name_1 + " - " + name_2;
+        if (name.length() > max) {
+            name = Support.toStringEllipsis(name_1, (max - 3) / 2)
+            + " - " + Support.toStringEllipsis(name_2, max - (max - 3) / 2);
+        }
+        return name;
     }
 
     public String getName() {

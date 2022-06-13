@@ -1,7 +1,14 @@
 package hcmute.nhom16.busmap.model;
 
-import hcmute.nhom16.busmap.result.MoveType;
+import hcmute.nhom16.busmap.Support;
+import hcmute.nhom16.busmap.config.MoveType;
 
+//Bus stop guide là lớp để chứa thông tin hướng dẫn cách đi giữa các trạm
+//route_id để biết nó thuộc route nào
+//name cho biết tên của trạm
+//movetype cho biết là đến trạm đó người dùng đi bộ hay đi xe buýt,
+// chẳng hạn như từ điểm bắt đầu đến trạm đầu tiên thì người dùng đi bộ
+//address là địa chỉ của busstop đó
 public class BusStopGuide {
     private String route_id = "";
 //    Tên của bus_stop với tên của address khác nhau
@@ -34,6 +41,10 @@ public class BusStopGuide {
 
     public String getName() {
         return name;
+    }
+
+    public String getName(int max) {
+        return Support.toStringEllipsis(name, max);
     }
 
     public void setName(String name) {

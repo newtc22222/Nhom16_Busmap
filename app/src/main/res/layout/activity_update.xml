@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".UpdateActivity"
+    tools:context=".feedback.UpdateActivity"
     android:orientation="vertical">
 
     <androidx.appcompat.widget.Toolbar
@@ -31,8 +31,7 @@
         android:textSize="36sp"
         android:textColor="@color/primary_600"
         android:layout_gravity="center_horizontal"
-        android:fontFamily="@font/quicksand_bold"
-        android:text="01/05/2022"/>
+        android:fontFamily="@font/quicksand_bold"/>
 
     <ProgressBar
         android:id="@+id/pgb_update"
@@ -52,6 +51,7 @@
         android:layout_gravity="center_horizontal"/>
 
     <Button
+        android:textColor="@color/secondary_900"
         android:layout_marginTop="16dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

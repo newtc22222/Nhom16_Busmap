@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".FindRoadActivity">
+    tools:context=".result.FindRoadActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:theme="@style/ToolbarLight"
@@ -96,11 +96,12 @@
             </LinearLayout>
 
             <ImageButton
+                android:layout_marginTop="-20dp"
+                android:layout_below="@id/ll_from"
                 android:id="@+id/ib_swap"
                 android:layout_width="40dp"
-                android:layout_height="35dp"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
+                android:layout_height="38dp"
+                android:layout_alignParentEnd="true"
                 android:background="@drawable/corner_left_10"
                 android:backgroundTint="@color/primary_600"
                 android:src="@drawable/ic_swap"
@@ -125,5 +126,10 @@
             app:backgroundTint="@color/secondary_900"
             android:background="@drawable/corner_30"/>
     </LinearLayout>
+    <fragment
+        android:id="@+id/fm_map"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 
 </LinearLayout>

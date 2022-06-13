@@ -3,10 +3,13 @@ package hcmute.nhom16.busmap.model;
 import java.io.Serializable;
 import java.util.List;
 
-import hcmute.nhom16.busmap.Speed;
+import hcmute.nhom16.busmap.config.Speed;
 import hcmute.nhom16.busmap.Support;
-import hcmute.nhom16.busmap.result.MoveType;
+import hcmute.nhom16.busmap.config.MoveType;
 
+// Result là kết quả tính được ban đầu khi tìm tuyến đường
+// từ result thì ta tính được route guide và busstop guide
+// Một result có thể phải đi qua nhiều trạm, nên result sẽ chứa một list các result route
 public class Result implements Serializable {
     private List<ResultRoute> result_routes;
     private int walk_distance_start, walk_distance_end, bus_distance,
@@ -18,6 +21,10 @@ public class Result implements Serializable {
         this.walk_distance_start = walk_distance_start;
         this.walk_distance_end = walk_distance_end;
 
+//        timepass và price là giá trị ta phải tính
+//        với timepass thì được tính như sau:
+//        thời gian ngồi xe + thời gian đợi tuyến + thời gian đi bộ
+//        với price thì ta chỉ cần tính tổng giá tiền của các tuyến lại với nhau
         time_pass = 0;
         price = 0;
         for (ResultRoute resultRoute : result_routes) {
@@ -97,9 +104,5 @@ public class Result implements Serializable {
 
     public void setResult_routes(List<ResultRoute> result_routes) {
         this.result_routes = result_routes;
-    }
-
-    public int compare(Result result) {
-        return Support.compare(this, result);
     }
 }

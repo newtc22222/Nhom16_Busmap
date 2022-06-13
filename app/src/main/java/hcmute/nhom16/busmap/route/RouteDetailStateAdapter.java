@@ -6,21 +6,20 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
 import java.time.LocalTime;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
-import hcmute.nhom16.busmap.OnBusStopListener;
-import hcmute.nhom16.busmap.Support;
+import hcmute.nhom16.busmap.listener.OnBusStopListener;
 import hcmute.nhom16.busmap.bus_stop.BusStopListFragment;
 import hcmute.nhom16.busmap.model.BusStop;
 import hcmute.nhom16.busmap.model.Route;
 
+//Route detail state là adapter có 2 fragment là list bus stop và route info
 public class RouteDetailStateAdapter extends FragmentStateAdapter {
     Route route;
     List<BusStop> busStops;
     List<LocalTime> localTimes;
     OnBusStopListener listener;
+
     public RouteDetailStateAdapter(@NonNull FragmentActivity fragmentActivity, Route route
     , List<BusStop> busStops, List<LocalTime> localTimes, OnBusStopListener listener) {
         super(fragmentActivity);
@@ -35,6 +34,7 @@ public class RouteDetailStateAdapter extends FragmentStateAdapter {
     public Fragment createFragment(int position) {
         switch (position) {
             case 0:
+//                Với bus stop list gồm 2 list là bus stop và timeline
                 return new BusStopListFragment(busStops, localTimes, true, listener);
             case 1:
                 return new RouteInfoFragment(route);

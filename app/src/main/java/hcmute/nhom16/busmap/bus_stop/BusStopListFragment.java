@@ -1,7 +1,6 @@
 package hcmute.nhom16.busmap.bus_stop;
 
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,10 +12,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.time.LocalTime;
-import java.util.ArrayList;
 import java.util.List;
 
-import hcmute.nhom16.busmap.OnBusStopListener;
+import hcmute.nhom16.busmap.listener.OnBusStopListener;
 import hcmute.nhom16.busmap.R;
 import hcmute.nhom16.busmap.model.BusStop;
 
@@ -35,6 +33,8 @@ public class BusStopListFragment extends Fragment {
         this.order = order;
     }
 
+//    fragment được khởi tạo bởi list bus_stops, time_lines, order (cho biết là có sắp xếp các bus_stops theo thứ tự hay không)
+//    và một listener là OnBusStopListener để khi click vào một item thì ta sẽ gọi đến activity để thay đổi map
     public BusStopListFragment(List<BusStop> bus_stops, List<LocalTime> time_lines,
                                boolean order, OnBusStopListener listener) {
         this.bus_stops = bus_stops;
@@ -47,8 +47,10 @@ public class BusStopListFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_2_linear, container, false);
+//        Tiến hành nạp data vào 2 adapter cho 2 recycler view
         if (bus_stops != null && bus_stops.size() > 0) {
             RecyclerView rv_linear_2 = view.findViewById(R.id.rv_linear_2);
+//            Ta truyền listener vào adapter để khi click vào item thì nó sẽ cập nhật map ở activity
             BusStopAdapter adapter_2 = new BusStopAdapter(getContext(), bus_stops, order, listener);
             rv_linear_2.setAdapter(adapter_2);
             rv_linear_2.setLayoutManager(new LinearLayoutManager(getContext()));

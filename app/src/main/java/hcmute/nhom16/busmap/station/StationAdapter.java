@@ -16,7 +16,10 @@ import java.util.List;
 
 import hcmute.nhom16.busmap.R;
 import hcmute.nhom16.busmap.Support;
+import hcmute.nhom16.busmap.data.SavedStationDAO;
 import hcmute.nhom16.busmap.model.Station;
+import hcmute.nhom16.busmap.model.User;
+import hcmute.nhom16.busmap.model.UserAccount;
 
 public class StationAdapter extends RecyclerView.Adapter<StationAdapter.StationHolder> {
     private Context context;
@@ -24,6 +27,7 @@ public class StationAdapter extends RecyclerView.Adapter<StationAdapter.StationH
     private StationHolder preHolder = null;
     private boolean order = false;
 
+//    StationAdapter nhận vào là context và list stations
     public StationAdapter(Context context, List<Station> stations) {
         this.stations = stations;
         this.context = context;
@@ -37,7 +41,7 @@ public class StationAdapter extends RecyclerView.Adapter<StationAdapter.StationH
 
     @Override
     public void onBindViewHolder(@NonNull StationHolder holder, int position) {
-        holder.tv_name.setText(stations.get(position).getName());
+        holder.tv_name.setText(stations.get(position).getName(32));
 
         holder.itemView.setOnClickListener(v -> {
             holder.detail.setVisibility(View.VISIBLE);
@@ -58,17 +62,18 @@ public class StationAdapter extends RecyclerView.Adapter<StationAdapter.StationH
         });
     }
 
+
     private void unSaveStation(int position) {
-        Support.unSaveStation(context, stations.get(position).getId());
+        User user = UserAccount.getUser();
+        if (user != null) {
+            String email = user.getEmail();
+            SavedStationDAO.deleteSavedStation(context, email, stations.get(position).getId());
+        }
         stations.remove(position);
         notifyItemRemoved(position);
     }
 
-    @Override
-    public int getItemViewType(int position) {
-        return position;
-    }
-
+//    onDetailClick sẽ chuyển hướng đến staton activity
     private void onDetailClick(int position) {
         Intent intent = new Intent(context, StationActivity.class);
         intent.putExtra("station", stations.get(position));
@@ -76,10 +81,15 @@ public class StationAdapter extends RecyclerView.Adapter<StationAdapter.StationH
     }
 
     @Override
+    public int getItemViewType(int position) {
+        return position;
+    }
+
+    @Override
     public int getItemCount() {
         return stations == null ? 0 : stations.size();
     }
-
+//  holder của recycler view
     public class StationHolder extends RecyclerView.ViewHolder {
         TextView tv_name;
         ImageButton ib_delete;
