@@ -16,7 +16,7 @@ import java.util.List;
 import hcmute.nhom16.busmap.R;
 import hcmute.nhom16.busmap.config.MoveType;
 import hcmute.nhom16.busmap.listener.OnRouteListener;
-import hcmute.nhom16.busmap.model.RouteGuide;
+import hcmute.nhom16.busmap.component.RouteGuide;
 
 //ResultBusStopGuideAdapter là adapter để hiện thị list các routes guide
 public class ResultRouteGuideAdapter extends RecyclerView.Adapter<ResultRouteGuideAdapter.RouteGuideHolder> {

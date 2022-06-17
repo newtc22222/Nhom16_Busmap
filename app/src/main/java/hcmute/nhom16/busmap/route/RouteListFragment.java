@@ -16,20 +16,22 @@ import java.util.List;
 
 import hcmute.nhom16.busmap.R;
 import hcmute.nhom16.busmap.Support;
-import hcmute.nhom16.busmap.model.Route;
+import hcmute.nhom16.busmap.entities.Route;
 
 //Route list hiển thị danh sách các route
 //được sử dụng khi dùng chức năng tra cứu tuyến đường hoặc chi tiết các route đi qua station
 public class RouteListFragment extends Fragment {
     List<Route> routes;
     RouteAdapter adapter;
+    boolean saved;
 
     public RouteListFragment() {
 
     }
 
-    public RouteListFragment(List<Route> routes) {
+    public RouteListFragment(List<Route> routes, boolean saved) {
         this.routes = routes;
+        this.saved = saved;
     }
 
 //    dựa vào key thì chuyển về dạng in thường và không dấu
@@ -53,7 +55,7 @@ public class RouteListFragment extends Fragment {
         if (routes != null && routes.size() > 0) {
 //            Recycler view dùng để show list route
             RecyclerView rv_linear = view.findViewById(R.id.rv_linear);
-            adapter = new RouteAdapter(getContext(), routes);
+            adapter = new RouteAdapter(getContext(), routes, saved);
             rv_linear.setAdapter(adapter);
             rv_linear.setLayoutManager(new LinearLayoutManager(getContext()));
         };

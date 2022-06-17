@@ -8,7 +8,7 @@ import android.database.sqlite.SQLiteDatabase;
 import java.util.ArrayList;
 import java.util.List;
 
-import hcmute.nhom16.busmap.model.Route;
+import hcmute.nhom16.busmap.entities.Route;
 
 public class SavedRouteDAO {
     public static final int ROUTE_ID = 0;

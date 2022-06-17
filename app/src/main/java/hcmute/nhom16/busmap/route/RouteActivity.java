@@ -61,7 +61,7 @@ public class RouteActivity extends AppCompatActivity {
     private void initUI() {
         edt_route = findViewById(R.id.edt_route);
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        fragment = new RouteListFragment(RouteDAO.getAllRoutes(this));
+        fragment = new RouteListFragment(RouteDAO.getAllRoutes(this), false);
         transaction.add(R.id.fm_routes, fragment);
         transaction.commit();
     }

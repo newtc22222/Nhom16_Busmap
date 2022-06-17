@@ -23,7 +23,7 @@ import hcmute.nhom16.busmap.R;
 import hcmute.nhom16.busmap.Support;
 import hcmute.nhom16.busmap.data.DatabaseHelper;
 import hcmute.nhom16.busmap.data.UpdateDAO;
-import hcmute.nhom16.busmap.model.Update;
+import hcmute.nhom16.busmap.entities.Update;
 
 public class UpdateActivity extends AppCompatActivity {
     TextView tv_date, tv_percent;

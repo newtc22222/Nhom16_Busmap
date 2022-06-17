@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 import hcmute.nhom16.busmap.R;
-import hcmute.nhom16.busmap.model.Station;
+import hcmute.nhom16.busmap.entities.Station;
 
 //fragment là list các stations
 public class StationListFragment extends Fragment {

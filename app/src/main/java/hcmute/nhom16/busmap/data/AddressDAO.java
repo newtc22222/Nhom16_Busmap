@@ -7,7 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 
 import java.util.ArrayList;
 import java.util.List;
-import hcmute.nhom16.busmap.model.Address;
+import hcmute.nhom16.busmap.entities.Address;
 
 public class AddressDAO {
     public static final int ID = 0;

@@ -7,7 +7,7 @@
         android:id="@+id/rv_linear_1"
         android:layoutDirection="rtl"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="48dp"/>
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_linear_2"
         android:layout_width="match_parent"

@@ -1,6 +1,6 @@
 <resources>
 <!--  API_KEY google map  -->
-    <string name="apiKey">AIzaSyCn9klIRSWXT40zSNIF8R_e1D__sLSJNDg</string>
+    <string name="apiKey">AIzaSyBOGqG1rMs9M-Q9RW6Yq2Jy81Kiob9sXUo</string>
     <string name="app_name">Busmap</string>
     <!--    -->
     <string name="title_splash">Đồ án cuối kỳ</string>
@@ -93,6 +93,7 @@
     <!--    -->
     <string name="route_pass">Danh sách các tuyến xe đi qua</string>
     <string name="saved_toast">Đã lưu vào mục yêu thích</string>
+    <string name="deleted_toast">Đã xóa khỏi mục yêu thích</string>
     <!--  String cập nhật dữ liệu  -->
     <string name="download">TẢI</string>
     <string name="close">ĐÓNG</string>

@@ -1,6 +1,4 @@
-package hcmute.nhom16.busmap.model;
-
-import android.content.ContentValues;
+package hcmute.nhom16.busmap.entities;
 
 import java.io.Serializable;
 

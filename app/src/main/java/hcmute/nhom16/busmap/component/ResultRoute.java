@@ -1,8 +1,11 @@
-package hcmute.nhom16.busmap.model;
+package hcmute.nhom16.busmap.component;
 
 import java.io.Serializable;
 
 import hcmute.nhom16.busmap.Support;
+import hcmute.nhom16.busmap.entities.BusStop;
+import hcmute.nhom16.busmap.entities.Route;
+
 // Result route là thành phần của ressult
 // Result route mô tả thông tin cách đi trên route, trạm lên xe, trạm xuống xe
 // và khoảng cách giữa 2 trạm

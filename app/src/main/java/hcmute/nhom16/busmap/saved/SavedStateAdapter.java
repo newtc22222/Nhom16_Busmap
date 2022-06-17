@@ -7,8 +7,8 @@ import androidx.viewpager2.adapter.FragmentStateAdapter;
 
 import java.util.List;
 
-import hcmute.nhom16.busmap.model.Route;
-import hcmute.nhom16.busmap.model.Station;
+import hcmute.nhom16.busmap.entities.Route;
+import hcmute.nhom16.busmap.entities.Station;
 import hcmute.nhom16.busmap.route.RouteListFragment;
 import hcmute.nhom16.busmap.station.StationListFragment;
 
@@ -28,7 +28,7 @@ public class SavedStateAdapter extends FragmentStateAdapter {
         switch (position) {
 //                2 fragment là route list và station list
             case 0:
-                return new RouteListFragment(routes);
+                return new RouteListFragment(routes, true);
             case 1:
                 return new StationListFragment(stations);
         }

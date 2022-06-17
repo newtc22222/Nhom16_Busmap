@@ -38,7 +38,7 @@ import java.util.List;
 import hcmute.nhom16.busmap.R;
 import hcmute.nhom16.busmap.address.AddressSearchActivity;
 import hcmute.nhom16.busmap.config.AddressResultType;
-import hcmute.nhom16.busmap.model.Address;
+import hcmute.nhom16.busmap.entities.Address;
 
 public class FindRoadActivity extends AppCompatActivity implements OnMapReadyCallback {
 //    Các biến ánh xạ các view trong layout

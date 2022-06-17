@@ -10,8 +10,8 @@ import java.util.List;
 
 import hcmute.nhom16.busmap.listener.OnBusStopListener;
 import hcmute.nhom16.busmap.bus_stop.BusStopListFragment;
-import hcmute.nhom16.busmap.model.BusStop;
-import hcmute.nhom16.busmap.model.Route;
+import hcmute.nhom16.busmap.entities.BusStop;
+import hcmute.nhom16.busmap.entities.Route;
 
 //Route detail state là adapter có 2 fragment là list bus stop và route info
 public class RouteDetailStateAdapter extends FragmentStateAdapter {

@@ -17,19 +17,32 @@
             android:background="@color/primary_600"
             android:layout_width="match_parent"/>
 
-        <ImageView
-            android:id="@+id/icon_app"
-            android:layout_width="130dp"
-            android:layout_height="130dp"
-            android:layout_centerHorizontal="true"
+        <RelativeLayout
+            android:id="@+id/ll_avatar"
             android:layout_marginTop="65dp"
-            android:background="@drawable/circle"
-            android:padding="18dp"
-            android:src="@drawable/ic_bus"
-            app:tint="@color/primary_600" />
+            android:layout_centerHorizontal="true"
+            android:layout_width="130dp"
+            android:layout_height="130dp">
+
+            <ImageView
+                android:id="@+id/iv_avatar"
+                android:layout_width="130dp"
+                android:layout_height="130dp"
+                android:clipToOutline="true"
+                android:background="@drawable/circle"
+                android:backgroundTint="@color/primary_600"
+                android:padding="16dp"
+                android:src="@drawable/ic_bus" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/circle"/>
+
+        </RelativeLayout>
 
         <TextView
-            android:layout_below="@id/icon_app"
+            android:layout_below="@id/ll_avatar"
             android:layout_centerHorizontal="true"
             android:fontFamily="@font/quicksand_bold"
             android:textSize="32sp"

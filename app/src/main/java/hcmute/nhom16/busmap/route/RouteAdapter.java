@@ -13,18 +13,27 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 import hcmute.nhom16.busmap.R;
 import hcmute.nhom16.busmap.data.SavedRouteDAO;
-import hcmute.nhom16.busmap.model.Route;
-import hcmute.nhom16.busmap.model.User;
-import hcmute.nhom16.busmap.model.UserAccount;
+import hcmute.nhom16.busmap.entities.Route;
+import hcmute.nhom16.busmap.entities.User;
+import hcmute.nhom16.busmap.entities.UserAccount;
 
 public class RouteAdapter extends RecyclerView.Adapter<RouteAdapter.RouteHolder> {
     private Context context;
     private List<Route> routes;
+    private boolean saved;
+
+//    Adapter nhận vào một list route sau đó show lên
+    public RouteAdapter(Context context, List<Route> routes, boolean saved) {
+        this.context = context;
+        this.routes = routes;
+        this.saved = saved;
+    }
 
 //    Adapter nhận vào một list route sau đó show lên
     public RouteAdapter(Context context, List<Route> routes) {
         this.context = context;
         this.routes = routes;
+        this.saved = false;
     }
 
 //    Cập nhật routes mới và gọi hàm notifyDataSetChanged() để thay đổi adapter
@@ -45,9 +54,16 @@ public class RouteAdapter extends RecyclerView.Adapter<RouteAdapter.RouteHolder>
         holder.tv_name.setText(routes.get(position).getName());
         holder.tv_time.setText(routes.get(position).getOperation_time());
         holder.tv_money.setText(routes.get(position).getMoney());
-        holder.ib_saved.setOnClickListener(v -> {
-            saveRoute(position);
-        });
+        if (saved) {
+            holder.ib_saved.setBackgroundResource(R.drawable.ic_delete);
+            holder.ib_saved.setOnClickListener(v -> {
+                deleteRoute(position);
+            });
+        } else {
+            holder.ib_saved.setOnClickListener(v -> {
+                saveRoute(position);
+            });
+        }
         holder.itemView.setOnClickListener(v -> {
             toRouteDetail(position);
         });
@@ -59,13 +75,24 @@ public class RouteAdapter extends RecyclerView.Adapter<RouteAdapter.RouteHolder>
         context.startActivity(intent);
     }
 
+    private void deleteRoute(int position) {
+        User user = UserAccount.getUser();
+        if (user != null) {
+            String email = user.getEmail();
+            SavedRouteDAO.deleteSavedRoute(context, email, routes.get(position).getId());
+            routes.remove(position);
+            notifyDataSetChanged();
+        }
+        Toast.makeText(context, R.string.deleted_toast, Toast.LENGTH_SHORT).show();
+    }
+
     private void saveRoute(int position) {
         User user = UserAccount.getUser();
         if (user != null) {
             String email = user.getEmail();
             SavedRouteDAO.insertSavedRoute(context, email, routes.get(position).getId());
         }
-        Toast.makeText(context, "Đã lưu", Toast.LENGTH_SHORT).show();
+        Toast.makeText(context, R.string.saved_toast, Toast.LENGTH_SHORT).show();
     }
 
     @Override

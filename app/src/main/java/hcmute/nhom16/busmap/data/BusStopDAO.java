@@ -6,10 +6,10 @@ import android.database.sqlite.SQLiteDatabase;
 import java.util.ArrayList;
 import java.util.List;
 import hcmute.nhom16.busmap.Support;
-import hcmute.nhom16.busmap.model.Address;
-import hcmute.nhom16.busmap.model.BusStop;
-import hcmute.nhom16.busmap.model.BusStopRaw;
-import hcmute.nhom16.busmap.model.Station;
+import hcmute.nhom16.busmap.entities.Address;
+import hcmute.nhom16.busmap.entities.BusStop;
+import hcmute.nhom16.busmap.component.BusStopRaw;
+import hcmute.nhom16.busmap.entities.Station;
 
 public class BusStopDAO {
     public static final int ROUTE_ID = 0;
@@ -61,6 +61,12 @@ public class BusStopDAO {
         return bus_stops;
     }
 
+//    Lấy bus stop từ route id và station id của chúng
+    public static BusStop getBusStopFromStationIdAndRouteId(Context context, int station_id, String route_id) {
+        List<BusStop> busStops = get(context, "route_id='" + route_id + "' AND station_id=" + station_id);
+        return busStops.size() > 0 ? busStops.get(0) : null;
+    }
+
 //    Lấy bus stop từ route id và thứ tự của chúng
     public static BusStop getBusStopFromRouteIdAndOrder(Context context, String route_id, int order) {
         List<BusStop> busStops = get(context, "route_id='" + route_id + "' AND `order`=" + order);
@@ -70,11 +76,7 @@ public class BusStopDAO {
 //    hàm lấy các bus stops từ routeid và order start và order end
 //    Những bus stops trên tuyến đường từ chặng start đến chặng end sẽ được lấy ra
     public static List<BusStop> getBusStopsFromRouteIdAndOrder(Context context, String route_id, int order_start, int order_end) {
-        List<BusStop> busStops = new ArrayList<>();
-        for (int i = order_start; i <= order_end; i++) {
-            busStops.add(getBusStopFromRouteIdAndOrder(context, route_id, i));
-        }
-        return busStops;
+        return get(context, "route_id=" + route_id + " AND `order` BETWEEN " + order_start + " AND " + order_end +  " ORDER BY `order`");
     }
 
 //    Hàm chuyển đổi bus stop raw thành bus stop
@@ -100,4 +102,10 @@ public class BusStopDAO {
         List<BusStop> busStops = get(context, "route_id='" + route_id + "' ORDER BY `order`");
         return busStops;
     }
+
+//    Hàm lấy tất cả các busstopraw
+    public static List<BusStopRaw> getAllBusStopRaw(Context context) {
+        return getRaw(context, null);
+    }
+
 }

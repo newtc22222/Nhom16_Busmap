@@ -4,16 +4,12 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-import com.google.android.gms.maps.model.LatLng;
-
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 import hcmute.nhom16.busmap.Support;
-import hcmute.nhom16.busmap.model.Address;
-import hcmute.nhom16.busmap.model.Station;
-import hcmute.nhom16.busmap.model.Update;
+import hcmute.nhom16.busmap.entities.Update;
 
 public class UpdateDAO {
     public static final int ID = 0;

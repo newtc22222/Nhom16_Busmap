@@ -5,8 +5,8 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import java.util.ArrayList;
 import java.util.List;
-import hcmute.nhom16.busmap.model.BusStopRaw;
-import hcmute.nhom16.busmap.model.Route;
+import hcmute.nhom16.busmap.component.BusStopRaw;
+import hcmute.nhom16.busmap.entities.Route;
 
 public class RouteDAO {
     public static final int ID = 0;

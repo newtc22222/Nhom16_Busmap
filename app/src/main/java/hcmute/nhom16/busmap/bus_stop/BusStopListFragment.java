@@ -16,7 +16,7 @@ import java.util.List;
 
 import hcmute.nhom16.busmap.listener.OnBusStopListener;
 import hcmute.nhom16.busmap.R;
-import hcmute.nhom16.busmap.model.BusStop;
+import hcmute.nhom16.busmap.entities.BusStop;
 
 public class BusStopListFragment extends Fragment {
     private boolean order;
@@ -58,7 +58,7 @@ public class BusStopListFragment extends Fragment {
         if (time_lines != null && time_lines.size() > 0) {
             RecyclerView rv_linear_1 = view.findViewById(R.id.rv_linear_1);
             BusStopTimeLineAdapter adapter_1 = new BusStopTimeLineAdapter(getContext(), time_lines);
-            rv_linear_1.setAdapter(adapter_1);
+            rv_linear_1.setAdapter((RecyclerView.Adapter) adapter_1);
             rv_linear_1.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, true));
         }
         return view;

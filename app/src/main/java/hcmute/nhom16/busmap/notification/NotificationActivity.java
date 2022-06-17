@@ -12,7 +12,7 @@ import java.util.List;
 
 import hcmute.nhom16.busmap.R;
 import hcmute.nhom16.busmap.Support;
-import hcmute.nhom16.busmap.model.Notification;
+import hcmute.nhom16.busmap.component.Notification;
 
 public class NotificationActivity extends AppCompatActivity {
 //    Recycler View hiển thị list các notification

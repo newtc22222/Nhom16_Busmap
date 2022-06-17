@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import hcmute.nhom16.busmap.Support;
-import hcmute.nhom16.busmap.model.User;
+import hcmute.nhom16.busmap.entities.User;
 
 public class UserDAO {
     public static final int EMAIL = 0;

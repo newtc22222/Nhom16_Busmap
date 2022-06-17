@@ -24,9 +24,9 @@ import java.util.List;
 import hcmute.nhom16.busmap.R;
 import hcmute.nhom16.busmap.data.AddressDAO;
 import hcmute.nhom16.busmap.listener.OnAddressListener;
-import hcmute.nhom16.busmap.model.Address;
-import hcmute.nhom16.busmap.model.User;
-import hcmute.nhom16.busmap.model.UserAccount;
+import hcmute.nhom16.busmap.entities.Address;
+import hcmute.nhom16.busmap.entities.User;
+import hcmute.nhom16.busmap.entities.UserAccount;
 
 // Sử dụng Places API của google để tư động gợi ý địa điểm khi nười dùng nhập
 public class AddressSearchActivity extends AppCompatActivity implements OnAddressListener {

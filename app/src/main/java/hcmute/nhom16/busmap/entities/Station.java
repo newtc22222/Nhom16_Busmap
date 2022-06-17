@@ -1,6 +1,7 @@
-package hcmute.nhom16.busmap.model;
+package hcmute.nhom16.busmap.entities;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 import hcmute.nhom16.busmap.Support;
 
@@ -42,6 +43,19 @@ public class Station implements Serializable {
 
     public void setAddress(Address address) {
         this.address = address;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Station station = (Station) o;
+        return id == station.id;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, address);
     }
 
     @Override

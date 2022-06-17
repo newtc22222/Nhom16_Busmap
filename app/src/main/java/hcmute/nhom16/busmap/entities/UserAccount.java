@@ -1,4 +1,4 @@
-package hcmute.nhom16.busmap.model;
+package hcmute.nhom16.busmap.entities;
 
 import android.content.Context;
 

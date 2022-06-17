@@ -27,6 +27,7 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.os.Bundle;
+
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -47,13 +48,13 @@ import hcmute.nhom16.busmap.feedback.FeedbackActivity;
 import hcmute.nhom16.busmap.feedback.InformationGroupActivity;
 import hcmute.nhom16.busmap.feedback.RateActivity;
 import hcmute.nhom16.busmap.feedback.UpdateActivity;
-import hcmute.nhom16.busmap.model.Address;
-import hcmute.nhom16.busmap.model.User;
-import hcmute.nhom16.busmap.model.UserAccount;
+import hcmute.nhom16.busmap.entities.Address;
+import hcmute.nhom16.busmap.entities.User;
+import hcmute.nhom16.busmap.entities.UserAccount;
 import hcmute.nhom16.busmap.result.FindRoadActivity;
 import hcmute.nhom16.busmap.saved.SavedActivity;
 import hcmute.nhom16.busmap.side.SideAdapter;
-import hcmute.nhom16.busmap.model.Side;
+import hcmute.nhom16.busmap.component.Side;
 import hcmute.nhom16.busmap.notification.NotificationActivity;
 import hcmute.nhom16.busmap.route.RouteActivity;
 import hcmute.nhom16.busmap.user.InformationActivity;

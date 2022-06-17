@@ -15,7 +15,7 @@ import java.util.List;
 
 import hcmute.nhom16.busmap.R;
 import hcmute.nhom16.busmap.listener.OnBusStopListener;
-import hcmute.nhom16.busmap.model.BusStopGuide;
+import hcmute.nhom16.busmap.component.BusStopGuide;
 
 // Fragment có recyclerview là một list các bus stops guide
 public class ResultBusStopsGuideFragment extends Fragment {

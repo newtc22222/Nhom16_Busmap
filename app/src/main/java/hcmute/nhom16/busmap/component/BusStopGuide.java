@@ -1,7 +1,8 @@
-package hcmute.nhom16.busmap.model;
+package hcmute.nhom16.busmap.component;
 
 import hcmute.nhom16.busmap.Support;
 import hcmute.nhom16.busmap.config.MoveType;
+import hcmute.nhom16.busmap.entities.Address;
 
 //Bus stop guide là lớp để chứa thông tin hướng dẫn cách đi giữa các trạm
 //route_id để biết nó thuộc route nào

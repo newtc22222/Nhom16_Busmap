@@ -1,4 +1,4 @@
-package hcmute.nhom16.busmap.model;
+package hcmute.nhom16.busmap.component;
 
 //Side thì chỉ gồm tên và image là cờ của quốc gia
 public class Side {

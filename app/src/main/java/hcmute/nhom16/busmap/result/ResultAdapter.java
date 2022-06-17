@@ -11,8 +11,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 import hcmute.nhom16.busmap.R;
-import hcmute.nhom16.busmap.model.Address;
-import hcmute.nhom16.busmap.model.Result;
+import hcmute.nhom16.busmap.entities.Address;
+import hcmute.nhom16.busmap.component.Result;
 import hcmute.nhom16.busmap.route.RouteIconAdapter;
 // Result Adapter là một list các result tìm được khi tìm đường
 public class ResultAdapter extends RecyclerView.Adapter<ResultAdapter.ResultHolder> {

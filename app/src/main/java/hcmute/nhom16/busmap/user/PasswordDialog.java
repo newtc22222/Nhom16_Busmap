@@ -12,7 +12,7 @@ import androidx.annotation.NonNull;
 import hcmute.nhom16.busmap.R;
 import hcmute.nhom16.busmap.Support;
 import hcmute.nhom16.busmap.data.UserDAO;
-import hcmute.nhom16.busmap.model.UserAccount;
+import hcmute.nhom16.busmap.entities.UserAccount;
 
 //Đây là dialog dùng cho việc đổi mật khẩu
 //dialog này sẽ xuất hiện hộp thoại yêu cần người dùng nhập password cũ và mới

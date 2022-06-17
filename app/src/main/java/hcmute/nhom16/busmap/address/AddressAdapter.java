@@ -13,7 +13,7 @@ import java.util.List;
 
 import hcmute.nhom16.busmap.R;
 import hcmute.nhom16.busmap.listener.OnAddressListener;
-import hcmute.nhom16.busmap.model.Address;
+import hcmute.nhom16.busmap.entities.Address;
 
 public class AddressAdapter extends RecyclerView.Adapter<AddressAdapter.AddressHolder> {
     Context context;

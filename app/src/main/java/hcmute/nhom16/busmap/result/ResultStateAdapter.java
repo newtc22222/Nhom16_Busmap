@@ -9,8 +9,8 @@ import java.util.List;
 
 import hcmute.nhom16.busmap.listener.OnBusStopListener;
 import hcmute.nhom16.busmap.listener.OnRouteListener;
-import hcmute.nhom16.busmap.model.BusStopGuide;
-import hcmute.nhom16.busmap.model.RouteGuide;
+import hcmute.nhom16.busmap.component.BusStopGuide;
+import hcmute.nhom16.busmap.component.RouteGuide;
 //ResultStateAdapter là adapter cho viewpager2
 //2 tab là routes guide và bus stops guide
 public class ResultStateAdapter extends FragmentStateAdapter {

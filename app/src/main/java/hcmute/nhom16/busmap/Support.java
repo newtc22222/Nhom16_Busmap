@@ -22,12 +22,12 @@ import hcmute.nhom16.busmap.config.Speed;
 import hcmute.nhom16.busmap.data.BusStopDAO;
 import hcmute.nhom16.busmap.data.RouteDAO;
 import hcmute.nhom16.busmap.data.StationDAO;
-import hcmute.nhom16.busmap.model.Address;
-import hcmute.nhom16.busmap.model.BusDistance;
-import hcmute.nhom16.busmap.model.BusStopRaw;
-import hcmute.nhom16.busmap.model.Result;
-import hcmute.nhom16.busmap.model.ResultRoute;
-import hcmute.nhom16.busmap.model.Station;
+import hcmute.nhom16.busmap.entities.Address;
+import hcmute.nhom16.busmap.component.BusDistance;
+import hcmute.nhom16.busmap.component.BusStopRaw;
+import hcmute.nhom16.busmap.component.Result;
+import hcmute.nhom16.busmap.component.ResultRoute;
+import hcmute.nhom16.busmap.entities.Station;
 import hcmute.nhom16.busmap.config.MoveType;
 
 public class Support {
@@ -190,35 +190,49 @@ public class Support {
 //  Hàm này tính kết quả từ điểm đến, điểm đi và số lượng tuyến đi qua
 //  Đầu tiên lấy các station xung quanh của cả 2 điểm, sau đó tính ra các tuyến đi qua gần 2 điểm đó
 //  Cuối cùng thì chr cần tìm tuyến nàm trong 2 list
-    public static List<Result> calculateResults(Context context, Address from, Address to, int route_amount) {
-        List<Result> results = new ArrayList<>();
 
+    public static List<Result> calculateResults(Context context, Address from, Address to, int route_amount) {
 //        Lấy một list các stations xung quanh điểm bắt đầu
         List<Station> starts = StationDAO.getStationsAround(context,
-                from.getLat(), from.getLng(), convertMeterToDegree(2000));
+                from.getLat(), from.getLng(), convertMeterToDegree(LevelExtend.HIGH));
 //        Tương tự, lấy một list các stations xung quanh điểm đến
         List<Station> ends = StationDAO.getStationsAround(context,
-                to.getLat(), to.getLng(), convertMeterToDegree(2000));
+                to.getLat(), to.getLng(), convertMeterToDegree(LevelExtend.HIGH));
 
 //        Gọi hàm calculate phía dưới để tính ra 2 dictionary chứa các route đi qua gần 2 điểm này
         Dictionary<String, BusDistance> dictionary_starts = calculate(context, starts, from);
         Dictionary<String, BusDistance> dictionary_ends = calculate(context, ends, to);
 
+        List<Result> results = new ArrayList<>();
+        results = findResults(context, dictionary_starts, dictionary_ends);
+        if (route_amount > 0) {
+
+        }
+        if (route_amount > 1) {
+
+        }
+        return results;
+    }
+
+    public static List<Result> findResults(Context context, Dictionary<String, BusDistance> dictionary_starts,
+                                           Dictionary<String, BusDistance> dictionary_ends) {
+
 //        Cuối cùng tìm điểm
         Enumeration<String> enumeration = dictionary_starts.keys();
+        List<Result> results = new ArrayList<>();
 
         while (enumeration.hasMoreElements()) {
-            String current = enumeration.nextElement();
-            if (dictionary_ends.get(current) != null
-                    && dictionary_starts.get(current).getBus_stop_raw().getOrder() < dictionary_ends.get(current).getBus_stop_raw().getOrder()) {
+            String current_route = enumeration.nextElement();
+            if (dictionary_ends.get(current_route) != null
+                    && dictionary_starts.get(current_route).getBus_stop_raw().getOrder() < dictionary_ends.get(current_route).getBus_stop_raw().getOrder()) {
                 List<ResultRoute> resultRoutes = new ArrayList<>();
 
-                resultRoutes.add(new ResultRoute(RouteDAO.getRouteByID(context, current),
-                        BusStopDAO.convertRawToBusStop(context, dictionary_starts.get(current).getBus_stop_raw()),
-                        BusStopDAO.convertRawToBusStop(context, dictionary_ends.get(current).getBus_stop_raw())));
+                resultRoutes.add(new ResultRoute(RouteDAO.getRouteByID(context, current_route),
+                        BusStopDAO.convertRawToBusStop(context, dictionary_starts.get(current_route).getBus_stop_raw()),
+                        BusStopDAO.convertRawToBusStop(context, dictionary_ends.get(current_route).getBus_stop_raw())));
 
-                results.add(new Result(resultRoutes , dictionary_starts.get(current).getDistance(),
-                        dictionary_ends.get(current).getDistance()));
+                results.add(new Result(resultRoutes , dictionary_starts.get(current_route).getDistance(),
+                        dictionary_ends.get(current_route).getDistance()));
             }
         }
         return results;

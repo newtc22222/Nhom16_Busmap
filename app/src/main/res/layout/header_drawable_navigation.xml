@@ -13,15 +13,28 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <ImageView
-            android:id="@+id/iv_avatar"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+        <RelativeLayout
             android:layout_marginStart="8dp"
-            android:background="@drawable/circle"
-            android:clipToOutline="true"
-            android:padding="4dp"
-            android:src="@drawable/avatar_default" />
+            android:id="@+id/ll_avatar"
+            android:layout_gravity="center"
+            android:layout_width="100dp"
+            android:layout_height="100dp">
+
+            <ImageView
+                android:id="@+id/iv_avatar"
+                android:layout_width="130dp"
+                android:layout_height="130dp"
+                android:clipToOutline="true"
+                android:background="@drawable/circle"
+                android:padding="4dp"
+                android:src="@drawable/avatar_default" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/circle"/>
+
+        </RelativeLayout>
 
         <LinearLayout
             android:layout_marginStart="12dp"

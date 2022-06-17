@@ -14,9 +14,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 import hcmute.nhom16.busmap.R;
-import hcmute.nhom16.busmap.listener.OnBusStopListener;
 import hcmute.nhom16.busmap.listener.OnRouteListener;
-import hcmute.nhom16.busmap.model.RouteGuide;
+import hcmute.nhom16.busmap.component.RouteGuide;
 
 // Fragment có recyclerview là một list các routes guide
 public class ResultRouteGuideFragment extends Fragment {

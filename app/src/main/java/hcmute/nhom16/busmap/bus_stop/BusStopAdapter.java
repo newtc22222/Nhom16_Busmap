@@ -16,7 +16,7 @@ import java.util.List;
 import hcmute.nhom16.busmap.listener.OnBusStopListener;
 import hcmute.nhom16.busmap.R;
 import hcmute.nhom16.busmap.Support;
-import hcmute.nhom16.busmap.model.BusStop;
+import hcmute.nhom16.busmap.entities.BusStop;
 import hcmute.nhom16.busmap.config.MoveType;
 import hcmute.nhom16.busmap.station.StationActivity;
 

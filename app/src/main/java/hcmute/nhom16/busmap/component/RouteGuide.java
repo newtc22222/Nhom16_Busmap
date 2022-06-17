@@ -1,4 +1,4 @@
-package hcmute.nhom16.busmap.model;
+package hcmute.nhom16.busmap.component;
 
 import hcmute.nhom16.busmap.Support;
 import hcmute.nhom16.busmap.config.MoveType;

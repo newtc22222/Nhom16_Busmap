@@ -5,8 +5,8 @@ import android.database.sqlite.SQLiteDatabase;
 import com.google.android.gms.maps.model.LatLng;
 import java.util.ArrayList;
 import java.util.List;
-import hcmute.nhom16.busmap.model.Address;
-import hcmute.nhom16.busmap.model.Station;
+import hcmute.nhom16.busmap.entities.Address;
+import hcmute.nhom16.busmap.entities.Station;
 
 public class StationDAO {
     public static final int ID = 0;

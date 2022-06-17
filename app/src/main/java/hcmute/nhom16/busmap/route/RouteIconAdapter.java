@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 import hcmute.nhom16.busmap.R;
-import hcmute.nhom16.busmap.model.ResultRoute;
+import hcmute.nhom16.busmap.component.ResultRoute;
 //Route Icon để hiển thị một list các icon ở giữa là tên tuyến
 //Đầu vào là một list các result_route, với mỗi result_route sẽ là một icon
 public class RouteIconAdapter extends RecyclerView.Adapter<RouteIconAdapter.RouteIconHolder> {

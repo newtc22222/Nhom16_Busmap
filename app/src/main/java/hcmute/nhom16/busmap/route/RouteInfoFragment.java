@@ -11,7 +11,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import hcmute.nhom16.busmap.R;
-import hcmute.nhom16.busmap.model.Route;
+import hcmute.nhom16.busmap.entities.Route;
 //Fragment Route info được sử dụng bởi viewpager2 ở phần detail route
 //Nếu mà route == null thì sẽ inflate layout not found
 //Nếu ngược lại thì sẽ inflate layout route info và đặt các thông tin route vào

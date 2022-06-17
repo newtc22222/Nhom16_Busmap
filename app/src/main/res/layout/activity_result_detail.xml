@@ -16,36 +16,37 @@
 
     <fragment
         android:id="@+id/fm_map"
-        android:layout_below="@id/toolbar"
-        android:layout_above="@id/ll"
         android:name="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        android:layout_above="@id/ll"
+        android:layout_below="@id/toolbar" />
 
     <LinearLayout
         android:id="@+id/ll"
-        android:layout_alignParentBottom="true"
-        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="400dp">
+        android:layout_height="400dp"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical">
 
         <androidx.recyclerview.widget.RecyclerView
+            android:padding="4dp"
             android:id="@+id/rv_routes_icon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tab_layout"
-            app:tabTextAppearance="@style/tab_text"
-            app:tabSelectedTextColor="@color/primary_600"
-            app:tabTextColor="@color/secondary_300"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            app:tabSelectedTextColor="@color/primary_600"
+            app:tabTextAppearance="@style/tab_text"
+            app:tabTextColor="@color/secondary_300" />
 
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/vp2_detail_route"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent" />
     </LinearLayout>
 
 </RelativeLayout>

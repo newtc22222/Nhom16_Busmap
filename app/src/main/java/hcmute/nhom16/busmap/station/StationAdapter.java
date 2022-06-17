@@ -15,12 +15,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 import hcmute.nhom16.busmap.R;
-import hcmute.nhom16.busmap.Support;
 import hcmute.nhom16.busmap.data.SavedStationDAO;
-import hcmute.nhom16.busmap.model.Station;
-import hcmute.nhom16.busmap.model.User;
-import hcmute.nhom16.busmap.model.UserAccount;
+import hcmute.nhom16.busmap.entities.Station;
+import hcmute.nhom16.busmap.entities.User;
+import hcmute.nhom16.busmap.entities.UserAccount;
 
+//Station adapter sử dụng để xem list các stations, ở trong mục saved station
 public class StationAdapter extends RecyclerView.Adapter<StationAdapter.StationHolder> {
     private Context context;
     private List<Station> stations;
@@ -42,7 +42,6 @@ public class StationAdapter extends RecyclerView.Adapter<StationAdapter.StationH
     @Override
     public void onBindViewHolder(@NonNull StationHolder holder, int position) {
         holder.tv_name.setText(stations.get(position).getName(32));
-
         holder.itemView.setOnClickListener(v -> {
             holder.detail.setVisibility(View.VISIBLE);
             holder.order.setVisibility(View.VISIBLE);
@@ -58,19 +57,19 @@ public class StationAdapter extends RecyclerView.Adapter<StationAdapter.StationH
         });
 
         holder.ib_delete.setOnClickListener(v -> {
-            unSaveStation(position);
+            deleteSaveStation(position);
         });
     }
 
 
-    private void unSaveStation(int position) {
+    private void deleteSaveStation(int position) {
         User user = UserAccount.getUser();
         if (user != null) {
             String email = user.getEmail();
             SavedStationDAO.deleteSavedStation(context, email, stations.get(position).getId());
         }
         stations.remove(position);
-        notifyItemRemoved(position);
+        notifyDataSetChanged();
     }
 
 //    onDetailClick sẽ chuyển hướng đến staton activity

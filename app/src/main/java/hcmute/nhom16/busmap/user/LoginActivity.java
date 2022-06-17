@@ -10,7 +10,7 @@ import android.widget.Toast;
 
 import hcmute.nhom16.busmap.MainActivity;
 import hcmute.nhom16.busmap.R;
-import hcmute.nhom16.busmap.model.UserAccount;
+import hcmute.nhom16.busmap.entities.UserAccount;
 
 public class LoginActivity extends AppCompatActivity {
     EditText edt_email, edt_pass;

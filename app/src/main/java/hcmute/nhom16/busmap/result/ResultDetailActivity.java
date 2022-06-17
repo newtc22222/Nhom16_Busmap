@@ -12,6 +12,12 @@ import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -33,16 +39,18 @@ import java.util.Arrays;
 import java.util.List;
 
 import hcmute.nhom16.busmap.R;
+import hcmute.nhom16.busmap.Support;
 import hcmute.nhom16.busmap.config.MoveType;
 import hcmute.nhom16.busmap.data.BusStopDAO;
 import hcmute.nhom16.busmap.listener.OnBusStopListener;
 import hcmute.nhom16.busmap.listener.OnRouteListener;
-import hcmute.nhom16.busmap.model.Address;
-import hcmute.nhom16.busmap.model.BusStop;
-import hcmute.nhom16.busmap.model.BusStopGuide;
-import hcmute.nhom16.busmap.model.Result;
-import hcmute.nhom16.busmap.model.ResultRoute;
-import hcmute.nhom16.busmap.model.RouteGuide;
+import hcmute.nhom16.busmap.entities.Address;
+import hcmute.nhom16.busmap.entities.BusStop;
+import hcmute.nhom16.busmap.component.BusStopGuide;
+import hcmute.nhom16.busmap.component.Result;
+import hcmute.nhom16.busmap.component.ResultRoute;
+import hcmute.nhom16.busmap.component.RouteGuide;
+import hcmute.nhom16.busmap.entities.Station;
 import hcmute.nhom16.busmap.route.RouteIconAdapter;
 
 public class ResultDetailActivity extends AppCompatActivity
@@ -54,12 +62,17 @@ public class ResultDetailActivity extends AppCompatActivity
     List<RouteGuide> routeGuides;
     Result result;
     Address from, to;
+    int totalDistance;
 //  các object cần thiết cho map
     GoogleMap map;
     List<Marker> markers;
     Bitmap ic_big, ic_focus, ic_walk, ic_walk_focus, ic_dest_focus, ic_dest;
     List<Polyline> polylines;
     int pre_marker = 0, pre_polyline = 0;
+//    ll xử dụng cho việc lướt phần chi tiết route lên và xuống
+    LinearLayout ll;
+//    height là chiều cao của screen, down là vị trí tương đối của y khi vừa drag vào linear layout drag
+    int height, down;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,6 +89,7 @@ public class ResultDetailActivity extends AppCompatActivity
 
         initMap();
         initUI();
+        initListener();
     }
 
 // get result route sẽ lấy data từ activity trước truyền tới gồm result và điểm đi và  điểm đến
@@ -129,9 +143,7 @@ public class ResultDetailActivity extends AppCompatActivity
         ic_focus = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
         ic.setBounds(0, 0, width, height);
         ic.draw(new Canvas(ic_focus));
-
-        busStopGuides = getBusStopGuides();
-        routeGuides = getRouteGuides();
+        setGuides();
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
@@ -140,7 +152,11 @@ public class ResultDetailActivity extends AppCompatActivity
     }
 
     private void initUI() {
+        DisplayMetrics displayMetrics = getResources().getDisplayMetrics();
+        height = displayMetrics.heightPixels;
+        ll = findViewById(R.id.ll);
         rv_routes_icon = findViewById(R.id.rv_routes_icon);
+        rv_routes_icon.setNestedScrollingEnabled(false);
         RouteIconAdapter adapter = new RouteIconAdapter(this, result.getResult_routes());
         rv_routes_icon.setAdapter(adapter);
         rv_routes_icon.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
@@ -162,44 +178,106 @@ public class ResultDetailActivity extends AppCompatActivity
                 }
             }
         }).attach();
+        middleRouteDetail();
+    }
+
+    private void initListener() {
+        rv_routes_icon.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {int y = (int) motionEvent.getRawY();
+                switch (motionEvent.getAction()) {
+                    case MotionEvent.ACTION_DOWN:
+                        down = (int) motionEvent.getY();
+                        break;
+                    case MotionEvent.ACTION_MOVE:
+                        setHeightRouteDetail(height - y + down);
+                        break;
+                    case MotionEvent.ACTION_UP:
+                    case MotionEvent.ACTION_CANCEL:
+                        if (y - rv_routes_icon.getHeight() / 2 > height * 3/ 4) {
+                            collapseRouteDetail();
+                        } else {
+                            if (y - rv_routes_icon.getHeight() / 2 < height / 4) {
+                                expandRouteDetail();
+                            }
+                            else {
+                                middleRouteDetail();
+                            }
+                        }
+                        break;
+                    default:
+                        return false;
+                }
+                return true;
+            }
+        });
+    }
+
+    private void setHeightRouteDetail(int height) {
+        height = Math.max(height, rv_routes_icon.getHeight());
+        height = Math.min(height, this.height - getSupportActionBar().getHeight());
+
+        RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT, height);
+        layoutParams.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
+        ll.setLayoutParams(new RelativeLayout.LayoutParams(layoutParams));
+    }
+
+    private void expandRouteDetail() {
+        setHeightRouteDetail(height - getSupportActionBar().getHeight());
+    }
+
+    private void collapseRouteDetail() {
+        setHeightRouteDetail(rv_routes_icon.getHeight());
+    }
+
+    private void middleRouteDetail() {
+        setHeightRouteDetail(height / 2);
+
     }
 
 //    từ result tính toán được các routes guide cho người dùng
 //    xác định là từ điểm đi đến trạm đầu tiêu là một route
 //    từ trạm xuống đến điểm kết thúc cũng là một route
 //    Ở giữa lộ trình đi có thể ngồi một hoặc nhiều tuyến xe nữa
-    private List<RouteGuide> getRouteGuides() {
-        List<RouteGuide> routeGuides = new ArrayList<>();
-
+    private void setGuides() {
+        routeGuides = new ArrayList<>();
+        busStopGuides = new ArrayList<>();
 //        Route từ điểm bắt đầu đến trạm gần nhất
         routeGuides.add(new RouteGuide("Đi đến " + result.getResult_routes().get(0).getBusStop_start().getStation().getName(),
                 "Xuất phát từ " + from.getAddress(),
                 MoveType.WALK, result.getWalk_distance_start(), ""));
 
-        String preAddress = null;
+        busStopGuides.add(new BusStopGuide("", from.getAddress(), MoveType.WALK, from));
+
+        Station preStation = null;
 
 //        Lặp các result route để thêm các hướng dẫn về các tuyến xe sẽ lên và xuống
         for (ResultRoute resultRoute : result.getResult_routes()) {
-            if (preAddress != null) {
-                routeGuides.add(new RouteGuide( preAddress + " - " + resultRoute.getBusStop_start().getStation().getName(),
-                        "Đi xuống " + preAddress + " - " + " Đi lên " + resultRoute.getBusStop_start().getStation().getName(),
-                        MoveType.WALK,0, ""));
+            if (preStation != null) {
+                routeGuides.add(new RouteGuide( preStation.getName() + " - " + resultRoute.getBusStop_start().getStation().getName(),
+                        "Đi xuống " + preStation.getName() + " - " + " Đi lên " + resultRoute.getBusStop_start().getStation().getName(),
+                        MoveType.WALK, Support.calculateDistance(preStation.getAddress(), resultRoute.getBusStop_start().getStation().getAddress()), ""));
+
+                busStopGuides.add(new BusStopGuide("", preStation.getName(), MoveType.WALK, preStation.getAddress()));
             }
 
-            preAddress = resultRoute.getBusStop_end().getStation().getName();
+            int distance = setPartOfBusStopGuides(resultRoute);
+
+            preStation = resultRoute.getBusStop_end().getStation();
 
             routeGuides.add(new RouteGuide("Đi tuyến " + resultRoute.getRoute().getId() + ": " +
                     resultRoute.getRoute().getName(), resultRoute.getBusStop_start().getStation().getName() + " - " +
-                    resultRoute.getBusStop_end().getStation().getName(), MoveType.BUS, result.getBus_distance(),
+                    resultRoute.getBusStop_end().getStation().getName(), MoveType.BUS, distance,
                     resultRoute.getRoute().getMoney()));
         }
+
+        busStopGuides.add(new BusStopGuide("", to.getAddress(), MoveType.WALK, to));
 
 //        Route từ trạm dừng chân đến điểm đến
         routeGuides.add(new RouteGuide("Đi xuống " + result.getResult_routes().get(result.getResult_routes().size() - 1).getBusStop_end().getStation().getName(),
                 "Đi đến " + to.getAddress(), MoveType.WALK,
                 result.getWalk_distance_end(), ""));
-
-        return routeGuides;
     }
 
 //    tương tự routes guide thì bus stop guide cũng tương tự như vậy
@@ -207,24 +285,17 @@ public class ResultDetailActivity extends AppCompatActivity
 //    đến trạm gần nhất cũng coi như là một hành trình từ trạm này qua trạm khác
 
 //    trạm xuống đến điểm đến cũng sẽ được coi như hành trình từ trạm này qua trạm khác
-    private List<BusStopGuide> getBusStopGuides() {
-        List<BusStopGuide> busStopGuides = new ArrayList<>();
+    private int setPartOfBusStopGuides(ResultRoute resultRoute) {
+        int distance = 0;
+        int s = resultRoute.getBusStop_start().getOrder(), e = resultRoute.getBusStop_end().getOrder();
+        for (BusStop busStop : BusStopDAO.getBusStopsFromRouteIdAndOrder(this, resultRoute.getRoute().getId(), s, e)) {
+            distance += busStop.getDistance_previous();
+            busStopGuides.add(new BusStopGuide(busStop.getRoute_id(), busStop.getStation().getName(),
+                    MoveType.BUS, busStop.getStation().getAddress()));
 
-        busStopGuides.add(new BusStopGuide("", from.getAddress(), MoveType.WALK, from));
-
-        for (ResultRoute resultRoute : result.getResult_routes()) {
-            int s = resultRoute.getBusStop_start().getOrder(), e = resultRoute.getBusStop_end().getOrder();
-            for (BusStop busStop : BusStopDAO.getBusStopsFromRouteIdAndOrder(this, resultRoute.getRoute().getId(), s, e)) {
-
-                busStopGuides.add(new BusStopGuide(busStop.getRoute_id(), busStop.getStation().getName(),
-                        MoveType.BUS, busStop.getStation().getAddress()));
-
-            }
         }
 
-        busStopGuides.add(new BusStopGuide("", to.getAddress(), MoveType.WALK, to));
-
-        return busStopGuides;
+        return distance;
     }
 
     @Override

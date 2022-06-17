@@ -35,8 +35,8 @@ import java.util.List;
 import hcmute.nhom16.busmap.MainActivity;
 import hcmute.nhom16.busmap.R;
 import hcmute.nhom16.busmap.Support;
-import hcmute.nhom16.busmap.model.User;
-import hcmute.nhom16.busmap.model.UserAccount;
+import hcmute.nhom16.busmap.entities.User;
+import hcmute.nhom16.busmap.entities.UserAccount;
 
 public class InformationActivity extends AppCompatActivity {
 //  Các view dùng để ánh xạ
@@ -64,13 +64,19 @@ public class InformationActivity extends AppCompatActivity {
                         try {
                             inputStream = getContentResolver().openInputStream(result.getData().getData());
                             Bitmap bm = BitmapFactory.decodeStream(inputStream);
+                            int h = bm.getHeight();
+                            int w = bm.getWidth();
+                            int p = h > w ? w : h;
+                            h = (h - p) / 2;
+                            w = (w - p) / 2;
                             ByteArrayOutputStream stream = new ByteArrayOutputStream();
-                            bm.compress(Bitmap.CompressFormat.PNG, 100, stream);
+                            Bitmap bitmap = Bitmap.createBitmap(bm, w, h, p, p);
+                            bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
+                            iv_avatar.setImageBitmap(bitmap);
                             image = stream.toByteArray();
                         } catch (FileNotFoundException e) {
                             e.printStackTrace();
                         }
-                        iv_avatar.setImageURI(result.getData().getData());
                     }
                 }
             }

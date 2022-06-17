@@ -17,13 +17,12 @@ import java.util.List;
 
 import hcmute.nhom16.busmap.data.SavedRouteDAO;
 import hcmute.nhom16.busmap.data.SavedStationDAO;
-import hcmute.nhom16.busmap.model.User;
+import hcmute.nhom16.busmap.entities.User;
 import hcmute.nhom16.busmap.user.LoginActivity;
 import hcmute.nhom16.busmap.R;
-import hcmute.nhom16.busmap.Support;
-import hcmute.nhom16.busmap.model.Route;
-import hcmute.nhom16.busmap.model.Station;
-import hcmute.nhom16.busmap.model.UserAccount;
+import hcmute.nhom16.busmap.entities.Route;
+import hcmute.nhom16.busmap.entities.Station;
+import hcmute.nhom16.busmap.entities.UserAccount;
 
 public class SavedActivity extends AppCompatActivity {
 //    khai báo các view để ánh xạ

@@ -15,7 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 import hcmute.nhom16.busmap.R;
-import hcmute.nhom16.busmap.model.Side;
+import hcmute.nhom16.busmap.component.Side;
 
 // side adapter kế thừ recyclerview và vừa implement spinner adapter
 // vì spinner không cho phép set adapter là recyclerview nên phải implement và override các method

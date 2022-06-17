@@ -1,4 +1,6 @@
-package hcmute.nhom16.busmap.model;
+package hcmute.nhom16.busmap.component;
+
+import java.util.Objects;
 
 //Busstop raw chỉ load data từ sqlite lên, không thực hiện chuyển đổi
 // station_id hay route_id thành object
@@ -35,5 +37,18 @@ public class BusStopRaw {
         this.route_id = route_id;
         this.station_id = station_id;
         this.order = order;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        BusStopRaw that = (BusStopRaw) o;
+        return station_id == that.station_id;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(route_id, station_id, order);
     }
 }

@@ -14,8 +14,8 @@ import java.util.List;
 
 import hcmute.nhom16.busmap.R;
 import hcmute.nhom16.busmap.Support;
-import hcmute.nhom16.busmap.model.Address;
-import hcmute.nhom16.busmap.model.Result;
+import hcmute.nhom16.busmap.entities.Address;
+import hcmute.nhom16.busmap.component.Result;
 
 //  Activity sẽ show danh sách các kết quả tìm được
 public class ResultFindRoadActivity extends AppCompatActivity {
