@@ -96,12 +96,12 @@
             </LinearLayout>
 
             <ImageButton
-                android:layout_marginTop="-20dp"
-                android:layout_below="@id/ll_from"
                 android:id="@+id/ib_swap"
                 android:layout_width="40dp"
                 android:layout_height="38dp"
+                android:layout_below="@id/ll_from"
                 android:layout_alignParentEnd="true"
+                android:layout_marginTop="-20dp"
                 android:background="@drawable/corner_left_10"
                 android:backgroundTint="@color/primary_600"
                 android:src="@drawable/ic_swap"
