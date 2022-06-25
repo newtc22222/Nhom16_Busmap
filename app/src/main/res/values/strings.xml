@@ -1,6 +1,6 @@
 <resources>
 <!--  API_KEY google map  -->
-    <string name="apiKey">AIzaSyBpOVyBEff5U5HZPQpVU9MBSmMTUOA0UAA</string>
+    <string name="apiKey">AIzaSyDPAlx5S1gznf6Ioi50aCiz1ZH5o1A4PQE</string>
     <string name="app_name">Busmap</string>
     <!--    -->
     <string name="title_splash">Đồ án cuối kỳ</string>
